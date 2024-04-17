@@ -1,0 +1,421 @@
+1
+ 
+ 
+ 
+ 
+                      Warning: This computer program is protected by copyright law and international treaties.       
+                  Unauthorized use, reproduction or distribution of this computer program, or any portion of it, may 
+                                          result in severe civil and criminal penalties.                             
+                         Copyright (C) 2022 Hexagon AB and/or its subsidiaries. All rights reserved.                 
+ 
+ 
+                                              * * * * * * * * * * * * * * * * * * * *
+                                              * * * * * * * * * * * * * * * * * * * *
+                                              * *                                 * *
+                                              * *           Hexagon AB            * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *      M S C   N a s t r a n      * *
+                                              * *                                 * *
+                                              * *  S T U D E N T   E D I T I O N  * *
+                                              * *                                 * *
+                                              * *     Version 2022.1-CL872368     * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *          MAR 15, 2022           * *
+                                              * *                                 * *
+                                              * *              Intel              * *
+                                              * *MODEL Intel(R) Core(TM) i5-7300H * *
+                                              * *    Windows 10 Home 6.2 9200     * *
+                                              * * Compiled for 8664 (SINGLE Mode) * *
+                                              * *                                 * *
+                                              * * * * * * * * * * * * * * * * * * * *
+                                              * * * * * * * * * * * * * * * * * * * *
+
+ 
+ 
+                                                 This Student Edition version is  
+                                                    valid until MAR 15, 2024.     
+ 
+ 
+                  This program is being distributed as part of the Hexagon AB Student Edition. Use of this program   
+                     or its results at a commercial installation, for commercial purposes, or for production work    
+                                             I S   S T R I C T L Y  P R O H I B I T E D.                             
+                  ==================================== FOR EDUCATIONAL USE ONLY =====================================
+ 
+ 
+1News file - (Feb 15, 2022)
+  
+               Welcome to MSC Nastran 2022.1
+  
+  
+   MSC Nastran brings powerful new features and enhancements for engineering
+   solutions in several releases through the year. The focus in this release
+   is on error fixes to improve the stability and robustness of the program.
+  
+     MSC Nastran 2022.1 Features and Enhancements
+  
+     Nonlinear
+      - Contact enhancements
+        - Smooth surface output control
+        - Node-to-surface penetration control in transient analysis
+      - Support for MSC CoSim 2022
+        - scFlow temperature load input
+        - ITER method support
+        - Local coordinate system at coupling region
+        - Initial displacement specification in scFlow based on Nastran
+          analysis results
+  
+     High Performance Computing
+      - Support running DMP across multiple compute nodes on Windows
+  
+     Documentation
+     - The complete documentation set is provided in a separate installer and
+       when installed is available at: MSC_DOC_DIR/doc/pdf_nastran directory,
+       where MSC_DOC_DIR is the directory where documentation was installed.
+       This help set includes cross references between documents, and links to
+       how-to videos, and example files
+  
+     Individual MSC Nastran documents are available for download from the
+       Simcompanion Website at:
+       http://simcompanion.hexagon.com/
+  
+     These documents were updated for the MSC Nastran 2022.1 Release
+  
+         1.  MSC Nastran 2022.1 Installation and Operations Guide
+         2.  MSC Nastran 2022.1 Quick Reference Guide
+         3.  MSC Nastran 2022.1 Release Guide
+         4.  MSC Nastran 2022.1 Linear Statics Analysis User's Guide
+         5.  MSC Nastran 2022.1 Dynamic Analysis User's Guide
+         6.  MSC Nastran 2022.1 Superelements User's Guide
+         7.  MSC Nastran 2022.1 Rotordynamics User's Guide
+         8.  MSC Nastran 2022.1 Demonstration Problems Manual
+         9.  MSC Nastran 2022.1 Nastran Embedded Fatigue User's Guide
+        10.  MSC Nastran 2022.1 Design Sensitivity and Optimization
+        11.  MSC Nastran 2022.1 Nonlinear User's Guide SOL 400
+        12.  MSC Nastran 2022.1 DMAP Programmer's Guide
+1       13.  MSC Nastran 2022.1 High Performance Computing User's Guide
+        14.  MSC Nastran 2022.1 New Verification Manual
+        15.  MSC Nastran 2022.1 DEMATD Guide
+        16.  MSC Nastran 2022.1 Explicit Nonlinear (SOL 700) User's Guide
+  
+   Please refer to  MSC_DOC_DIR/doc/pdf_nastran/nastran_library.pdf
+   for the complete document set:
+  
+  
+     Feature Deprecation List
+     To streamline the MSC Nastran program and simplify ongoing maintenance
+     activity, some obsolete capabilities have been identified and tagged for
+     removal. This activity started in 2021 and continues through 2022.
+     Please review the list of features marked for deprecation below to
+     ensure that there will be no disruption to your use of MSC Nastran.
+     If you see a feature that you currently use and do not wish to lose,
+     contact MSC Technical Support to report it.
+  
+     Features tagged for removal:
+     - SOL 600 nonlinear solution sequence
+     - TAUCS solver
+     - Obsolete DMAP modules
+     - SSSALTERS
+  
+     Refer to the MSC Nastran Release Guide for more details.
+  
+  
+   Additional information about the release can be found at the MSC Nastran
+   Product Support page: http://simcompanion.hexagon.com
+  
+   The support page provides links to these valuable information:
+      * A searchable Knowledge Base containing examples and answers to thousands
+        of frequently asked questions written by MSC Software subject-matter
+        experts.
+      * Peer-to-peer Discussion Forums enabling you to post questions for your
+        MSC Software products and receive answers from other users worldwide.
+      * A list of known issues with the product and any workarounds.
+      * Instructions on how to contact technical support
+      * A mechanism for sending us product feedback or enhancement requests.
+      * Hardware and software requirements.
+      * Examples and Tutorials
+      * and much more.
+  
+   For information on training, please visit our Training web site
+  
+      https://www.mscsoftware.com/msc-training
+  
+1                                                       **STUDENT EDITION*     JUNE   3, 2023  MSC Nastran  3/15/22   PAGE     1
+                                                                                                                                    
+0        N A S T R A N    F I L E    A N D    S Y S T E M    P A R A M E T E R    E C H O                                           
+0                                                                                                                                   
+                                                                                                                                    
+                                                                                                                                    
+     NASTRAN BUFFSIZE=8193 $(D:/PROGRAM FILES/MSC.SOFTWARE/NAPA_SE/20221/NASTRAN/CONF
+1                                                       **STUDENT EDITION*     JUNE   3, 2023  MSC Nastran  3/15/22   PAGE     2
+                                                                                                                                    
+0        N A S T R A N    E X E C U T I V E    C O N T R O L    E C H O                                                             
+0                                                                                                                                   
+                                                                                                                                    
+                                                                                                                                    
+     SOL 103                                                                                 
+     CEND                                                                                    
+1    STRAIN ENERGY CHECK                                **STUDENT EDITION*     JUNE   3, 2023  MSC Nastran  3/15/22   PAGE     3
+                                                                                                                                    
+0                                                                                                                                   
+0                                        C A S E    C O N T R O L    E C H O                                                        
+                 COMMAND                                                                                                            
+                 COUNT                                                                                                              
+                  1      $ DIRECT TEXT INPUT FOR GLOBAL CASE CONTROL DATA                                        
+                  2      TITLE = STRAIN ENERGY CHECK                                                             
+                  3      ECHO = NONE                                                                             
+                  4      LINES=50000                                                                             
+                  5      $RESVEC = NO                                                                            
+                  6      GROUNDCHECK(SET=(G,N,F,A),THRESH=1.E-2) = YES                                           
+                  7      SUBCASE 1                                                                               
+                  8      $ SUBCASE NAME : STRAIN_ENERGY_CHECK                                                    
+                  9         SUBTITLE=STRAIN_ENERGY_CHECK                                                         
+                 10         METHOD = 1                                                                           
+                 11      BEGIN BULK                                                                              
+1    STRAIN ENERGY CHECK                                **STUDENT EDITION*     JUNE   3, 2023  MSC Nastran  3/15/22   PAGE     4
+                                                                                                                                    
+0                                                                                                                                   
+                                              I N P U T   B U L K   D A T A   E C H O                                               
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                              $INCLUDE "../../Microsat.bdf"
+                              $END OF INCLUDE "../../Microsat.bdf"
+1    STRAIN ENERGY CHECK                                **STUDENT EDITION*     JUNE   3, 2023  MSC Nastran  3/15/22   PAGE     5
+                                                                                                                                    
+0                                                                                                                                   
+                                        M O D E L   S U M M A R Y          BULK = 0
+                                   ENTRY NAME        NUMBER OF ENTRIES
+                                   ----------        -----------------
+                                         CBAR                     1308
+                                        CBUSH                       12
+                                        CONM2                        3
+                                       CQUAD4                     3979
+                                       CTRIA3                       98
+                                        EIGRL                        1
+                                         GRID                     3951
+                                         MAT1                        2
+                                        PARAM                        2
+                                         PBAR                        9
+                                        PBARL                        2
+                                        PBUSH                        1
+                                       PSHELL                        5
+                                         RBE2                        3
+                                       SUPORT                        1
+
+ ^^^     
+ ^^^ >>> IFP OPERATIONS COMPLETE <<< 
+ ^^^     
+1    STRAIN ENERGY CHECK                                **STUDENT EDITION*     JUNE   3, 2023  MSC Nastran  3/15/22   PAGE     6
+                                                                                                                                    
+0                                                                                                                                   
+0                                                                                                                                   
+                                                                                                                                    
+                                                                                                                                    
+ *** USER INFORMATION MESSAGE 7570 (GPWG1S)
+     RESULTS OF RIGID BODY CHECKS OF MATRIX KGG      (G-SET)  FOLLOW:
+     PRINT RESULTS IN ALL SIX DIRECTIONS AGAINST THE LIMIT OF   1.000000E-02
+           DIRECTION        STRAIN ENERGY        PASS/FAIL
+           ---------        -------------        ---------
+             1               1.859327E-06          PASS
+             2               1.684937E-06          PASS
+             3               2.664863E-06          PASS
+             4               3.661521E-07          PASS
+             5               6.740731E-09          PASS
+             6               2.662635E-07          PASS
+  
+     SOME POSSIBLE REASONS MAY LEAD TO THE FAILURE:
+       1. CELASI ELEMENTS CONNECTING TO ONLY ONE GRID POINT;
+       2. CELASI ELEMENTS CONNECTING TO NON-COINCIDENT POINTS;
+       3. CELASI ELEMENTS CONNECTING TO NON-COLINEAR DOF;
+       4. IMPROPERLY DEFINED DMIG MATRICES;
+       5. CBEAM/CBEAM3 WITH GRID ID FOR WARPING DOF
+ 
+1    STRAIN ENERGY CHECK                                **STUDENT EDITION*     JUNE   3, 2023  MSC Nastran  3/15/22   PAGE     7
+                                                                                                                                    
+0                                                                                                                                   
+ *** USER INFORMATION MESSAGE 7310 (VECPRN)
+     ORIGIN OF SUPERELEMENT OR MODULE BASIC COORDINATE SYSTEM WILL BE USED AS REFERENCE LOCATION.
+     RESULTANTS ABOUT ORIGIN OF SUPERELEMENT OR MODULE BASIC COORDINATE SYSTEM IN SUPERELEMENT OR MODULE
+     BASIC SYSTEM COORDINATES.
+0                                                  OLOAD    RESULTANT       
+  SUBCASE/    LOAD
+  DAREA ID    TYPE       T1            T2            T3            R1            R2            R3
+0        1     FX    0.000000E+00     ----          ----          ----       0.000000E+00  0.000000E+00                             
+               FY       ----       0.000000E+00     ----       0.000000E+00     ----       0.000000E+00                             
+               FZ       ----          ----       0.000000E+00  0.000000E+00  0.000000E+00     ----                                  
+               MX       ----          ----          ----       0.000000E+00     ----          ----                                  
+               MY       ----          ----          ----          ----       0.000000E+00     ----                                  
+               MZ       ----          ----          ----          ----          ----       0.000000E+00                             
+             TOTALS  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+1    STRAIN ENERGY CHECK                                **STUDENT EDITION*     JUNE   3, 2023  MSC Nastran  3/15/22   PAGE     8
+                                                                                                                                    
+0                                                                                                            SUBCASE 1              
+0                                                                                                                                   
+                                                                                                                                    
+                                                                                                                                    
+ *** USER INFORMATION MESSAGE 7570 (GPWG1S)
+     RESULTS OF RIGID BODY CHECKS OF MATRIX KNN      (N-SET)  FOLLOW:
+     PRINT RESULTS IN ALL SIX DIRECTIONS AGAINST THE LIMIT OF   1.000000E-02
+           DIRECTION        STRAIN ENERGY        PASS/FAIL
+           ---------        -------------        ---------
+             1               5.592010E-07          PASS
+             2               1.029286E-06          PASS
+             3               2.781511E-06          PASS
+             4               5.393727E-07          PASS
+             5               4.900046E-08          PASS
+             6               2.581912E-07          PASS
+  
+     SOME POSSIBLE REASONS MAY LEAD TO THE FAILURE:
+       1. MULTIPOINT CONSTRAINT EQUATIONS WHICH DO NOT SATISFY RIGID-BODY MOTION;
+       2. RBE3 ELEMENTS FOR WHICH THE INDEPENDENT DEGREE-OF-FREEDOM CANNOT DESCRIBE
+          ALL POSSIBLE RIGID-BODY MOTIONS.
+ 
+1    STRAIN ENERGY CHECK                                **STUDENT EDITION*     JUNE   3, 2023  MSC Nastran  3/15/22   PAGE     9
+                                                                                                                                    
+0                                                                                                            SUBCASE 1              
+0                                                                                                                                   
+                                                                                                                                    
+                                                                                                                                    
+ *** USER INFORMATION MESSAGE 7570 (GPWG1S)
+     RESULTS OF RIGID BODY CHECKS OF MATRIX KFF      (F-SET)  FOLLOW:
+     PRINT RESULTS IN ALL SIX DIRECTIONS AGAINST THE LIMIT OF   1.000000E-02
+           DIRECTION        STRAIN ENERGY        PASS/FAIL
+           ---------        -------------        ---------
+             1               5.592010E-07          PASS
+             2               1.029286E-06          PASS
+             3               2.781511E-06          PASS
+             4               5.393727E-07          PASS
+             5               4.900046E-08          PASS
+             6               2.581912E-07          PASS
+  
+     SOME POSSIBLE REASONS MAY LEAD TO THE FAILURE:
+       1. CONSTRAINTS WHICH PREVENT RIGID-BODY MOTION.
+ 
+1    STRAIN ENERGY CHECK                                **STUDENT EDITION*     JUNE   3, 2023  MSC Nastran  3/15/22   PAGE    10
+                                                                                                                                    
+0                                                                                                            SUBCASE 1              
+0                                                                                                                                   
+                                                                                                                                    
+                                                                                                                                    
+ *** USER INFORMATION MESSAGE 7570 (GPWG1S)
+     RESULTS OF RIGID BODY CHECKS OF MATRIX KAA1     (A-SET)  FOLLOW:
+     PRINT RESULTS IN ALL SIX DIRECTIONS AGAINST THE LIMIT OF   1.000000E-02
+           DIRECTION        STRAIN ENERGY        PASS/FAIL
+           ---------        -------------        ---------
+             1               5.592010E-07          PASS
+             2               1.029286E-06          PASS
+             3               2.781511E-06          PASS
+             4               5.393727E-07          PASS
+             5               4.900046E-08          PASS
+             6               2.581912E-07          PASS
+  
+     IF THE MODEL HAS PASSED THE PREVIOUS CHECKS FOR THE G-SET AND N-SET,
+     THEN SOME POSSIBLE CAUSES ARE:
+       1. THE MODEL IS NOT INTENDED TO BE FREE-FREE WHICH INDICATES THAT THE MODEL IS
+          PROPERLY CONSTRAINED TO GROUND;
+       2. THE REFERENCE GRID POINT (GRID=GID ON THE GROUNDCHECK COMMAND) IS LOCATED
+          TOO FAR FROM THE MODEL'S CENTER OF GRAVITY. IT IS RECOMMENDED THAT THE
+          REFERENCE GRID POINT BE LOCATED AS CLOSE AS POSSIBLE TO THE MODEL'S CENTER
+          OF GRAVITY OF THE MODEL (SEE THE GRID POINT WEIGHT GENERATOR OUTPUT);
+       3. PARAM,AUTOSPC,YES CONSTRAINS NEAR-SINGULAR DEGREES-OF-FREEDOM. WHEN A
+          FINITE ELEMENT MODEL WITH AUTOSPC FAILS THE A-SET CHECK, IT IS NOT EVIDENT
+          THAT GROUNDING HAS OCCURRED. THE USE OF PARAM,SNORM WILL NOT ELIMINATE THE
+          SPURIOUS FAILURE.
+ 
+  
+ *** SYSTEM INFORMATION MESSAGE 4159 (DFMSA)
+     THE DECOMPOSITION OF KLL      YIELDS A MAXIMUM MATRIX-TO-FACTOR-DIAGONAL RATIO OF    5.177595E+04
+ *** USER INFORMATION MESSAGE 3035 (SOLVER)
+                                  FOR DATA BLOCK   KLR     
+    SUPPORT PT.NO.             EPSILON             STRAIN   ENERGY     EPSILONS LARGER THAN 0.001 ARE FLAGGED WITH ASTERISKS
+                1          6.0195371E-14          2.2053719E-06                 
+                2          6.0195371E-14         -1.9669533E-06                 
+                3          6.0195371E-14         -5.2899122E-07                 
+                4          6.0195371E-14         -4.6546847E-07                 
+                5          6.0195371E-14          5.5484452E-07                 
+                6          6.0195371E-14          2.9463308E-07                 
+ *** USER INFORMATION MESSAGE 5010 (LNCILS)
+     STURM SEQUENCE DATA FOR EIGENVALUE EXTRACTION.
+     TRIAL EIGENVALUE = 7.807881D+03, CYCLES = 1.406328D+01 THE STURM COUNT = 6
+ *** USER INFORMATION MESSAGE 5010 (LNCILS)
+     STURM SEQUENCE DATA FOR EIGENVALUE EXTRACTION.
+     TRIAL EIGENVALUE = 1.552404D+06, CYCLES = 1.982999D+02 THE STURM COUNT = 13
+
+ TABLE OF SHIFTS:  (LNNRIGL)
+ SHIFT #        SHIFT VALUE         FREQUENCY, CYCLES     # EIGENVALUES BELOW    # NEW EIGENVALUES FOUND
+     1.        7.8078812E+03          1.4063283E+01                 6                       10
+     2.        1.5524042E+06          1.9829992E+02                13                        3
+
+1    STRAIN ENERGY CHECK                                **STUDENT EDITION*     JUNE   3, 2023  MSC Nastran  3/15/22   PAGE    11
+                                                                                                                                    
+0                                                                                                            SUBCASE 1              
+0
+
+
+                          E I G E N V A L U E  A N A L Y S I S   S U M M A R Y   (READ MODULE) 
+
+
+
+                                     BLOCK SIZE USED ......................     7
+
+                                     NUMBER OF DECOMPOSITIONS .............     2
+
+                                     NUMBER OF ROOTS FOUND ................    10
+
+                                     NUMBER OF SOLVES REQUIRED ............    23
+
+1    STRAIN ENERGY CHECK                                **STUDENT EDITION*     JUNE   3, 2023  MSC Nastran  3/15/22   PAGE    12
+                                                                                                                                    
+0                                                                                                            SUBCASE 1              
+ 
+                                              R E A L   E I G E N V A L U E S
+   MODE    EXTRACTION      EIGENVALUE            RADIANS             CYCLES            GENERALIZED         GENERALIZED
+    NO.       ORDER                                                                       MASS              STIFFNESS
+        1         1        0.0                 0.0                 0.0                 1.000000E+00        0.0
+        2         2        0.0                 0.0                 0.0                 1.000000E+00        0.0
+        3         3        0.0                 0.0                 0.0                 1.000000E+00        0.0
+        4         4        0.0                 0.0                 0.0                 1.000000E+00        0.0
+        5         5        0.0                 0.0                 0.0                 1.000000E+00        0.0
+        6         6        0.0                 0.0                 0.0                 1.000000E+00        0.0
+        7         7        7.716192E+05        8.784186E+02        1.398047E+02        1.000000E+00        7.716192E+05
+        8         8        9.320263E+05        9.654151E+02        1.536506E+02        1.000000E+00        9.320263E+05
+        9         9        1.138473E+06        1.066993E+03        1.698172E+02        1.000000E+00        1.138473E+06
+       10        10        1.390955E+06        1.179388E+03        1.877054E+02        1.000000E+00        1.390955E+06
+1    STRAIN ENERGY CHECK                                **STUDENT EDITION*     JUNE   3, 2023  MSC Nastran  3/15/22   PAGE    13
+                                                                                                                                    
+0                                                                                                            SUBCASE 1              
+ * * * *  D B D I C T   P R I N T  * * * *      SUBDMAP = PRTSUM  ,  DMAP STATEMENT NO.     74
+
+
+
+0                                   * * * *  A N A L Y S I S  S U M M A R Y  T A B L E  * * * *
+0 SEID  PEID PROJ VERS APRCH      SEMG SEMR SEKR SELG SELR MODES DYNRED SOLLIN SOLNL LOOPID DESIGN CYCLE SENSITIVITY
+ -------------------------------------------------------------------------------------------------------------------
+     0     0    1    1 '        '    T    T    T    T    T     T      F      T     F     -1            0           F
+0SEID = SUPERELEMENT ID.
+ PEID = PRIMARY SUPERELEMENT ID OF IMAGE SUPERELEMENT.
+ PROJ = PROJECT ID NUMBER.
+ VERS = VERSION ID.
+ APRCH = BLANK FOR STRUCTURAL ANALYSIS.  HEAT FOR HEAT TRANSFER ANALYSIS.
+ SEMG = STIFFNESS AND MASS MATRIX GENERATION STEP.
+ SEMR = MASS MATRIX REDUCTION STEP (INCLUDES EIGENVALUE SOLUTION FOR MODES).
+ SEKR = STIFFNESS MATRIX REDUCTION STEP.
+ SELG = LOAD MATRIX GENERATION STEP.
+ SELR = LOAD MATRIX REDUCTION STEP. 
+ MODES = T (TRUE) IF NORMAL MODES OR BUCKLING MODES CALCULATED.
+ DYNRED = T (TRUE) MEANS GENERALIZED DYNAMIC AND/OR COMPONENT MODE REDUCTION PERFORMED.
+ SOLLIN = T (TRUE) IF LINEAR SOLUTION EXISTS IN DATABASE.
+ LOOPID = THE LAST LOOPID VALUE USED IN THE NONLINEAR ANALYSIS.  USEFUL FOR RESTARTS.
+ SOLNL = T (TRUE) IF NONLINEAR SOLUTION EXISTS IN DATABASE.
+ DESIGN CYCLE = THE LAST DESIGN CYCLE (ONLY VALID IN OPTIMIZATION).
+ SENSITIVITY = SENSITIVITY MATRIX GENERATION FLAG.
+ 
+ No PARAM values were set in the Control File.
+ 
+1                                        * * * END OF JOB * * *
+ 
+ 
+ No Symbolic Replacement variables or values were specified.
+

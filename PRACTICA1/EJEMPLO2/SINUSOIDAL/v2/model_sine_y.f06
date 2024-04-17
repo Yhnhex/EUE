@@ -1,0 +1,1418 @@
+1
+ 
+ 
+ 
+ 
+                      Warning: This computer program is protected by copyright law and international treaties.       
+                  Unauthorized use, reproduction or distribution of this computer program, or any portion of it, may 
+                                          result in severe civil and criminal penalties.                             
+                         Copyright (C) 2022 Hexagon AB and/or its subsidiaries. All rights reserved.                 
+ 
+ 
+                                              * * * * * * * * * * * * * * * * * * * *
+                                              * * * * * * * * * * * * * * * * * * * *
+                                              * *                                 * *
+                                              * *           Hexagon AB            * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *      M S C   N a s t r a n      * *
+                                              * *                                 * *
+                                              * *  S T U D E N T   E D I T I O N  * *
+                                              * *                                 * *
+                                              * *     Version 2022.1-CL872368     * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *          MAR 15, 2022           * *
+                                              * *                                 * *
+                                              * *              Intel              * *
+                                              * *MODEL Intel(R) Core(TM) i7-8750H * *
+                                              * *    Windows 10 Home 6.2 9200     * *
+                                              * * Compiled for 8664 (SINGLE Mode) * *
+                                              * *                                 * *
+                                              * * * * * * * * * * * * * * * * * * * *
+                                              * * * * * * * * * * * * * * * * * * * *
+
+ 
+ 
+                                                 This Student Edition version is  
+                                                    valid until MAR 15, 2024.     
+ 
+ 
+                  This program is being distributed as part of the Hexagon AB Student Edition. Use of this program   
+                     or its results at a commercial installation, for commercial purposes, or for production work    
+                                             I S   S T R I C T L Y  P R O H I B I T E D.                             
+                  ==================================== FOR EDUCATIONAL USE ONLY =====================================
+ 
+ 
+1News file - (Feb 15, 2022)
+  
+               Welcome to MSC Nastran 2022.1
+  
+  
+   MSC Nastran brings powerful new features and enhancements for engineering
+   solutions in several releases through the year. The focus in this release
+   is on error fixes to improve the stability and robustness of the program.
+  
+     MSC Nastran 2022.1 Features and Enhancements
+  
+     Nonlinear
+      - Contact enhancements
+        - Smooth surface output control
+        - Node-to-surface penetration control in transient analysis
+      - Support for MSC CoSim 2022
+        - scFlow temperature load input
+        - ITER method support
+        - Local coordinate system at coupling region
+        - Initial displacement specification in scFlow based on Nastran
+          analysis results
+  
+     High Performance Computing
+      - Support running DMP across multiple compute nodes on Windows
+  
+     Documentation
+     - The complete documentation set is provided in a separate installer and
+       when installed is available at: MSC_DOC_DIR/doc/pdf_nastran directory,
+       where MSC_DOC_DIR is the directory where documentation was installed.
+       This help set includes cross references between documents, and links to
+       how-to videos, and example files
+  
+     Individual MSC Nastran documents are available for download from the
+       Simcompanion Website at:
+       http://simcompanion.hexagon.com/
+  
+     These documents were updated for the MSC Nastran 2022.1 Release
+  
+         1.  MSC Nastran 2022.1 Installation and Operations Guide
+         2.  MSC Nastran 2022.1 Quick Reference Guide
+         3.  MSC Nastran 2022.1 Release Guide
+         4.  MSC Nastran 2022.1 Linear Statics Analysis User's Guide
+         5.  MSC Nastran 2022.1 Dynamic Analysis User's Guide
+         6.  MSC Nastran 2022.1 Superelements User's Guide
+         7.  MSC Nastran 2022.1 Rotordynamics User's Guide
+         8.  MSC Nastran 2022.1 Demonstration Problems Manual
+         9.  MSC Nastran 2022.1 Nastran Embedded Fatigue User's Guide
+        10.  MSC Nastran 2022.1 Design Sensitivity and Optimization
+        11.  MSC Nastran 2022.1 Nonlinear User's Guide SOL 400
+        12.  MSC Nastran 2022.1 DMAP Programmer's Guide
+1       13.  MSC Nastran 2022.1 High Performance Computing User's Guide
+        14.  MSC Nastran 2022.1 New Verification Manual
+        15.  MSC Nastran 2022.1 DEMATD Guide
+        16.  MSC Nastran 2022.1 Explicit Nonlinear (SOL 700) User's Guide
+  
+   Please refer to  MSC_DOC_DIR/doc/pdf_nastran/nastran_library.pdf
+   for the complete document set:
+  
+  
+     Feature Deprecation List
+     To streamline the MSC Nastran program and simplify ongoing maintenance
+     activity, some obsolete capabilities have been identified and tagged for
+     removal. This activity started in 2021 and continues through 2022.
+     Please review the list of features marked for deprecation below to
+     ensure that there will be no disruption to your use of MSC Nastran.
+     If you see a feature that you currently use and do not wish to lose,
+     contact MSC Technical Support to report it.
+  
+     Features tagged for removal:
+     - SOL 600 nonlinear solution sequence
+     - TAUCS solver
+     - Obsolete DMAP modules
+     - SSSALTERS
+  
+     Refer to the MSC Nastran Release Guide for more details.
+  
+  
+   Additional information about the release can be found at the MSC Nastran
+   Product Support page: http://simcompanion.hexagon.com
+  
+   The support page provides links to these valuable information:
+      * A searchable Knowledge Base containing examples and answers to thousands
+        of frequently asked questions written by MSC Software subject-matter
+        experts.
+      * Peer-to-peer Discussion Forums enabling you to post questions for your
+        MSC Software products and receive answers from other users worldwide.
+      * A list of known issues with the product and any workarounds.
+      * Instructions on how to contact technical support
+      * A mechanism for sending us product feedback or enhancement requests.
+      * Hardware and software requirements.
+      * Examples and Tutorials
+      * and much more.
+  
+   For information on training, please visit our Training web site
+  
+      https://www.mscsoftware.com/msc-training
+  
+1                                                       **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE     1
+                                                                                                                                    
+0        N A S T R A N    F I L E    A N D    S Y S T E M    P A R A M E T E R    E C H O                                           
+0                                                                                                                                   
+                                                                                                                                    
+                                                                                                                                    
+     NASTRAN BUFFSIZE=8193 $(C:/PROGRAM FILES/MSC.SOFTWARE/NAPA_SE/20221/NASTRAN/CONF
+     NASTRAN DBCFACT=4                                                               
+     ASSIGN DBC='ejemplo1_sine_y.xdb',RECL=32768,UNIT=40,DELETE                      
+1                                                       **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE     2
+                                                                                                                                    
+0        N A S T R A N    E X E C U T I V E    C O N T R O L    E C H O                                                             
+0                                                                                                                                   
+                                                                                                                                    
+                                                                                                                                    
+     ID SINE,TEST                                                                            
+     SOL 111                                                                                 
+     TIME 1000                                                                               
+     CEND                                                                                    
+1    SINE VIBRATION Y                                   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE     3
+      MODEL SINE VIBRATION Y                                                                                                        
+0     Y-DIRECTION SINE INPUT                                                                                                        
+0                                        C A S E    C O N T R O L    E C H O                                                        
+                 COMMAND                                                                                                            
+                 COUNT                                                                                                              
+                  1      AUTOSPC(NOPRINT)=YES                                                                    
+                  2      LINES=50000                                                                             
+                  3           TITLE = SINE VIBRATION Y                                                           
+                  4           SUBTITLE = MODEL SINE VIBRATION Y                                                  
+                  5           LABEL = Y-DIRECTION SINE INPUT                                                     
+                  6           ECHO = NONE                                                                        
+                  7           SPC      = 1                                                                       
+                  8           METHOD   = 1                                                                       
+                  9           DLOAD    = 10                                                                      
+                 10           SDAMPING = 20                                                                      
+                 11           FREQ     = 40                                                                      
+                 12           SET 99 = 859999, 1, 30, 31                                                         
+                 13           SET 102 = 859999, 1, 31                                                            
+                 14           ACCELERATION(SORT2,PRINT,PHASE) = 99                                               
+                 15           FORCES(SORT2,PRINT,PHASE)=102                                                      
+                 16           STRESS(PLOT,VONMISES)=ALL                                                          
+                 17      BEGIN BULK                                                                              
+1    SINE VIBRATION Y                                   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE     4
+      MODEL SINE VIBRATION Y                                                                                                        
+0     Y-DIRECTION SINE INPUT                                                                                                        
+                                              I N P U T   B U L K   D A T A   E C H O                                               
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                              $INCLUDE "d:\Universidad\Apuntes\MUSE1\2_Cuatrimestre\Estructuras_de_uso_espacial\PRACTICA1\EJEMPLO2\SINUSOIDAL\v2\EEJEMPLO2_V2.bdf"
+1    SINE VIBRATION Y                                   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE     5
+      MODEL SINE VIBRATION Y                                                                                                        
+0     Y-DIRECTION SINE INPUT                                                                                                        
+                                        M O D E L   S U M M A R Y          BULK = 0
+                                   ENTRY NAME        NUMBER OF ENTRIES
+                                   ----------        -----------------
+                                         CBAR                       30
+                                        CONM2                        1
+                                        EIGRL                        1
+                                        FREQ1                        1
+                                        FREQ4                        1
+                                         GRID                       32
+                                         MAT1                        1
+                                        PARAM                        3
+                                        PBARL                        1
+                                         RBE2                        1
+                                       RLOAD2                        1
+                                         SPC1                        1
+                                         SPCD                        1
+                                      TABDMP1                        1
+                                      TABLED1                        1
+
+ ^^^     
+ ^^^ >>> IFP OPERATIONS COMPLETE <<< 
+ ^^^     
+1    SINE VIBRATION Y                                   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE     6
+      MODEL SINE VIBRATION Y                                                                                                        
+0                                                                                                                                   
+ *** USER INFORMATION MESSAGE 7310 (VECPRN)
+     ORIGIN OF SUPERELEMENT OR MODULE BASIC COORDINATE SYSTEM WILL BE USED AS REFERENCE LOCATION.
+     RESULTANTS ABOUT ORIGIN OF SUPERELEMENT OR MODULE BASIC COORDINATE SYSTEM IN SUPERELEMENT OR MODULE
+     BASIC SYSTEM COORDINATES.
+0                                                  OLOAD    RESULTANT       
+  SUBCASE/    LOAD
+  DAREA ID    TYPE       T1            T2            T3            R1            R2            R3
+0       11     FX    0.000000E+00     ----          ----          ----       0.000000E+00  0.000000E+00                             
+               FY       ----       0.000000E+00     ----       0.000000E+00     ----       0.000000E+00                             
+               FZ       ----          ----       0.000000E+00  0.000000E+00  0.000000E+00     ----                                  
+               MX       ----          ----          ----       0.000000E+00     ----          ----                                  
+               MY       ----          ----          ----          ----       0.000000E+00     ----                                  
+               MZ       ----          ----          ----          ----          ----       0.000000E+00                             
+             TOTALS  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+1    SINE VIBRATION Y                                   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE     7
+      MODEL SINE VIBRATION Y                                                                                                        
+0     Y-DIRECTION SINE INPUT                                                                                                        
+ *** USER INFORMATION MESSAGE 5010 (LNCILS)
+     STURM SEQUENCE DATA FOR EIGENVALUE EXTRACTION.
+     TRIAL EIGENVALUE = 8.882644D+05, CYCLES = 1.500000D+02 THE STURM COUNT = 1
+ *** USER INFORMATION MESSAGE 5010 (LNCILS)
+     STURM SEQUENCE DATA FOR EIGENVALUE EXTRACTION.
+     TRIAL EIGENVALUE = -7.320457D+06, CYCLES = 4.306151D+02 THE STURM COUNT = 0
+
+ TABLE OF SHIFTS:  (LNNRIGL)
+ SHIFT #        SHIFT VALUE         FREQUENCY, CYCLES     # EIGENVALUES BELOW    # NEW EIGENVALUES FOUND
+     1.        8.8826440E+05          1.5000000E+02                 1                        0
+     2.       -7.3204569E+06         -4.3061507E+02                 0                        1
+
+1    SINE VIBRATION Y                                   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE     8
+      MODEL SINE VIBRATION Y                                                                                                        
+0     Y-DIRECTION SINE INPUT                                                                                                        
+0
+
+
+                          E I G E N V A L U E  A N A L Y S I S   S U M M A R Y   (READ MODULE) 
+
+
+
+                                     BLOCK SIZE USED ......................     2
+
+                                     NUMBER OF DECOMPOSITIONS .............     2
+
+                                     NUMBER OF ROOTS FOUND ................     1
+
+                                     NUMBER OF SOLVES REQUIRED ............     4
+
+1    SINE VIBRATION Y                                   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE     9
+      MODEL SINE VIBRATION Y                                                                                                        
+0     Y-DIRECTION SINE INPUT                                                                                                        
+ 
+                                              R E A L   E I G E N V A L U E S
+                                         (BEFORE AUGMENTATION OF RESIDUAL VECTORS)
+   MODE    EXTRACTION      EIGENVALUE            RADIANS             CYCLES            GENERALIZED         GENERALIZED
+    NO.       ORDER                                                                       MASS              STIFFNESS
+        1         1        1.110173E+05        3.331926E+02        5.302925E+01        1.000000E+00        1.110173E+05
+  
+ *** SYSTEM INFORMATION MESSAGE 4159 (DFMSA)
+     THE DECOMPOSITION OF KYY      YIELDS A MAXIMUM MATRIX-TO-FACTOR-DIAGONAL RATIO OF    9.593831E+00
+ *** USER INFORMATION MESSAGE 5458 (REIG)
+     QL HOUSEHOLDER METHOD IS AUTOMATICALLY SELECTED .
+ *** USER INFORMATION MESSAGE 5458 (REIG)
+     QL HOUSEHOLDER METHOD IS AUTOMATICALLY SELECTED .
+ *** USER INFORMATION MESSAGE 5458 (REIG)
+     QL HOUSEHOLDER METHOD IS AUTOMATICALLY SELECTED .
+1    SINE VIBRATION Y                                   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    10
+      MODEL SINE VIBRATION Y                                                                                                        
+0     Y-DIRECTION SINE INPUT                                                                                                        
+ 
+                                              R E A L   E I G E N V A L U E S
+                                         (AFTER AUGMENTATION OF RESIDUAL VECTORS)
+   MODE    EXTRACTION      EIGENVALUE            RADIANS             CYCLES            GENERALIZED         GENERALIZED
+    NO.       ORDER                                                                       MASS              STIFFNESS
+        1         1        1.110173E+05        3.331926E+02        5.302925E+01        1.000000E+00        1.110173E+05
+        2         2        4.741057E+06        2.177397E+03        3.465435E+02        1.000000E+00        4.741057E+06
+        3         3        4.570951E+07        6.760881E+03        1.076028E+03        1.000000E+00        4.570951E+07
+        4         4        4.675260E+07        6.837587E+03        1.088236E+03        1.000000E+00        4.675260E+07
+        5         5        4.758324E+08        2.181358E+04        3.471739E+03        1.000000E+00        4.758324E+08
+        6         6        5.861988E+08        2.421154E+04        3.853387E+03        1.000000E+00        5.861988E+08
+        7         7        1.264186E+10        1.124360E+05        1.789475E+04        1.000000E+00        1.264186E+10
+ *** USER WARNING MESSAGE 6644 (FRPROS)
+    SOME OR ALL COMPUTED EXCITATION FREQUENCIES ARE OUTSIDE THE RANGE F1 AND F2 FOR FREQ4 BULK DATA ENTRY WITH ID =40
+     THESE COMPUTED EXCITATION FREQUENCIES ARE IGNORED.
+1    SINE VIBRATION Y                                   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    11
+      MODEL SINE VIBRATION Y                                                                                                        
+0     Y-DIRECTION SINE INPUT                                                                                                        
+
+ *** USER WARNING MESSAGE 7697 (GKAM1A)
+     ONE OR MORE MODAL DAMPING VALUES FOR STRUCTURE MODES ARE EITHER NEGATIVE OR HAVE RESULTED FROM EXTRAPOLATION OF THE
+     TABDMP1 20 TABLE DATA AS SHOWN BELOW:
+
+     CYCLIC FREQUENCY =  3.471739E+03  MODAL DAMPING VALUE =  3.000000E-02  (BY EXTRAPOLATION BEYOND THE RIGHT END OF THE TABLE)
+     CYCLIC FREQUENCY =  3.853387E+03  MODAL DAMPING VALUE =  3.000000E-02  (BY EXTRAPOLATION BEYOND THE RIGHT END OF THE TABLE)
+     CYCLIC FREQUENCY =  1.789475E+04  MODAL DAMPING VALUE =  3.000000E-02  (BY EXTRAPOLATION BEYOND THE RIGHT END OF THE TABLE)
+
+ ^^^     
+ *** SYSTEM INFORMATION MESSAGE 9157 (SUBDMAP GAMMX)
+     FASTFR OPTION REQUESTED, BUT THE MODEL DID NOT MEET THE FOLLOWING CRITERIA:
+     THE H-SIZE OF THE PROBLEM IS SMALL. H-SIZE = 8
+     USER INFORMATION: STANDARD FREQUENCY RESPONSE METHOD WILL BE USED
+ ^^^     
+1    SINE VIBRATION Y                                   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    12
+      MODEL SINE VIBRATION Y                                                                                                        
+0     Y-DIRECTION SINE INPUT                                                                                                        
+ *** USER INFORMATION MESSAGE 7559 (FRLGA)
+     THIS FREQUENCY RESPONSE ANALYSIS INVOLVES THE FOLLOWING TYPES OF EXCITATION --
+
+     * ENFORCED ACCELERATION USING SPC / SPCD DATA
+ *** USER INFORMATION MESSAGE 5222 (SQFREQ)
+     UN COUPLED SOLUTION ALGORITHM USED.
+1    SINE VIBRATION Y                                   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    13
+      MODEL SINE VIBRATION Y                                                                                                        
+0     Y-DIRECTION SINE INPUT                                                                                                        
+      POINT-ID =         1
+                                       C O M P L E X   A C C E L E R A T I O N   V E C T O R
+                                                         (MAGNITUDE/PHASE)
+ 
+      FREQUENCY   TYPE          T1             T2             T3             R1             R2             R3
+0  5.000000E+00     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  6.000000E+00     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  7.000000E+00     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  8.000000E+00     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  9.000000E+00     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  1.000000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  1.100000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  1.200000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  1.300000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  1.400000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  1.500000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  1.600000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  1.700000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  1.800000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  1.900000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  2.000000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  2.100000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  2.200000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  2.300000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  2.400000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  2.500000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  2.600000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  2.700000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  2.800000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  2.900000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  3.000000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  3.100000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  3.200000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  3.300000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  3.400000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  3.500000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  3.600000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  3.700000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  3.712048E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  3.800000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  3.900000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  4.000000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  4.100000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  4.200000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  4.300000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  4.400000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  4.500000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  4.507486E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  4.600000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  4.700000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  4.800000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  4.900000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  5.000000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  5.100000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  5.200000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  5.300000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  5.302925E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  5.400000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  5.500000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  5.600000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  5.700000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  5.800000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  5.900000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  6.000000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  6.098364E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  6.100000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  6.200000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  6.300000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  6.400000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  6.500000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  6.600000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  6.700000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  6.800000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  6.893803E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  6.900000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  7.000000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  7.100000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  7.200000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  7.300000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  7.400000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  7.500000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  7.600000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  7.700000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  7.800000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  7.900000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  8.000000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  8.100000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  8.200000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  8.300000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  8.400000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  8.500000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  8.600000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  8.700000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  8.800000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  8.900000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  9.000000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  9.100000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  9.200000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  9.300000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  9.400000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  9.500000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  9.600000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  9.700000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  9.800000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  9.900000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  1.000000E+02     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+1    SINE VIBRATION Y                                   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    14
+      MODEL SINE VIBRATION Y                                                                                                        
+0     Y-DIRECTION SINE INPUT                                                                                                        
+      POINT-ID =        30
+                                       C O M P L E X   A C C E L E R A T I O N   V E C T O R
+                                                         (MAGNITUDE/PHASE)
+ 
+      FREQUENCY   TYPE          T1             T2             T3             R1             R2             R3
+0  5.000000E+00     G      1.061932E-08   4.452982E+01   2.793075E-08   0.0            2.905517E-06   1.966719E+00
+                           179.9985       359.9986       359.9985         0.0          359.9985       359.8357
+0  6.000000E+00     G      1.066134E-08   4.470148E+01   2.804142E-08   0.0            2.917032E-06   2.844101E+00
+                           179.9975       359.9975       359.9975         0.0          359.9975       359.8022
+0  7.000000E+00     G      1.071144E-08   4.490611E+01   2.817335E-08   0.0            2.930758E-06   3.890044E+00
+                           179.9960       359.9961       359.9960         0.0          359.9960       359.7681
+0  8.000000E+00     G      1.076983E-08   4.514463E+01   2.832713E-08   0.0            2.946758E-06   5.109238E+00
+                           179.9940       359.9941       359.9940         0.0          359.9940       359.7336
+0  9.000000E+00     G      1.083679E-08   4.541812E+01   2.850344E-08   0.0            2.965103E-06   6.507233E+00
+                           179.9914       359.9916       359.9913         0.0          359.9913       359.6985
+0  1.000000E+01     G      1.091261E-08   4.572783E+01   2.870312E-08   0.0            2.985878E-06   8.090504E+00
+                           179.9881       359.9884       359.9880         0.0          359.9880       359.6626
+0  1.100000E+01     G      1.099766E-08   4.607522E+01   2.892709E-08   0.0            3.009181E-06   9.866527E+00
+                           179.9840       359.9844       359.9840         0.0          359.9840       359.6260
+0  1.200000E+01     G      1.109234E-08   4.646197E+01   2.917643E-08   0.0            3.035124E-06   1.184387E+01
+                           179.9790       359.9796       359.9790         0.0          359.9790       359.5885
+0  1.300000E+01     G      1.119713E-08   4.688997E+01   2.945237E-08   0.0            3.063835E-06   1.403231E+01
+                           179.9731       359.9738       359.9731         0.0          359.9731       359.5501
+0  1.400000E+01     G      1.131254E-08   4.736140E+01   2.975631E-08   0.0            3.095457E-06   1.644293E+01
+                           179.9660       359.9669       359.9660         0.0          359.9660       359.5105
+0  1.500000E+01     G      1.143919E-08   4.787868E+01   3.008982E-08   0.0            3.130157E-06   1.908833E+01
+                           179.9578       359.9588       359.9577         0.0          359.9577       359.4697
+0  1.600000E+01     G      1.157774E-08   4.844461E+01   3.045468E-08   0.0            3.168120E-06   2.198272E+01
+                           179.9481       359.9494       359.9481         0.0          359.9481       359.4275
+0  1.700000E+01     G      1.172896E-08   4.906231E+01   3.085293E-08   0.0            3.209556E-06   2.514220E+01
+                           179.9370       359.9385       359.9369         0.0          359.9369       359.3838
+0  1.800000E+01     G      1.189373E-08   4.973533E+01   3.128685E-08   0.0            3.254702E-06   2.858498E+01
+                           179.9241       359.9259       359.9240         0.0          359.9240       359.3384
+0  1.900000E+01     G      1.207303E-08   5.046767E+01   3.175902E-08   0.0            3.303829E-06   3.233165E+01
+                           179.9094       359.9115       359.9093         0.0          359.9093       359.2911
+0  2.000000E+01     G      1.226797E-08   5.126389E+01   3.227237E-08   0.0            3.357240E-06   3.640556E+01
+                           179.8926       359.8951       359.8925         0.0          359.8925       359.2418
+0  2.100000E+01     G      1.247980E-08   5.212915E+01   3.283023E-08   0.0            3.415283E-06   4.083319E+01
+                           179.8736       359.8764       359.8734         0.0          359.8734       359.1902
+0  2.200000E+01     G      1.270998E-08   5.306930E+01   3.343639E-08   0.0            3.478350E-06   4.564467E+01
+                           179.8519       359.8552       359.8518         0.0          359.8518       359.1360
+0  2.300000E+01     G      1.296013E-08   5.409105E+01   3.409516E-08   0.0            3.546891E-06   5.087438E+01
+                           179.8275       359.8312       359.8273         0.0          359.8273       359.0790
+0  2.400000E+01     G      1.323214E-08   5.520204E+01   3.481147E-08   0.0            3.621420E-06   5.656162E+01
+                           179.7999       359.8041       359.7996         0.0          359.7996       359.0188
+0  2.500000E+01     G      1.352814E-08   5.641106E+01   3.559100E-08   0.0            3.702524E-06   6.275151E+01
+                           179.7687       359.7735       359.7685         0.0          359.7685       358.9551
+0  2.600000E+01     G      1.385063E-08   5.772823E+01   3.644025E-08   0.0            3.790884E-06   6.949605E+01
+                           179.7336       359.7390       359.7334         0.0          359.7333       358.8875
+0  2.700000E+01     G      1.420246E-08   5.916527E+01   3.736680E-08   0.0            3.887286E-06   7.685540E+01
+                           179.6941       359.7001       359.6938         0.0          359.6938       358.8154
+0  2.800000E+01     G      1.458698E-08   6.073578E+01   3.837942E-08   0.0            3.992643E-06   8.489953E+01
+                           179.6496       359.6563       359.6493         0.0          359.6492       358.7383
+0  2.900000E+01     G      1.500808E-08   6.245570E+01   3.948838E-08   0.0            4.108022E-06   9.371018E+01
+                           179.5994       359.6069       359.5991         0.0          359.5990       358.6556
+0  3.000000E+01     G      1.547033E-08   6.434372E+01   4.070573E-08   0.0            4.234679E-06   1.033835E+02
+                           179.5429       359.5511       359.5425         0.0          359.5424       358.5665
+0  3.100000E+01     G      1.597917E-08   6.642198E+01   4.204575E-08   0.0            4.374099E-06   1.140332E+02
+                           179.4790       359.4881       359.4786         0.0          359.4785       358.4701
+0  3.200000E+01     G      1.654104E-08   6.871684E+01   4.352544E-08   0.0            4.528051E-06   1.257948E+02
+                           179.4068       359.4168       359.4063         0.0          359.4062       358.3653
+0  3.300000E+01     G      1.716369E-08   7.125994E+01   4.516520E-08   0.0            4.698657E-06   1.388308E+02
+                           179.3249       359.3359       359.3244         0.0          359.3243       358.2508
+0  3.400000E+01     G      1.785651E-08   7.408959E+01   4.698974E-08   0.0            4.888487E-06   1.533383E+02
+                           179.2318       359.2439       359.2312         0.0          359.2312       358.1251
+0  3.500000E+01     G      1.863095E-08   7.725259E+01   4.902924E-08   0.0            5.100682E-06   1.695577E+02
+                           179.1256       359.1388       359.1250         0.0          359.1249       357.9864
+0  3.600000E+01     G      1.950115E-08   8.080671E+01   5.132095E-08   0.0            5.339117E-06   1.877861E+02
+                           179.0040       359.0184       359.0033         0.0          359.0033       357.8322
+0  3.700000E+01     G      2.048480E-08   8.482409E+01   5.391139E-08   0.0            5.608633E-06   2.083945E+02
+                           178.8641       358.8797       358.8633         0.0          358.8633       357.6597
+0  3.712048E+01     G      2.061196E-08   8.534347E+01   5.424630E-08   0.0            5.643477E-06   2.110591E+02
+                           178.8459       358.8616       358.8451         0.0          358.8450       357.6375
+0  3.800000E+01     G      2.160422E-08   8.939602E+01   5.685943E-08   0.0            5.915354E-06   2.318523E+02
+                           178.7022       358.7191       358.7013         0.0          358.7013       357.4652
+0  3.900000E+01     G      2.288811E-08   9.463963E+01   6.024061E-08   0.0            6.267139E-06   2.587621E+02
+                           178.5135       358.5318       358.5126         0.0          358.5125       357.2439
+0  4.000000E+01     G      2.437390E-08   1.007078E+02   6.415350E-08   0.0            6.674245E-06   2.899104E+02
+                           178.2920       358.3117       358.2910         0.0          358.2909       356.9898
+0  4.100000E+01     G      2.611137E-08   1.078037E+02   6.872918E-08   0.0            7.150307E-06   3.263434E+02
+                           178.0293       358.0506       358.0283         0.0          358.0282       356.6946
+0  4.200000E+01     G      2.816813E-08   1.162037E+02   7.414578E-08   0.0            7.713860E-06   3.694828E+02
+                           177.7145       357.7374       357.7133         0.0          357.7132       356.3471
+0  4.300000E+01     G      3.063847E-08   1.262926E+02   8.065154E-08   0.0            8.390732E-06   4.213114E+02
+                           177.3318       357.3564       357.3306         0.0          357.3305       355.9318
+0  4.400000E+01     G      3.365776E-08   1.386234E+02   8.860303E-08   0.0            9.218017E-06   4.846774E+02
+                           176.8590       356.8854       356.8577         0.0          356.8576       355.4264
+0  4.500000E+01     G      3.742753E-08   1.540189E+02   9.853092E-08   0.0            1.025093E-05   5.638229E+02
+                           176.2626       356.2909       356.2612         0.0          356.2611       354.7974
+0  4.507486E+01     G      3.774766E-08   1.553263E+02   9.937403E-08   0.0            1.033865E-05   5.705457E+02
+                           176.2117       356.2401       356.2103         0.0          356.2102       354.7441
+0  4.600000E+01     G      4.226108E-08   1.737586E+02   1.112604E-07   0.0            1.157533E-05   6.653478E+02
+                           175.4907       355.5209       355.4892         0.0          355.4890       353.9928
+0  4.700000E+01     G      4.867277E-08   1.999429E+02   1.281460E-07   0.0            1.333213E-05   8.000950E+02
+                           174.4572       354.4894       354.4556         0.0          354.4555       352.9268
+0  4.800000E+01     G      5.756743E-08   2.362665E+02   1.515708E-07   0.0            1.576927E-05   9.871605E+02
+                           173.0101       353.0444       353.0084         0.0          353.0082       351.4470
+0  4.900000E+01     G      7.068808E-08   2.898464E+02   1.861250E-07   0.0            1.936435E-05   1.263388E+03
+                           170.8526       350.8892       350.8508         0.0          350.8506       349.2569
+0  5.000000E+01     G      9.183161E-08   3.761851E+02   2.418084E-07   0.0            2.515771E-05   1.709237E+03
+                           167.3237       347.3626       347.3218         0.0          347.3216       345.6954
+0  5.100000E+01     G      1.307775E-07   5.352063E+02   3.443763E-07   0.0            3.582901E-05   2.532892E+03
+                           160.6307       340.6721       340.6287         0.0          340.6285       338.9698
+0  5.200000E+01     G      2.172692E-07   8.882926E+02   5.721630E-07   0.0            5.952825E-05   4.375447E+03
+                           144.2617       324.3056       324.2595         0.0          324.2593       322.5681
+0  5.300000E+01     G      3.505183E-07   1.431625E+03   9.231116E-07   0.0            9.604158E-05   7.334253E+03
+                            93.8261       273.8727       273.8238         0.0          273.8236       272.0999
+0  5.302925E+01     G      3.505616E-07   1.431759E+03   9.232269E-07   0.0            9.605359E-05   7.343296E+03
+                            91.7205       271.7671       271.7181         0.0          271.7180       269.9933
+0  5.400000E+01     G      2.193649E-07   8.950297E+02   5.777407E-07   0.0            6.010904E-05   4.765685E+03
+                            41.3373       221.3866       221.3348         0.0          221.3346       219.5784
+0  5.500000E+01     G      1.284778E-07   5.236500E+02   3.383895E-07   0.0            3.520670E-05   2.896029E+03
+                            24.1265       204.1787       204.1239         0.0          204.1237       202.3350
+0  5.600000E+01     G      8.803037E-08   3.584093E+02   2.318701E-07   0.0            2.412432E-05   2.057493E+03
+                            17.1961       197.2512       197.1933         0.0          197.1931       195.3719
+0  5.700000E+01     G      6.627126E-08   2.695233E+02   1.745667E-07   0.0            1.816240E-05   1.605041E+03
+                            13.5750       193.6333       193.5721         0.0          193.5719       191.7182
+0  5.800000E+01     G      5.284513E-08   2.146799E+02   1.392084E-07   0.0            1.448368E-05   1.325425E+03
+                            11.3735       191.4349       191.3704         0.0          191.3702       189.4840
+0  5.900000E+01     G      4.377662E-08   1.776375E+02   1.153261E-07   0.0            1.199894E-05   1.136384E+03
+                             9.9023       189.9671       189.8991         0.0          189.8989       187.9802
+0  6.000000E+01     G      3.725531E-08   1.510002E+02   9.815203E-08   0.0            1.021212E-05   1.000358E+03
+                             8.8547       188.9230       188.8513         0.0          188.8511       186.8999
+0  6.098364E+01     G      3.241728E-08   1.312387E+02   8.541089E-08   0.0            8.886510E-06   8.994022E+02
+                             8.0852       188.1569       188.0816         0.0          188.0814       186.0983
+0  6.100000E+01     G      3.234679E-08   1.309508E+02   8.522523E-08   0.0            8.867193E-06   8.979309E+02
+                             8.0741       188.1458       188.0704         0.0          188.0702       186.0866
+0  6.200000E+01     G      2.852209E-08   1.153284E+02   7.515276E-08   0.0            7.819237E-06   8.180986E+02
+                             7.4722       187.5477       187.4684         0.0          187.4682       185.4521
+0  6.300000E+01     G      2.546006E-08   1.028213E+02   6.708882E-08   0.0            6.980249E-06   7.541743E+02
+                             6.9960       187.0754       186.9921         0.0          186.9918       184.9432
+0  6.400000E+01     G      2.295468E-08   9.258792E+01   6.049082E-08   0.0            6.293781E-06   7.018657E+02
+                             6.6115       186.6948       186.6073         0.0          186.6070       184.5259
+0  6.500000E+01     G      2.086781E-08   8.406396E+01   5.499501E-08   0.0            5.721984E-06   6.582935E+02
+                             6.2957       186.3831       186.2913         0.0          186.2910       184.1775
+0  6.600000E+01     G      1.910344E-08   7.685723E+01   5.034851E-08   0.0            5.238551E-06   6.214553E+02
+                             6.0330       186.1246       186.0283         0.0          186.0281       183.8820
+0  6.700000E+01     G      1.759277E-08   7.068675E+01   4.637015E-08   0.0            4.824631E-06   5.899160E+02
+                             5.8119       185.9079       185.8071         0.0          185.8068       183.6283
+0  6.800000E+01     G      1.628523E-08   6.534597E+01   4.292675E-08   0.0            4.466370E-06   5.626205E+02
+                             5.6243       185.7248       185.6192         0.0          185.6189       183.4079
+0  6.893803E+01     G      1.520941E-08   6.095166E+01   4.009360E-08   0.0            4.171601E-06   5.401653E+02
+                             5.4730       185.5780       185.4677         0.0          185.4675       183.2260
+0  6.900000E+01     G      1.514283E-08   6.067970E+01   3.991826E-08   0.0            4.153357E-06   5.387757E+02
+                             5.4638       185.5690       185.4585         0.0          185.4582       183.2147
+0  7.000000E+01     G      1.413648E-08   5.656910E+01   3.726806E-08   0.0            3.877621E-06   5.177742E+02
+                             5.3257       185.4358       185.3201         0.0          185.3198       183.0439
+0  7.100000E+01     G      1.324352E-08   5.292165E+01   3.491649E-08   0.0            3.632955E-06   4.991431E+02
+                             5.2062       185.3213       185.2004         0.0          185.2001       182.8917
+0  7.200000E+01     G      1.244606E-08   4.966422E+01   3.281641E-08   0.0            3.414453E-06   4.825084E+02
+                             5.1025       185.2227       185.0964         0.0          185.0962       182.7553
+0  7.300000E+01     G      1.172976E-08   4.673830E+01   3.093007E-08   0.0            3.218189E-06   4.675708E+02
+                             5.0122       185.1377       185.0058         0.0          185.0056       182.6322
+0  7.400000E+01     G      1.108301E-08   4.409646E+01   2.922691E-08   0.0            3.040984E-06   4.540878E+02
+                             4.9333       185.0643       184.9267         0.0          184.9264       182.5206
+0  7.500000E+01     G      1.049632E-08   4.169990E+01   2.768191E-08   0.0            2.880234E-06   4.418610E+02
+                             4.8644       185.0010       184.8574         0.0          184.8572       182.4189
+0  7.600000E+01     G      9.961829E-09   3.951656E+01   2.627439E-08   0.0            2.733787E-06   4.307263E+02
+                             4.8041       184.9465       184.7968         0.0          184.7966       182.3259
+0  7.700000E+01     G      9.473000E-09   3.751970E+01   2.498712E-08   0.0            2.599851E-06   4.205469E+02
+                             4.7513       184.8998       184.7438         0.0          184.7435       182.2404
+0  7.800000E+01     G      9.024331E-09   3.568688E+01   2.380562E-08   0.0            2.476919E-06   4.112080E+02
+                             4.7052       184.8598       184.6973         0.0          184.6971       182.1615
+0  7.900000E+01     G      8.611170E-09   3.399907E+01   2.271763E-08   0.0            2.363716E-06   4.026122E+02
+                             4.6650       184.8260       184.6568         0.0          184.6566       182.0885
+0  8.000000E+01     G      8.229554E-09   3.244010E+01   2.171272E-08   0.0            2.259156E-06   3.946767E+02
+                             4.6301       184.7975       184.6215         0.0          184.6213       182.0208
+0  8.100000E+01     G      7.876084E-09   3.099609E+01   2.078193E-08   0.0            2.162308E-06   3.873306E+02
+                             4.5998       184.7740       184.5909         0.0          184.5907       181.9577
+0  8.200000E+01     G      7.547831E-09   2.965507E+01   1.991756E-08   0.0            2.072370E-06   3.805124E+02
+                             4.5737       184.7548       184.5644         0.0          184.5643       181.8989
+0  8.300000E+01     G      7.242258E-09   2.840668E+01   1.911291E-08   0.0            1.988646E-06   3.741693E+02
+                             4.5514       184.7396       184.5418         0.0          184.5416       181.8438
+0  8.400000E+01     G      6.957154E-09   2.724189E+01   1.836218E-08   0.0            1.910531E-06   3.682550E+02
+                             4.5326       184.7281       184.5225         0.0          184.5224       181.7921
+0  8.500000E+01     G      6.690585E-09   2.615279E+01   1.766025E-08   0.0            1.837494E-06   3.627290E+02
+                             4.5168       184.7198       184.5064         0.0          184.5063       181.7436
+0  8.600000E+01     G      6.440851E-09   2.513245E+01   1.700267E-08   0.0            1.769070E-06   3.575558E+02
+                             4.5039       184.7146       184.4931         0.0          184.4930       181.6978
+0  8.700000E+01     G      6.206454E-09   2.417475E+01   1.638547E-08   0.0            1.704848E-06   3.527041E+02
+                             4.4935       184.7122       184.4823         0.0          184.4822       181.6547
+0  8.800000E+01     G      5.986066E-09   2.327426E+01   1.580518E-08   0.0            1.644465E-06   3.481461E+02
+                             4.4856       184.7124       184.4739         0.0          184.4738       181.6139
+0  8.900000E+01     G      5.778507E-09   2.242617E+01   1.525866E-08   0.0            1.587597E-06   3.438571E+02
+                             4.4797       184.7149       184.4676         0.0          184.4676       181.5752
+0  9.000000E+01     G      5.582725E-09   2.162617E+01   1.474317E-08   0.0            1.533956E-06   3.398151E+02
+                             4.4759       184.7197       184.4634         0.0          184.4634       181.5386
+0  9.100000E+01     G      5.397780E-09   2.087043E+01   1.425622E-08   0.0            1.483284E-06   3.360005E+02
+                             4.4739       184.7265       184.4609         0.0          184.4609       181.5037
+0  9.200000E+01     G      5.222827E-09   2.015550E+01   1.379558E-08   0.0            1.435351E-06   3.323956E+02
+                             4.4737       184.7352       184.4601         0.0          184.4602       181.4706
+0  9.300000E+01     G      5.057107E-09   1.947827E+01   1.335926E-08   0.0            1.389947E-06   3.289845E+02
+                             4.4749       184.7458       184.4609         0.0          184.4611       181.4390
+0  9.400000E+01     G      4.899935E-09   1.883595E+01   1.294546E-08   0.0            1.346885E-06   3.257528E+02
+                             4.4777       184.7581       184.4632         0.0          184.4633       181.4089
+0  9.500000E+01     G      4.750690E-09   1.822601E+01   1.255253E-08   0.0            1.305995E-06   3.226877E+02
+                             4.4818       184.7720       184.4668         0.0          184.4670       181.3802
+0  9.600000E+01     G      4.608813E-09   1.764615E+01   1.217901E-08   0.0            1.267124E-06   3.197774E+02
+                             4.4872       184.7873       184.4716         0.0          184.4719       181.3527
+0  9.700000E+01     G      4.473791E-09   1.709429E+01   1.182354E-08   0.0            1.230132E-06   3.170112E+02
+                             4.4937       184.8042       184.4776         0.0          184.4779       181.3263
+0  9.800000E+01     G      4.345160E-09   1.656852E+01   1.148490E-08   0.0            1.194890E-06   3.143793E+02
+                             4.5014       184.8224       184.4848         0.0          184.4851       181.3011
+0  9.900000E+01     G      4.222495E-09   1.606713E+01   1.116198E-08   0.0            1.161284E-06   3.118730E+02
+                             4.5101       184.8418       184.4929         0.0          184.4933       181.2769
+0  1.000000E+02     G      4.105410E-09   1.558851E+01   1.085375E-08   0.0            1.129206E-06   3.094840E+02
+                             4.5198       184.8626       184.5020         0.0          184.5024       181.2537
+1    SINE VIBRATION Y                                   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    15
+      MODEL SINE VIBRATION Y                                                                                                        
+0     Y-DIRECTION SINE INPUT                                                                                                        
+      POINT-ID =        31
+                                       C O M P L E X   A C C E L E R A T I O N   V E C T O R
+                                                         (MAGNITUDE/PHASE)
+ 
+      FREQUENCY   TYPE          T1             T2             T3             R1             R2             R3
+0  5.000000E+00     G      2.098070E-08   4.454976E+01   3.093561E-08   0.0            2.912563E-06   1.968794E+00
+                           359.9985       359.9985       179.9985         0.0          359.9985       359.8357
+0  6.000000E+00     G      2.106388E-08   4.473031E+01   3.105824E-08   0.0            2.924106E-06   2.847103E+00
+                           359.9975       359.9974       179.9975         0.0          359.9975       359.8022
+0  7.000000E+00     G      2.116305E-08   4.494555E+01   3.120442E-08   0.0            2.937866E-06   3.894149E+00
+                           359.9960       359.9959       179.9960         0.0          359.9960       359.7681
+0  8.000000E+00     G      2.127863E-08   4.519643E+01   3.137481E-08   0.0            2.953904E-06   5.114630E+00
+                           359.9940       359.9938       179.9940         0.0          359.9940       359.7336
+0  9.000000E+00     G      2.141116E-08   4.548408E+01   3.157017E-08   0.0            2.972294E-06   6.514102E+00
+                           359.9913       359.9912       179.9913         0.0          359.9913       359.6985
+0  1.000000E+01     G      2.156125E-08   4.580985E+01   3.179142E-08   0.0            2.993119E-06   8.099045E+00
+                           359.9880       359.9878       179.9880         0.0          359.9880       359.6626
+0  1.100000E+01     G      2.172959E-08   4.617525E+01   3.203959E-08   0.0            3.016479E-06   9.876945E+00
+                           359.9840       359.9836       179.9840         0.0          359.9840       359.6260
+0  1.200000E+01     G      2.191701E-08   4.658204E+01   3.231587E-08   0.0            3.042485E-06   1.185638E+01
+                           359.9790       359.9785       179.9790         0.0          359.9790       359.5885
+0  1.300000E+01     G      2.212442E-08   4.703223E+01   3.262162E-08   0.0            3.071265E-06   1.404713E+01
+                           359.9730       359.9725       179.9730         0.0          359.9731       359.5501
+0  1.400000E+01     G      2.235287E-08   4.752809E+01   3.295839E-08   0.0            3.102964E-06   1.646030E+01
+                           359.9660       359.9653       179.9660         0.0          359.9660       359.5105
+0  1.500000E+01     G      2.260355E-08   4.807219E+01   3.332792E-08   0.0            3.137748E-06   1.910849E+01
+                           359.9577       359.9568       179.9577         0.0          359.9577       359.4697
+0  1.600000E+01     G      2.287781E-08   4.866746E+01   3.373221E-08   0.0            3.175803E-06   2.200595E+01
+                           359.9480       359.9470       179.9480         0.0          359.9481       359.4275
+0  1.700000E+01     G      2.317715E-08   4.931719E+01   3.417348E-08   0.0            3.217339E-06   2.516878E+01
+                           359.9369       359.9356       179.9369         0.0          359.9369       359.3838
+0  1.800000E+01     G      2.350330E-08   5.002510E+01   3.465427E-08   0.0            3.262595E-06   2.861520E+01
+                           359.9240       359.9225       179.9240         0.0          359.9240       359.3384
+0  1.900000E+01     G      2.385821E-08   5.079543E+01   3.517745E-08   0.0            3.311841E-06   3.236585E+01
+                           359.9093       359.9075       179.9093         0.0          359.9093       359.2911
+0  2.000000E+01     G      2.424407E-08   5.163295E+01   3.574625E-08   0.0            3.365382E-06   3.644407E+01
+                           359.8924       359.8904       179.8925         0.0          359.8925       359.2418
+0  2.100000E+01     G      2.466339E-08   5.254309E+01   3.636438E-08   0.0            3.423566E-06   4.087639E+01
+                           359.8733       359.8710       179.8734         0.0          359.8734       359.1902
+0  2.200000E+01     G      2.511900E-08   5.353201E+01   3.703602E-08   0.0            3.486786E-06   4.569298E+01
+                           359.8517       359.8489       179.8517         0.0          359.8518       359.1360
+0  2.300000E+01     G      2.561417E-08   5.460677E+01   3.776595E-08   0.0            3.555493E-06   5.092824E+01
+                           359.8272       359.8241       179.8272         0.0          359.8273       359.0790
+0  2.400000E+01     G      2.615258E-08   5.577541E+01   3.855964E-08   0.0            3.630202E-06   5.662153E+01
+                           359.7995       359.7960       179.7996         0.0          359.7996       359.0188
+0  2.500000E+01     G      2.673851E-08   5.704718E+01   3.942337E-08   0.0            3.711503E-06   6.281800E+01
+                           359.7684       359.7643       179.7684         0.0          359.7685       358.9551
+0  2.600000E+01     G      2.737685E-08   5.843272E+01   4.036437E-08   0.0            3.800078E-06   6.956971E+01
+                           359.7332       359.7287       179.7333         0.0          359.7333       358.8875
+0  2.700000E+01     G      2.807329E-08   5.994436E+01   4.139101E-08   0.0            3.896713E-06   7.693689E+01
+                           359.6937       359.6886       179.6937         0.0          359.6938       358.8154
+0  2.800000E+01     G      2.883442E-08   6.159642E+01   4.251301E-08   0.0            4.002325E-06   8.498957E+01
+                           359.6491       359.6435       179.6492         0.0          359.6492       358.7383
+0  2.900000E+01     G      2.966797E-08   6.340564E+01   4.374175E-08   0.0            4.117985E-06   9.380961E+01
+                           359.5989       359.5926       179.5990         0.0          359.5990       358.6556
+0  3.000000E+01     G      3.058298E-08   6.539172E+01   4.509060E-08   0.0            4.244949E-06   1.034932E+02
+                           359.5423       359.5353       179.5424         0.0          359.5424       358.5665
+0  3.100000E+01     G      3.159021E-08   6.757793E+01   4.657536E-08   0.0            4.384707E-06   1.141543E+02
+                           359.4784       359.4707       179.4784         0.0          359.4785       358.4701
+0  3.200000E+01     G      3.270241E-08   6.999201E+01   4.821488E-08   0.0            4.539032E-06   1.259284E+02
+                           359.4061       359.3977       179.4062         0.0          359.4062       358.3652
+0  3.300000E+01     G      3.393494E-08   7.266725E+01   5.003177E-08   0.0            4.710052E-06   1.389784E+02
+                           359.3241       359.3149       179.3242         0.0          359.3243       358.2508
+0  3.400000E+01     G      3.530635E-08   7.564395E+01   5.205339E-08   0.0            4.900343E-06   1.535013E+02
+                           359.2309       359.2209       179.2311         0.0          359.2312       358.1251
+0  3.500000E+01     G      3.683933E-08   7.897135E+01   5.431317E-08   0.0            5.113052E-06   1.697381E+02
+                           359.1247       359.1137       179.1248         0.0          359.1249       357.9864
+0  3.600000E+01     G      3.856188E-08   8.271024E+01   5.685241E-08   0.0            5.352065E-06   1.879859E+02
+                           359.0030       358.9911       179.0031         0.0          359.0033       357.8322
+0  3.700000E+01     G      4.050898E-08   8.693652E+01   5.972266E-08   0.0            5.622235E-06   2.086164E+02
+                           358.8630       358.8500       178.8631         0.0          358.8633       357.6597
+0  3.712048E+01     G      4.076071E-08   8.748291E+01   6.009373E-08   0.0            5.657164E-06   2.112838E+02
+                           358.8447       358.8316       178.8449         0.0          358.8450       357.6375
+0  3.800000E+01     G      4.272487E-08   9.174621E+01   6.298911E-08   0.0            5.929700E-06   2.320993E+02
+                           358.7009       358.6869       178.7011         0.0          358.7013       357.4651
+0  3.900000E+01     G      4.526632E-08   9.726258E+01   6.673549E-08   0.0            6.282338E-06   2.590379E+02
+                           358.5122       358.4970       178.5124         0.0          358.5125       357.2439
+0  4.000000E+01     G      4.820743E-08   1.036465E+02   7.107101E-08   0.0            6.690431E-06   2.902196E+02
+                           358.2905       358.2742       178.2907         0.0          358.2909       356.9898
+0  4.100000E+01     G      5.164672E-08   1.111117E+02   7.614090E-08   0.0            7.167649E-06   3.266916E+02
+                           358.0278       358.0102       178.0280         0.0          358.0282       356.6945
+0  4.200000E+01     G      5.571809E-08   1.199489E+02   8.214252E-08   0.0            7.732568E-06   3.698773E+02
+                           357.7128       357.6939       177.7130         0.0          357.7132       356.3471
+0  4.300000E+01     G      6.060813E-08   1.305632E+02   8.935096E-08   0.0            8.411081E-06   4.217615E+02
+                           357.3300       357.3098       177.3303         0.0          357.3305       355.9318
+0  4.400000E+01     G      6.658483E-08   1.435362E+02   9.816125E-08   0.0            9.240373E-06   4.851955E+02
+                           356.8571       356.8354       176.8573         0.0          356.8576       355.4264
+0  4.500000E+01     G      7.404710E-08   1.597339E+02   1.091614E-07   0.0            1.027579E-05   5.644260E+02
+                           356.2606       356.2374       176.2609         0.0          356.2611       354.7974
+0  4.507486E+01     G      7.468081E-08   1.611095E+02   1.100956E-07   0.0            1.036372E-05   5.711559E+02
+                           356.2097       356.1864       176.2100         0.0          356.2102       354.7441
+0  4.600000E+01     G      8.361517E-08   1.805027E+02   1.232657E-07   0.0            1.160340E-05   6.660598E+02
+                           355.4885       355.4637       175.4888         0.0          355.4890       353.9928
+0  4.700000E+01     G      9.630720E-08   2.080527E+02   1.419751E-07   0.0            1.336447E-05   8.009518E+02
+                           354.4548       354.4285       174.4552         0.0          354.4555       352.9267
+0  4.800000E+01     G      1.139143E-07   2.462723E+02   1.679298E-07   0.0            1.580752E-05   9.882183E+02
+                           353.0075       352.9795       173.0079         0.0          353.0082       351.4470
+0  4.900000E+01     G      1.398870E-07   3.026520E+02   2.062161E-07   0.0            1.941131E-05   1.264743E+03
+                           350.8499       350.8201       170.8503         0.0          350.8506       349.2569
+0  5.000000E+01     G      1.817412E-07   3.935097E+02   2.679135E-07   0.0            2.521873E-05   1.711071E+03
+                           347.3208       347.2892       167.3213         0.0          347.3216       345.6954
+0  5.100000E+01     G      2.588363E-07   5.608792E+02   3.815593E-07   0.0            3.591591E-05   2.535611E+03
+                           340.6277       340.5942       160.6281         0.0          340.6285       338.9698
+0  5.200000E+01     G      4.300529E-07   9.326409E+02   6.339487E-07   0.0            5.967263E-05   4.380149E+03
+                           324.2584       324.2229       144.2589         0.0          324.2593       322.5680
+0  5.300000E+01     G      6.938515E-07   1.505963E+03   1.022808E-06   0.0            9.627452E-05   7.342139E+03
+                           273.8227       273.7851        93.8232         0.0          273.8236       272.0998
+0  5.302925E+01     G      6.939387E-07   1.506188E+03   1.022937E-06   0.0            9.628656E-05   7.351191E+03
+                           271.7170       271.6794        91.7175         0.0          271.7179       269.9933
+0  5.400000E+01     G      4.342660E-07   9.433326E+02   6.401457E-07   0.0            6.025483E-05   4.770813E+03
+                           221.3337       221.2940        41.3342         0.0          221.3346       219.5784
+0  5.500000E+01     G      2.543609E-07   5.530026E+02   3.749458E-07   0.0            3.529209E-05   2.899147E+03
+                           204.1227       204.0807        24.1232         0.0          204.1237       202.3349
+0  5.600000E+01     G      1.742967E-07   3.792628E+02   2.569227E-07   0.0            2.418283E-05   2.059710E+03
+                           197.1920       197.1478        17.1926         0.0          197.1931       195.3719
+0  5.700000E+01     G      1.312250E-07   2.857910E+02   1.934305E-07   0.0            1.820645E-05   1.606772E+03
+                           193.5708       193.5242        13.5714         0.0          193.5719       191.7182
+0  5.800000E+01     G      1.046483E-07   2.281134E+02   1.542536E-07   0.0            1.451881E-05   1.326856E+03
+                           191.3690       191.3199        11.3696         0.0          191.3702       189.4839
+0  5.900000E+01     G      8.669732E-08   1.891550E+02   1.277919E-07   0.0            1.202804E-05   1.137611E+03
+                           189.8976       189.8461         9.8983         0.0          189.8989       187.9802
+0  6.000000E+01     G      7.378852E-08   1.611389E+02   1.087630E-07   0.0            1.023689E-05   1.001439E+03
+                           188.8498       188.7956         8.8505         0.0          188.8511       186.8999
+0  6.098364E+01     G      6.421172E-08   1.403541E+02   9.464576E-08   0.0            8.908064E-06   9.003751E+02
+                           188.0800       188.0231         8.0807         0.0          188.0814       186.0982
+0  6.100000E+01     G      6.407217E-08   1.400513E+02   9.444005E-08   0.0            8.888701E-06   8.989022E+02
+                           188.0688       188.0119         8.0696         0.0          188.0702       186.0865
+0  6.200000E+01     G      5.650126E-08   1.236198E+02   8.327971E-08   0.0            7.838203E-06   8.189843E+02
+                           187.4667       187.4071         7.4675         0.0          187.4682       185.4520
+0  6.300000E+01     G      5.044004E-08   1.104648E+02   7.434482E-08   0.0            6.997180E-06   7.549915E+02
+                           186.9902       186.9277         6.9911         0.0          186.9918       184.9432
+0  6.400000E+01     G      4.548070E-08   9.970113E+01   6.703420E-08   0.0            6.309047E-06   7.026268E+02
+                           186.6054       186.5399         6.6063         0.0          186.6070       184.5259
+0  6.500000E+01     G      4.134980E-08   9.073551E+01   6.094479E-08   0.0            5.735863E-06   6.590079E+02
+                           186.2893       186.2208         6.2902         0.0          186.2910       184.1774
+0  6.600000E+01     G      3.785728E-08   8.315539E+01   5.579642E-08   0.0            5.251258E-06   6.221304E+02
+                           186.0262       185.9546         6.0272         0.0          186.0281       183.8820
+0  6.700000E+01     G      3.486696E-08   7.666522E+01   5.138835E-08   0.0            4.836334E-06   5.905574E+02
+                           185.8049       185.7300         5.8059         0.0          185.8068       183.6282
+0  6.800000E+01     G      3.227875E-08   7.104775E+01   4.757302E-08   0.0            4.477204E-06   5.632328E+02
+                           185.6169       185.5388         5.6180         0.0          185.6189       183.4079
+0  6.893803E+01     G      3.014922E-08   6.642582E+01   4.443384E-08   0.0            4.181720E-06   5.407536E+02
+                           185.4654       185.3840         5.4665         0.0          185.4675       183.2260
+0  6.900000E+01     G      3.001743E-08   6.613978E+01   4.423956E-08   0.0            4.163432E-06   5.393625E+02
+                           185.4561       185.3745         5.4572         0.0          185.4582       183.2147
+0  7.000000E+01     G      2.802542E-08   6.181629E+01   4.130309E-08   0.0            3.887027E-06   5.183387E+02
+                           185.3176       185.2326         5.3188         0.0          185.3198       183.0438
+0  7.100000E+01     G      2.625787E-08   5.797998E+01   3.869750E-08   0.0            3.641767E-06   4.996878E+02
+                           185.1978       185.1092         5.1991         0.0          185.2001       182.8917
+0  7.200000E+01     G      2.467934E-08   5.455392E+01   3.637056E-08   0.0            3.422736E-06   4.830354E+02
+                           185.0937       185.0014         5.0950         0.0          185.0962       182.7552
+0  7.300000E+01     G      2.326148E-08   5.147657E+01   3.428045E-08   0.0            3.225996E-06   4.680820E+02
+                           185.0030       184.9069         5.0044         0.0          185.0055       182.6322
+0  7.400000E+01     G      2.198131E-08   4.869805E+01   3.239330E-08   0.0            3.048361E-06   4.545847E+02
+                           184.9237       184.8238         4.9252         0.0          184.9264       182.5206
+0  7.500000E+01     G      2.082001E-08   4.617754E+01   3.068138E-08   0.0            2.887221E-06   4.423450E+02
+                           184.8544       184.7504         4.8559         0.0          184.8572       182.4189
+0  7.600000E+01     G      1.976205E-08   4.388132E+01   2.912180E-08   0.0            2.740419E-06   4.311986E+02
+                           184.7937       184.6856         4.7953         0.0          184.7966       182.3258
+0  7.700000E+01     G      1.879447E-08   4.178126E+01   2.769545E-08   0.0            2.606158E-06   4.210085E+02
+                           184.7405       184.6283         4.7421         0.0          184.7435       182.2403
+0  7.800000E+01     G      1.790640E-08   3.985375E+01   2.638629E-08   0.0            2.482928E-06   4.116598E+02
+                           184.6939       184.5775         4.6957         0.0          184.6971       182.1614
+0  7.900000E+01     G      1.708861E-08   3.807880E+01   2.518075E-08   0.0            2.369450E-06   4.030550E+02
+                           184.6533       184.5324         4.6551         0.0          184.6566       182.0885
+0  8.000000E+01     G      1.633327E-08   3.643937E+01   2.406725E-08   0.0            2.264637E-06   3.951112E+02
+                           184.6178       184.4925         4.6197         0.0          184.6213       182.0207
+0  8.100000E+01     G      1.563364E-08   3.492087E+01   2.303588E-08   0.0            2.167554E-06   3.877574E+02
+                           184.5871       184.4572         4.5891         0.0          184.5907       181.9577
+0  8.200000E+01     G      1.498393E-08   3.351072E+01   2.207810E-08   0.0            2.077398E-06   3.809323E+02
+                           184.5605       184.4259         4.5626         0.0          184.5643       181.8988
+0  8.300000E+01     G      1.437912E-08   3.219801E+01   2.118649E-08   0.0            1.993471E-06   3.745826E+02
+                           184.5377       184.3983         4.5399         0.0          184.5416       181.8437
+0  8.400000E+01     G      1.381482E-08   3.097324E+01   2.035462E-08   0.0            1.915166E-06   3.686622E+02
+                           184.5183       184.3740         4.5206         0.0          184.5224       181.7921
+0  8.500000E+01     G      1.328722E-08   2.982810E+01   1.957683E-08   0.0            1.841952E-06   3.631305E+02
+                           184.5020       184.3527         4.5044         0.0          184.5063       181.7435
+0  8.600000E+01     G      1.279294E-08   2.875530E+01   1.884816E-08   0.0            1.773362E-06   3.579520E+02
+                           184.4885       184.3342         4.4910         0.0          184.4930       181.6978
+0  8.700000E+01     G      1.232902E-08   2.774839E+01   1.816425E-08   0.0            1.708985E-06   3.530954E+02
+                           184.4776       184.3180         4.4802         0.0          184.4822       181.6546
+0  8.800000E+01     G      1.189284E-08   2.680167E+01   1.752122E-08   0.0            1.648455E-06   3.485327E+02
+                           184.4691       184.3041         4.4717         0.0          184.4738       181.6138
+0  8.900000E+01     G      1.148205E-08   2.591008E+01   1.691563E-08   0.0            1.591449E-06   3.442394E+02
+                           184.4626       184.2923         4.4654         0.0          184.4676       181.5752
+0  9.000000E+01     G      1.109457E-08   2.506908E+01   1.634440E-08   0.0            1.537678E-06   3.401934E+02
+                           184.4582       184.2823         4.4610         0.0          184.4634       181.5385
+0  9.100000E+01     G      1.072855E-08   2.427464E+01   1.580479E-08   0.0            1.486884E-06   3.363749E+02
+                           184.4556       184.2740         4.4585         0.0          184.4609       181.5037
+0  9.200000E+01     G      1.038231E-08   2.352314E+01   1.529434E-08   0.0            1.438834E-06   3.327664E+02
+                           184.4546       184.2673         4.4577         0.0          184.4602       181.4705
+0  9.300000E+01     G      1.005434E-08   2.281131E+01   1.481084E-08   0.0            1.393320E-06   3.293520E+02
+                           184.4553       184.2621         4.4585         0.0          184.4610       181.4390
+0  9.400000E+01     G      9.743300E-09   2.213620E+01   1.435227E-08   0.0            1.350154E-06   3.261172E+02
+                           184.4573       184.2582         4.4607         0.0          184.4633       181.4088
+0  9.500000E+01     G      9.447951E-09   2.149516E+01   1.391684E-08   0.0            1.309165E-06   3.230491E+02
+                           184.4607       184.2555         4.4642         0.0          184.4670       181.3801
+0  9.600000E+01     G      9.167185E-09   2.088577E+01   1.350291E-08   0.0            1.270200E-06   3.201359E+02
+                           184.4654       184.2539         4.4690         0.0          184.4719       181.3526
+0  9.700000E+01     G      8.899991E-09   2.030583E+01   1.310899E-08   0.0            1.233117E-06   3.173670E+02
+                           184.4712       184.2535         4.4749         0.0          184.4779       181.3263
+0  9.800000E+01     G      8.645449E-09   1.975336E+01   1.273371E-08   0.0            1.197790E-06   3.147327E+02
+                           184.4781       184.2539         4.4820         0.0          184.4851       181.3010
+0  9.900000E+01     G      8.402719E-09   1.922652E+01   1.237584E-08   0.0            1.164102E-06   3.122239E+02
+                           184.4861       184.2553         4.4901         0.0          184.4933       181.2768
+0  1.000000E+02     G      8.171034E-09   1.872365E+01   1.203426E-08   0.0            1.131947E-06   3.098327E+02
+                           184.4949       184.2575         4.4991         0.0          184.5024       181.2536
+1    SINE VIBRATION Y                                   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    16
+      MODEL SINE VIBRATION Y                                                                                                        
+0     Y-DIRECTION SINE INPUT                                                                                                        
+      POINT-ID =    859999
+                                       C O M P L E X   A C C E L E R A T I O N   V E C T O R
+                                                         (MAGNITUDE/PHASE)
+ 
+      FREQUENCY   TYPE          T1             T2             T3             R1             R2             R3
+0  5.000000E+00     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  6.000000E+00     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  7.000000E+00     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  8.000000E+00     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  9.000000E+00     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  1.000000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  1.100000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  1.200000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  1.300000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  1.400000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  1.500000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  1.600000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  1.700000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  1.800000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  1.900000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  2.000000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  2.100000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  2.200000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  2.300000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  2.400000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  2.500000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  2.600000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  2.700000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  2.800000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  2.900000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  3.000000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  3.100000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  3.200000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  3.300000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  3.400000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  3.500000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  3.600000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  3.700000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  3.712048E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  3.800000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  3.900000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  4.000000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  4.100000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  4.200000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  4.300000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  4.400000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  4.500000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  4.507486E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  4.600000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  4.700000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  4.800000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  4.900000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  5.000000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  5.100000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  5.200000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  5.300000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  5.302925E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  5.400000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  5.500000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  5.600000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  5.700000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  5.800000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  5.900000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  6.000000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  6.098364E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  6.100000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  6.200000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  6.300000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  6.400000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  6.500000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  6.600000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  6.700000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  6.800000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  6.893803E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  6.900000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  7.000000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  7.100000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  7.200000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  7.300000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  7.400000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  7.500000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  7.600000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  7.700000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  7.800000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  7.900000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  8.000000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  8.100000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  8.200000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  8.300000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  8.400000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  8.500000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  8.600000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  8.700000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  8.800000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  8.900000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  9.000000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  9.100000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  9.200000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  9.300000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  9.400000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  9.500000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  9.600000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  9.700000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  9.800000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  9.900000E+01     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+0  1.000000E+02     G      0.0            4.414500E+01   0.0            0.0            0.0            0.0
+                             0.0            0.0            0.0            0.0            0.0            0.0
+1    SINE VIBRATION Y                                   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    17
+      MODEL SINE VIBRATION Y                                                                                                        
+0     Y-DIRECTION SINE INPUT                                                                                                        
+      ELEMENT-ID =       1
+                             C O M P L E X   F O R C E S   I N   B A R   E L E M E N T S   ( C B A R )
+                                                         (MAGNITUDE/PHASE)
+ 
+                     BEND-MOMENT-END-A            BEND-MOMENT-END-B                  SHEAR                AXIAL
+    FREQUENCY      PLANE 1       PLANE 2        PLANE 1       PLANE 2        PLANE 1       PLANE 2        FORCE          TORQUE
+0  5.000000E+00   2.371883E-02  2.898950E+02   1.897274E-02  2.795048E+02   4.746088E-01  1.039015E+03   8.559668E-01   0.0
+                  179.9985      359.8383       179.9985      359.8380       179.9985      359.8469       359.9985         0.0
+0  6.000000E+00   1.653669E-02  2.911130E+02   1.322773E-02  2.806793E+02   3.308958E-01  1.043371E+03   5.967767E-01   0.0
+                  179.9975      359.8053       179.9975      359.8049       179.9975      359.8156       359.9975         0.0
+0  7.000000E+00   1.220657E-02  2.925158E+02   9.764061E-03  2.820331E+02   2.442512E-01  1.048262E+03   4.405109E-01   0.0
+                  179.9960      359.7718       179.9960      359.7714       179.9960      359.7838       359.9960         0.0
+0  8.000000E+00   9.396677E-03  2.941248E+02   7.516419E-03  2.835867E+02   1.880258E-01  1.053804E+03   3.391070E-01   0.0
+                  179.9940      359.7378       179.9940      359.7373       179.9940      359.7516       359.9940         0.0
+0  9.000000E+00   7.470756E-03  2.959546E+02   5.975870E-03  2.853539E+02   1.494886E-01  1.060066E+03   2.696041E-01   0.0
+                  179.9913      359.7032       179.9913      359.7026       179.9913      359.7187       359.9913         0.0
+0  1.000000E+01   6.093711E-03  2.980174E+02   4.874369E-03  2.873464E+02   1.219343E-01  1.067101E+03   2.199091E-01   0.0
+                  179.9880      359.6679       179.9880      359.6672       179.9880      359.6851       359.9880         0.0
+0  1.100000E+01   5.075429E-03  3.003251E+02   4.059842E-03  2.895755E+02   1.015587E-01  1.074954E+03   1.831612E-01   0.0
+                  179.9840      359.6318       179.9840      359.6311       179.9840      359.6508       359.9840         0.0
+0  1.200000E+01   4.301537E-03  3.028900E+02   3.440805E-03  2.920533E+02   8.607327E-02  1.083671E+03   1.552329E-01   0.0
+                  179.9790      359.5948       179.9790      359.5941       179.9790      359.6156       359.9790         0.0
+0  1.300000E+01   3.699886E-03  3.057256E+02   2.959542E-03  2.947926E+02   7.403436E-02  1.093300E+03   1.335204E-01   0.0
+                  179.9731      359.5569       179.9731      359.5561       179.9731      359.5794       359.9731         0.0
+0  1.400000E+01   3.223135E-03  3.088467E+02   2.578188E-03  2.978077E+02   6.449468E-02  1.103892E+03   1.163153E-01   0.0
+                  179.9660      359.5178       179.9660      359.5169       179.9660      359.5421       359.9660         0.0
+0  1.500000E+01   2.839182E-03  3.122698E+02   2.271063E-03  3.011147E+02   5.681189E-02  1.115506E+03   1.024592E-01   0.0
+                  179.9577      359.4776       179.9577      359.4766       179.9577      359.5036       359.9577         0.0
+0  1.600000E+01   2.525639E-03  3.160135E+02   2.020259E-03  3.047315E+02   5.053796E-02  1.128203E+03   9.114394E-02   0.0
+                  179.9481      359.4359       179.9481      359.4349       179.9481      359.4637       359.9481         0.0
+0  1.700000E+01   2.266504E-03  3.200988E+02   1.812977E-03  3.086783E+02   4.535274E-02  1.142056E+03   8.179225E-02   0.0
+                  179.9369      359.3927       179.9369      359.3916       179.9369      359.4223       359.9369         0.0
+0  1.800000E+01   2.050103E-03  3.245492E+02   1.639877E-03  3.129777E+02   4.102260E-02  1.157145E+03   7.398271E-02   0.0
+                  179.9240      359.3479       179.9240      359.3467       179.9240      359.3793       359.9240         0.0
+0  1.900000E+01   1.867754E-03  3.293913E+02   1.494016E-03  3.176557E+02   3.737385E-02  1.173561E+03   6.740206E-02   0.0
+                  179.9093      359.3012       179.9093      359.2999       179.9093      359.3344       359.9093         0.0
+0  2.000000E+01   1.712899E-03  3.346552E+02   1.370147E-03  3.227412E+02   3.427523E-02  1.191405E+03   6.181360E-02   0.0
+                  179.8925      359.2524       179.8925      359.2511       179.8925      359.2874       359.8925         0.0
+0  2.100000E+01   1.580510E-03  3.403751E+02   1.264249E-03  3.282672E+02   3.162617E-02  1.210794E+03   5.703591E-02   0.0
+                  179.8734      359.2013       179.8734      359.1999       179.8734      359.2381       359.8734         0.0
+0  2.200000E+01   1.466686E-03  3.465899E+02   1.173200E-03  3.342713E+02   2.934857E-02  1.231859E+03   5.292818E-02   0.0
+                  179.8518      359.1476       179.8518      359.1462       179.8518      359.1863       359.8518         0.0
+0  2.300000E+01   1.368363E-03  3.533437E+02   1.094551E-03  3.407962E+02   2.738115E-02  1.254750E+03   4.937985E-02   0.0
+                  179.8273      359.0912       179.8273      359.0897       179.8273      359.1316       359.8273         0.0
+0  2.400000E+01   1.283114E-03  3.606871E+02   1.026361E-03  3.478908E+02   2.567535E-02  1.279639E+03   4.630335E-02   0.0
+                  179.7996      359.0315       179.7996      359.0300       179.7996      359.0739       359.7997         0.0
+0  2.500000E+01   1.209001E-03  3.686784E+02   9.670773E-04  3.556112E+02   2.419237E-02  1.306723E+03   4.362872E-02   0.0
+                  179.7685      358.9684       179.7685      358.9668       179.7685      359.0126       359.7685         0.0
+0  2.600000E+01   1.144465E-03  3.773843E+02   9.154547E-04  3.640221E+02   2.290102E-02  1.336229E+03   4.129969E-02   0.0
+                  179.7333      358.9013       179.7333      358.8996       179.7333      358.9473       359.7334         0.0
+0  2.700000E+01   1.088247E-03  3.868824E+02   8.704857E-04  3.731982E+02   2.177612E-02  1.368418E+03   3.927085E-02   0.0
+                  179.6938      358.8298       179.6938      358.8280       179.6938      358.8777       359.6938         0.0
+0  2.800000E+01   1.039328E-03  3.972626E+02   8.313555E-04  3.832266E+02   2.079727E-02  1.403597E+03   3.750542E-02   0.0
+                  179.6492      358.7532       179.6492      358.7514       179.6492      358.8030       359.6493         0.0
+0  2.900000E+01   9.968846E-04  4.086302E+02   7.974047E-04  3.942089E+02   1.994799E-02  1.442121E+03   3.597366E-02   0.0
+                  179.5990      358.6711       179.5990      358.6692       179.5990      358.7228       359.5991         0.0
+0  3.000000E+01   9.602536E-04  4.211087E+02   7.681034E-04  4.062646E+02   1.921502E-02  1.484410E+03   3.465167E-02   0.0
+                  179.5424      358.5825       179.5424      358.5805       179.5424      358.6361       359.5425         0.0
+0  3.100000E+01   9.289086E-04  4.348445E+02   7.430304E-04  4.195349E+02   1.858782E-02  1.530959E+03   3.352043E-02   0.0
+                  179.4785      358.4866       179.4785      358.4846       179.4785      358.5421       359.4786         0.0
+0  3.200000E+01   9.024411E-04  4.500119E+02   7.218589E-04  4.341883E+02   1.805822E-02  1.582359E+03   3.256520E-02   0.0
+                  179.4063      358.3824       179.4063      358.3803       179.4063      358.4398       359.4063         0.0
+0  3.300000E+01   8.805482E-04  4.668199E+02   7.043467E-04  4.504268E+02   1.762015E-02  1.639319E+03   3.177505E-02   0.0
+                  179.3243      358.2685       179.3243      358.2663       179.3243      358.3279       359.3244         0.0
+0  3.400000E+01   8.630256E-04  4.855219E+02   6.903302E-04  4.684949E+02   1.726954E-02  1.702696E+03   3.114262E-02   0.0
+                  179.2312      358.1434       179.2312      358.1411       179.2312      358.2048       359.2312         0.0
+0  3.500000E+01   8.497651E-04  5.064270E+02   6.797230E-04  4.886916E+02   1.700421E-02  1.773538E+03   3.066398E-02   0.0
+                  179.1249      358.0052       179.1249      358.0029       179.1249      358.0685       359.1250         0.0
+0  3.600000E+01   8.407578E-04  5.299171E+02   6.725179E-04  5.113857E+02   1.682398E-02  1.853140E+03   3.033882E-02   0.0
+                  179.0033      357.8515       179.0033      357.8492       179.0033      357.9169       359.0034         0.0
+0  3.700000E+01   8.361029E-04  5.564692E+02   6.687943E-04  5.370380E+02   1.673085E-02  1.943118E+03   3.017073E-02   0.0
+                  178.8633      357.6796       178.8633      357.6772       178.8633      357.7470       358.8634         0.0
+0  3.712048E+01   8.358451E-04  5.599019E+02   6.685881E-04  5.403544E+02   1.672570E-02  1.954750E+03   3.016141E-02   0.0
+                  178.8450      357.6575       178.8450      357.6550       178.8450      357.7251       358.8451         0.0
+0  3.800000E+01   8.360251E-04  5.866864E+02   6.687320E-04  5.662313E+02   1.672931E-02  2.045514E+03   3.016779E-02   0.0
+                  178.7013      357.4856       178.7013      357.4831       178.7013      357.5551       358.7014         0.0
+0  3.900000E+01   8.409023E-04  6.213431E+02   6.726331E-04  5.997136E+02   1.682692E-02  2.162953E+03   3.034365E-02   0.0
+                  178.5126      357.2650       178.5126      357.2624       178.5126      357.3365       358.5126         0.0
+0  4.000000E+01   8.513089E-04  6.614496E+02   6.809571E-04  6.384611E+02   1.703517E-02  2.298858E+03   3.071904E-02   0.0
+                  178.2909      357.0114       178.2909      357.0088       178.2909      357.0850       358.2910         0.0
+0  4.100000E+01   8.680837E-04  7.083494E+02   6.943752E-04  6.837716E+02   1.737085E-02  2.457781E+03   3.132421E-02   0.0
+                  178.0282      356.7167       178.0282      356.7140       178.0282      356.7924       358.0283         0.0
+0  4.200000E+01   8.924365E-04  7.638680E+02   7.138548E-04  7.374090E+02   1.785817E-02  2.645908E+03   3.220282E-02   0.0
+                  177.7133      356.3699       177.7133      356.3671       177.7133      356.4476       357.7134         0.0
+0  4.300000E+01   9.261186E-04  8.305500E+02   7.407968E-04  8.018315E+02   1.853217E-02  2.871858E+03   3.341807E-02   0.0
+                  177.3305      355.9552       177.3305      355.9523       177.3305      356.0351       357.3306         0.0
+0  4.400000E+01   9.717070E-04  9.120497E+02   7.772627E-04  8.805696E+02   1.944443E-02  3.148014E+03   3.506292E-02   0.0
+                  176.8576      355.4504       176.8576      355.4474       176.8576      355.5324       356.8577         0.0
+0  4.500000E+01   1.033097E-03  1.013806E+03   8.263679E-04  9.788782E+02   2.067286E-02  3.492801E+03   3.727793E-02   0.0
+                  176.2612      354.8220       176.2612      354.8190       176.2612      354.9062       356.2613         0.0
+0  4.507486E+01   1.038479E-03  1.022448E+03   8.306730E-04  9.872269E+02   2.078056E-02  3.522081E+03   3.747212E-02   0.0
+                  176.2103      354.7687       176.2102      354.7657       176.2103      354.8531       356.2104         0.0
+0  4.600000E+01   1.116399E-03  1.144277E+03   8.930015E-04  1.104928E+03   2.233979E-02  3.934872E+03   4.028362E-02   0.0
+                  175.4891      354.0180       175.4891      354.0149       175.4891      354.1044       355.4892         0.0
+0  4.700000E+01   1.231701E-03  1.317344E+03   9.852308E-04  1.272132E+03   2.464703E-02  4.521254E+03   4.444392E-02   0.0
+                  174.4555      352.9525       174.4555      352.9493       174.4556      353.0411       354.4557         0.0
+0  4.800000E+01   1.396787E-03  1.557431E+03   1.117282E-03  1.504084E+03   2.795046E-02  5.334675E+03   5.040053E-02   0.0
+                  173.0083      351.4733       173.0083      351.4701       173.0083      351.5642       353.0084         0.0
+0  4.900000E+01   1.645928E-03  1.911582E+03   1.316569E-03  1.846237E+03   3.293589E-02  6.534479E+03   5.939008E-02   0.0
+                  170.8507      349.2838       170.8507      349.2805       170.8507      349.3770       350.8508         0.0
+0  5.000000E+01   2.053670E-03  2.482275E+03   1.642720E-03  2.397598E+03   4.109496E-02  8.467705E+03   7.410231E-02   0.0
+                  167.3217      345.7229       167.3217      345.7195       167.3217      345.8184       347.3218         0.0
+0  5.100000E+01   2.811209E-03  3.533440E+03   2.248673E-03  3.413161E+03   5.625362E-02  1.202791E+04   1.014361E-01   0.0
+                  160.6286      338.9979       160.6286      338.9945       160.6287      339.0957       340.6288         0.0
+0  5.200000E+01   4.492771E-03  5.867671E+03   3.593748E-03  5.668368E+03   8.990231E-02  1.993029E+04   1.621107E-01   0.0
+                  144.2594      322.5968       144.2593      322.5933       144.2595      322.6969       324.2596         0.0
+0  5.300000E+01   6.977576E-03  9.461876E+03   5.581335E-03  9.141206E+03   1.396241E-01  3.206706E+04   2.517678E-01   0.0
+                   93.8237      272.1292        93.8237      272.1256        93.8238      272.2317       273.8239         0.0
+0  5.302925E+01   6.970752E-03  9.462915E+03   5.575877E-03  9.142230E+03   1.394875E-01  3.206847E+04   2.515215E-01   0.0
+                   91.7180      270.0226        91.7180      270.0191        91.7181      270.1252       271.7182         0.0
+0  5.400000E+01   4.206767E-03  5.918731E+03   3.364978E-03  5.718596E+03   8.417886E-02  2.001348E+04   1.517896E-01   0.0
+                   41.3347      219.6084        41.3347      219.6047        41.3348      219.7133       221.3349         0.0
+0  5.500000E+01   2.375173E-03  3.464819E+03   1.899894E-03  3.347932E+03   4.752790E-02  1.168866E+04   8.570122E-02   0.0
+                   24.1238      202.3656        24.1238      202.3618        24.1239      202.4729       204.1240         0.0
+0  5.600000E+01   1.569904E-03  2.372860E+03   1.255763E-03  2.293001E+03   3.141415E-02  7.985912E+03   5.664521E-02   0.0
+                   17.1932      195.4031        17.1932      195.3993        17.1934      195.5130       197.1935         0.0
+0  5.700000E+01   1.140819E-03  1.785450E+03   9.125391E-04  1.725506E+03   2.282797E-02  5.994404E+03   4.116281E-02   0.0
+                   13.5720      191.7500        13.5720      191.7461        13.5722      191.8624       193.5723         0.0
+0  5.800000E+01   8.786484E-04  1.423005E+03   7.028300E-04  1.375348E+03   1.758183E-02  4.765714E+03   3.170309E-02   0.0
+                   11.3703      189.5164        11.3703      189.5125        11.3705      189.6313       191.3705         0.0
+0  5.900000E+01   7.034443E-04  1.178199E+03   5.626850E-04  1.138840E+03   1.407593E-02  3.935869E+03   2.538134E-02   0.0
+                    9.8990      188.0133         9.8990      188.0092         9.8992      188.1307       189.8993         0.0
+0  6.000000E+01   5.788994E-04  1.002157E+03   4.630621E-04  9.687653E+02   1.158373E-02  3.339143E+03   2.088749E-02   0.0
+                    8.8512      186.9337         8.8512      186.9295         8.8515      187.0537       188.8515         0.0
+0  6.098364E+01   4.876330E-04  8.715548E+02   3.900585E-04  8.425903E+02   9.757449E-03  2.896457E+03   1.759441E-02   0.0
+                    8.0815      186.1326         8.0815      186.1284         8.0818      186.2552       188.0818         0.0
+0  6.100000E+01   4.863120E-04  8.696518E+02   3.890018E-04  8.407518E+02   9.731016E-03  2.890007E+03   1.754675E-02   0.0
+                    8.0704      186.1209         8.0703      186.1167         8.0706      186.2436       188.0706         0.0
+0  6.200000E+01   4.151147E-04  7.664052E+02   3.320515E-04  7.410047E+02   8.306327E-03  2.540051E+03   1.497780E-02   0.0
+                    7.4684      185.4871         7.4683      185.4828         7.4687      185.6124       187.4686         0.0
+0  6.300000E+01   3.589018E-04  6.837469E+02   2.870870E-04  6.611481E+02   7.181480E-03  2.259884E+03   1.294953E-02   0.0
+                    6.9920      184.9789         6.9919      184.9745         6.9923      185.1069       186.9923         0.0
+0  6.400000E+01   3.135711E-04  6.161150E+02   2.508272E-04  5.958086E+02   6.274391E-03  2.030651E+03   1.131392E-02   0.0
+                    6.6072      184.5623         6.6071      184.5578         6.6076      184.6930       186.6075         0.0
+0  6.500000E+01   2.763776E-04  5.597809E+02   2.210762E-04  5.413838E+02   5.530131E-03  1.839713E+03   9.971912E-03   0.0
+                    6.2913      184.2145         6.2912      184.2099         6.2916      184.3480       186.2915         0.0
+0  6.600000E+01   2.454170E-04  5.121524E+02   1.963110E-04  4.953696E+02   4.910594E-03  1.678282E+03   8.854803E-03   0.0
+                    6.0283      183.9197         6.0282      183.9151         6.0287      184.0561       186.0286         0.0
+0  6.700000E+01   2.193280E-04  4.713725E+02   1.754426E-04  4.559719E+02   4.388542E-03  1.540065E+03   7.913475E-03   0.0
+                    5.8071      183.6666         5.8069      183.6619         5.8075      183.8058       185.8073         0.0
+0  6.800000E+01   1.971128E-04  4.360761E+02   1.576727E-04  4.218718E+02   3.944003E-03  1.420433E+03   7.111917E-03   0.0
+                    5.6192      183.4469         5.6191      183.4421         5.6197      183.5891       185.6195         0.0
+0  6.893803E+01   1.791271E-04  4.070349E+02   1.432861E-04  3.938149E+02   3.584100E-03  1.322002E+03   6.462969E-03   0.0
+                    5.4677      183.2656         5.4676      183.2608         5.4683      183.4105       185.4680         0.0
+0  6.900000E+01   1.780235E-04  4.052376E+02   1.424033E-04  3.920785E+02   3.562016E-03  1.315910E+03   6.423149E-03   0.0
+                    5.4585      183.2544         5.4583      183.2495         5.4590      183.3995       185.4588         0.0
+0  7.000000E+01   1.614892E-04  3.780716E+02   1.291777E-04  3.658333E+02   3.231156E-03  1.223835E+03   5.826575E-03   0.0
+                    5.3201      183.0843         5.3200      183.0793         5.3207      183.2323       185.3204         0.0
+0  7.100000E+01   1.470671E-04  3.539665E+02   1.176415E-04  3.425452E+02   2.942562E-03  1.142135E+03   5.306210E-03   0.0
+                    5.2005      182.9328         5.2003      182.9277         5.2011      183.0839       185.2007         0.0
+0  7.200000E+01   1.344084E-04  3.324392E+02   1.075158E-04  3.217476E+02   2.689254E-03  1.069171E+03   4.849471E-03   0.0
+                    5.0965      182.7970         5.0963      182.7919         5.0972      182.9512       185.0968         0.0
+0  7.300000E+01   1.232350E-04  3.131029E+02   9.857831E-05  3.030666E+02   2.465667E-03  1.003633E+03   4.446326E-03   0.0
+                    5.0059      182.6747         5.0057      182.6694         5.0066      182.8320       185.0062         0.0
+0  7.400000E+01   1.133226E-04  2.956441E+02   9.064947E-05  2.861995E+02   2.267315E-03  9.444586E+02   4.088681E-03   0.0
+                    4.9268      182.5638         4.9266      182.5585         4.9276      182.7243       184.9271         0.0
+0  7.500000E+01   1.044886E-04  2.798064E+02   8.358317E-05  2.708987E+02   2.090540E-03  8.907784E+02   3.769944E-03   0.0
+                    4.8576      182.4628         4.8574      182.4574         4.8584      182.6266       184.8579         0.0
+0  7.600000E+01   9.658255E-05  2.653780E+02   7.725920E-05  2.569592E+02   1.932335E-03  8.418743E+02   3.484692E-03   0.0
+                    4.7970      182.3704         4.7968      182.3650         4.7979      182.5375       184.7973         0.0
+0  7.700000E+01   8.947994E-05  2.521820E+02   7.157787E-05  2.442106E+02   1.790207E-03  7.971474E+02   3.228428E-03   0.0
+                    4.7440      182.2856         4.7437      182.2801         4.7450      182.4561       184.7442         0.0
+0  7.800000E+01   8.307659E-05  2.400702E+02   6.645587E-05  2.325092E+02   1.662072E-03  7.560947E+02   2.997394E-03   0.0
+                    4.6976      182.2075         4.6973      182.2018         4.6987      182.3814       184.6979         0.0
+0  7.900000E+01   7.728488E-05  2.289168E+02   6.182312E-05  2.217340E+02   1.546175E-03  7.182906E+02   2.788429E-03   0.0
+                    4.6571      182.1353         4.6568      182.1295         4.6582      182.3126       184.6573         0.0
+0  8.000000E+01   7.203058E-05  2.186150E+02   5.762025E-05  2.117813E+02   1.441033E-03  6.833723E+02   2.598855E-03   0.0
+                    4.6218      182.0683         4.6215      182.0624         4.6231      182.2491       184.6221         0.0
+0  8.100000E+01   6.725047E-05  2.090729E+02   5.379668E-05  2.025627E+02   1.345380E-03  6.510289E+02   2.426391E-03   0.0
+                    4.5913      182.0059         4.5909      182.0000         4.5926      182.1904       184.5915         0.0
+0  8.200000E+01   6.289041E-05  2.002116E+02   5.030909E-05  1.940017E+02   1.258131E-03  6.209926E+02   2.269082E-03   0.0
+                    4.5649      181.9478         4.5645      181.9418         4.5663      182.1359       184.5651         0.0
+0  8.300000E+01   5.890376E-05  1.919625E+02   4.712021E-05  1.860322E+02   1.178355E-03  5.930311E+02   2.125246E-03   0.0
+                    4.5423      181.8935         4.5419      181.8874         4.5438      182.0853       184.5425         0.0
+0  8.400000E+01   5.525021E-05  1.842659E+02   4.419776E-05  1.785965E+02   1.105245E-03  5.669422E+02   1.993429E-03   0.0
+                    4.5231      181.8426         4.5227      181.8364         4.5247      182.0382       184.5233         0.0
+0  8.500000E+01   5.189472E-05  1.770696E+02   4.151374E-05  1.716442E+02   1.038099E-03  5.425489E+02   1.872367E-03   0.0
+                    4.5070      181.7948         4.5066      181.7885         4.5087      181.9942       184.5071         0.0
+0  8.600000E+01   4.880674E-05  1.703278E+02   3.904369E-05  1.651309E+02   9.763053E-04  5.196957E+02   1.760956E-03   0.0
+                    4.4937      181.7498         4.4933      181.7434         4.4955      181.9532       184.4939         0.0
+0  8.700000E+01   4.595951E-05  1.640000E+02   3.676621E-05  1.590176E+02   9.193296E-04  4.982456E+02   1.658231E-03   0.0
+                    4.4830      181.7075         4.4825      181.7010         4.4849      181.9148       184.4831         0.0
+0  8.800000E+01   4.332951E-05  1.580503E+02   3.466250E-05  1.532696E+02   8.667008E-04  4.780770E+02   1.563345E-03   0.0
+                    4.4747      181.6674         4.4741      181.6608         4.4767      181.8788       184.4748         0.0
+0  8.900000E+01   4.089601E-05  1.524470E+02   3.271596E-05  1.478562E+02   8.180041E-04  4.590820E+02   1.475548E-03   0.0
+                    4.4685      181.6296         4.4679      181.6229         4.4707      181.8451       184.4685         0.0
+0  9.000000E+01   3.864066E-05  1.471615E+02   3.091194E-05  1.427499E+02   7.728724E-04  4.411644E+02   1.394180E-03   0.0
+                    4.4643      181.5937         4.4637      181.5869         4.4666      181.8135       184.4643         0.0
+0  9.100000E+01   3.654721E-05  1.421686E+02   2.923741E-05  1.379263E+02   7.309802E-04  4.242381E+02   1.318652E-03   0.0
+                    4.4619      181.5597         4.4613      181.5528         4.4644      181.7838       184.4619         0.0
+0  9.200000E+01   3.460116E-05  1.374454E+02   2.768078E-05  1.333632E+02   6.920377E-04  4.082259E+02   1.248443E-03   0.0
+                    4.4612      181.5273         4.4606      181.5204         4.4639      181.7559       184.4612         0.0
+0  9.300000E+01   3.278960E-05  1.329714E+02   2.623174E-05  1.290409E+02   6.557865E-04  3.930583E+02   1.183087E-03   0.0
+                    4.4621      181.4966         4.4614      181.4895         4.4649      181.7296       184.4621         0.0
+0  9.400000E+01   3.110099E-05  1.287282E+02   2.488103E-05  1.249415E+02   6.219953E-04  3.786726E+02   1.122166E-03   0.0
+                    4.4645      181.4673         4.4637      181.4601         4.4674      181.7049       184.4644         0.0
+0  9.500000E+01   2.952495E-05  1.246989E+02   2.362038E-05  1.210489E+02   5.904569E-04  3.650122E+02   1.065307E-03   0.0
+                    4.4682      181.4394         4.4674      181.4321         4.4713      181.6816       184.4680         0.0
+0  9.600000E+01   2.805218E-05  1.208686E+02   2.244233E-05  1.173483E+02   5.609851E-04  3.520255E+02   1.012174E-03   0.0
+                    4.4731      181.4127         4.4723      181.4053         4.4764      181.6597       184.4729         0.0
+0  9.700000E+01   2.667430E-05  1.172232E+02   2.134018E-05  1.138266E+02   5.334120E-04  3.396660E+02   9.624650E-04   0.0
+                    4.4792      181.3872         4.4784      181.3797         4.4827      181.6391       184.4790         0.0
+0  9.800000E+01   2.538374E-05  1.137504E+02   2.030788E-05  1.104715E+02   5.075862E-04  3.278911E+02   9.159061E-04   0.0
+                    4.4864      181.3628         4.4855      181.3552         4.4901      181.6197       184.4862         0.0
+0  9.900000E+01   2.417366E-05  1.104386E+02   1.933996E-05  1.072720E+02   4.833709E-04  3.166620E+02   8.722509E-04   0.0
+                    4.4947      181.3395         4.4937      181.3318         4.4986      181.6014       184.4943         0.0
+0  1.000000E+02   2.303786E-05  1.072774E+02   1.843144E-05  1.042180E+02   4.606419E-04  3.059432E+02   8.312756E-04   0.0
+                    4.5039      181.3171         4.5029      181.3093         4.5080      181.5842       184.5035         0.0
+1    SINE VIBRATION Y                                   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    18
+      MODEL SINE VIBRATION Y                                                                                                        
+0     Y-DIRECTION SINE INPUT                                                                                                        
+ * * * *  D B D I C T   P R I N T  * * * *      SUBDMAP = PRTSUM  ,  DMAP STATEMENT NO.     74
+
+
+
+0                                   * * * *  A N A L Y S I S  S U M M A R Y  T A B L E  * * * *
+0 SEID  PEID PROJ VERS APRCH      SEMG SEMR SEKR SELG SELR MODES DYNRED SOLLIN SOLNL LOOPID DESIGN CYCLE SENSITIVITY
+ -------------------------------------------------------------------------------------------------------------------
+     0     0    1    1 '        '    T    T    T    T    T     T      F      T     F     -1            0           F
+0SEID = SUPERELEMENT ID.
+ PEID = PRIMARY SUPERELEMENT ID OF IMAGE SUPERELEMENT.
+ PROJ = PROJECT ID NUMBER.
+ VERS = VERSION ID.
+ APRCH = BLANK FOR STRUCTURAL ANALYSIS.  HEAT FOR HEAT TRANSFER ANALYSIS.
+ SEMG = STIFFNESS AND MASS MATRIX GENERATION STEP.
+ SEMR = MASS MATRIX REDUCTION STEP (INCLUDES EIGENVALUE SOLUTION FOR MODES).
+ SEKR = STIFFNESS MATRIX REDUCTION STEP.
+ SELG = LOAD MATRIX GENERATION STEP.
+ SELR = LOAD MATRIX REDUCTION STEP. 
+ MODES = T (TRUE) IF NORMAL MODES OR BUCKLING MODES CALCULATED.
+ DYNRED = T (TRUE) MEANS GENERALIZED DYNAMIC AND/OR COMPONENT MODE REDUCTION PERFORMED.
+ SOLLIN = T (TRUE) IF LINEAR SOLUTION EXISTS IN DATABASE.
+ LOOPID = THE LAST LOOPID VALUE USED IN THE NONLINEAR ANALYSIS.  USEFUL FOR RESTARTS.
+ SOLNL = T (TRUE) IF NONLINEAR SOLUTION EXISTS IN DATABASE.
+ DESIGN CYCLE = THE LAST DESIGN CYCLE (ONLY VALID IN OPTIMIZATION).
+ SENSITIVITY = SENSITIVITY MATRIX GENERATION FLAG.
+ 
+ No PARAM values were set in the Control File.
+ 
+1                                        * * * END OF JOB * * *
+ 
+ 
+ No Symbolic Replacement variables or values were specified.
+

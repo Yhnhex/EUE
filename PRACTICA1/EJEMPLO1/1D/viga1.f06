@@ -1,0 +1,1275 @@
+1
+ 
+ 
+ 
+ 
+                      Warning: This computer program is protected by copyright law and international treaties.       
+                  Unauthorized use, reproduction or distribution of this computer program, or any portion of it, may 
+                                          result in severe civil and criminal penalties.                             
+                         Copyright (C) 2022 Hexagon AB and/or its subsidiaries. All rights reserved.                 
+ 
+ 
+                                              * * * * * * * * * * * * * * * * * * * *
+                                              * * * * * * * * * * * * * * * * * * * *
+                                              * *                                 * *
+                                              * *           Hexagon AB            * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *      M S C   N a s t r a n      * *
+                                              * *                                 * *
+                                              * *  S T U D E N T   E D I T I O N  * *
+                                              * *                                 * *
+                                              * *     Version 2022.1-CL872368     * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *          MAR 15, 2022           * *
+                                              * *                                 * *
+                                              * *              Intel              * *
+                                              * *MODEL Intel(R) Core(TM) i7-8750H * *
+                                              * *    Windows 10 Home 6.2 9200     * *
+                                              * * Compiled for 8664 (SINGLE Mode) * *
+                                              * *                                 * *
+                                              * * * * * * * * * * * * * * * * * * * *
+                                              * * * * * * * * * * * * * * * * * * * *
+
+ 
+ 
+                                                 This Student Edition version is  
+                                                    valid until MAR 15, 2024.     
+ 
+ 
+                  This program is being distributed as part of the Hexagon AB Student Edition. Use of this program   
+                     or its results at a commercial installation, for commercial purposes, or for production work    
+                                             I S   S T R I C T L Y  P R O H I B I T E D.                             
+                  ==================================== FOR EDUCATIONAL USE ONLY =====================================
+ 
+ 
+1News file - (Feb 15, 2022)
+  
+               Welcome to MSC Nastran 2022.1
+  
+  
+   MSC Nastran brings powerful new features and enhancements for engineering
+   solutions in several releases through the year. The focus in this release
+   is on error fixes to improve the stability and robustness of the program.
+  
+     MSC Nastran 2022.1 Features and Enhancements
+  
+     Nonlinear
+      - Contact enhancements
+        - Smooth surface output control
+        - Node-to-surface penetration control in transient analysis
+      - Support for MSC CoSim 2022
+        - scFlow temperature load input
+        - ITER method support
+        - Local coordinate system at coupling region
+        - Initial displacement specification in scFlow based on Nastran
+          analysis results
+  
+     High Performance Computing
+      - Support running DMP across multiple compute nodes on Windows
+  
+     Documentation
+     - The complete documentation set is provided in a separate installer and
+       when installed is available at: MSC_DOC_DIR/doc/pdf_nastran directory,
+       where MSC_DOC_DIR is the directory where documentation was installed.
+       This help set includes cross references between documents, and links to
+       how-to videos, and example files
+  
+     Individual MSC Nastran documents are available for download from the
+       Simcompanion Website at:
+       http://simcompanion.hexagon.com/
+  
+     These documents were updated for the MSC Nastran 2022.1 Release
+  
+         1.  MSC Nastran 2022.1 Installation and Operations Guide
+         2.  MSC Nastran 2022.1 Quick Reference Guide
+         3.  MSC Nastran 2022.1 Release Guide
+         4.  MSC Nastran 2022.1 Linear Statics Analysis User's Guide
+         5.  MSC Nastran 2022.1 Dynamic Analysis User's Guide
+         6.  MSC Nastran 2022.1 Superelements User's Guide
+         7.  MSC Nastran 2022.1 Rotordynamics User's Guide
+         8.  MSC Nastran 2022.1 Demonstration Problems Manual
+         9.  MSC Nastran 2022.1 Nastran Embedded Fatigue User's Guide
+        10.  MSC Nastran 2022.1 Design Sensitivity and Optimization
+        11.  MSC Nastran 2022.1 Nonlinear User's Guide SOL 400
+        12.  MSC Nastran 2022.1 DMAP Programmer's Guide
+1       13.  MSC Nastran 2022.1 High Performance Computing User's Guide
+        14.  MSC Nastran 2022.1 New Verification Manual
+        15.  MSC Nastran 2022.1 DEMATD Guide
+        16.  MSC Nastran 2022.1 Explicit Nonlinear (SOL 700) User's Guide
+  
+   Please refer to  MSC_DOC_DIR/doc/pdf_nastran/nastran_library.pdf
+   for the complete document set:
+  
+  
+     Feature Deprecation List
+     To streamline the MSC Nastran program and simplify ongoing maintenance
+     activity, some obsolete capabilities have been identified and tagged for
+     removal. This activity started in 2021 and continues through 2022.
+     Please review the list of features marked for deprecation below to
+     ensure that there will be no disruption to your use of MSC Nastran.
+     If you see a feature that you currently use and do not wish to lose,
+     contact MSC Technical Support to report it.
+  
+     Features tagged for removal:
+     - SOL 600 nonlinear solution sequence
+     - TAUCS solver
+     - Obsolete DMAP modules
+     - SSSALTERS
+  
+     Refer to the MSC Nastran Release Guide for more details.
+  
+  
+   Additional information about the release can be found at the MSC Nastran
+   Product Support page: http://simcompanion.hexagon.com
+  
+   The support page provides links to these valuable information:
+      * A searchable Knowledge Base containing examples and answers to thousands
+        of frequently asked questions written by MSC Software subject-matter
+        experts.
+      * Peer-to-peer Discussion Forums enabling you to post questions for your
+        MSC Software products and receive answers from other users worldwide.
+      * A list of known issues with the product and any workarounds.
+      * Instructions on how to contact technical support
+      * A mechanism for sending us product feedback or enhancement requests.
+      * Hardware and software requirements.
+      * Examples and Tutorials
+      * and much more.
+  
+   For information on training, please visit our Training web site
+  
+      https://www.mscsoftware.com/msc-training
+  
+1                                                       **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE     1
+                                                                                                                                    
+0        N A S T R A N    F I L E    A N D    S Y S T E M    P A R A M E T E R    E C H O                                           
+0                                                                                                                                   
+                                                                                                                                    
+                                                                                                                                    
+     NASTRAN BUFFSIZE=8193 $(C:/PROGRAM FILES/MSC.SOFTWARE/NAPA_SE/20221/NASTRAN/CONF
+     $ MSC.NASTRAN INPUT FILE CREATED ON APRIL     04, 2023 AT 12:28:27 BY           
+     $ PATRAN 2022.1  (STUDENT EDITION)                                              
+     $ DIRECT TEXT INPUT FOR NASTRAN SYSTEM CELL SECTION                             
+     $ DIRECT TEXT INPUT FOR FILE MANAGEMENT SECTION                                 
+     $ DIRECT TEXT INPUT FOR EXECUTIVE CONTROL                                       
+     $ NORMAL MODES ANALYSIS, DATABASE                                               
+1                                                       **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE     2
+                                                                                                                                    
+0        N A S T R A N    E X E C U T I V E    C O N T R O L    E C H O                                                             
+0                                                                                                                                   
+                                                                                                                                    
+                                                                                                                                    
+     SOL 103                                                                                 
+     CEND                                                                                    
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE     3
+                                                                                                                                    
+0                                                                                                                                   
+0                                        C A S E    C O N T R O L    E C H O                                                        
+                 COMMAND                                                                                                            
+                 COUNT                                                                                                              
+                  1      $ DIRECT TEXT INPUT FOR GLOBAL CASE CONTROL DATA                                        
+                  2      TITLE = MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07                                
+                  3      ECHO = NONE                                                                             
+                  4      $ USING NASTRAN DEFAULT VALUES FOR RESVEC                                               
+                  5      SUBCASE 1                                                                               
+                  6         SUBTITLE=FLEXION                                                                     
+                  7         METHOD = 1                                                                           
+                  8         SPC = 2                                                                              
+                  9         VECTOR(SORT1,REAL)=ALL                                                               
+                 10         SPCFORCES(SORT1,REAL)=ALL                                                            
+                 11      $ DIRECT TEXT INPUT FOR THIS SUBCASE                                                    
+                 12      BEGIN BULK                                                                              
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE     4
+                                                                                                                                    
+0                                                                                                                                   
+                                        M O D E L   S U M M A R Y          BULK = 0
+                                   ENTRY NAME        NUMBER OF ENTRIES
+                                   ----------        -----------------
+                                         CBAR                       60
+                                        CONM2                        1
+                                        EIGRL                        1
+                                         GRID                       61
+                                         MAT1                        1
+                                       MDLPRM                        1
+                                        PARAM                        1
+                                        PBARL                        1
+                                         SPC1                        1
+                                       SPCADD                        1
+
+ ^^^     
+ ^^^ >>> IFP OPERATIONS COMPLETE <<< 
+ ^^^     
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK PVT, TRAILER[101, 5, 0, 0, 0, 0, 0])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK CASECC, TRAILER[102, 1, 0, 1000, 0, 0, 0])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK GEOM1Q, TRAILER[101, 0, 0, 8, 0, 0, 0])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK EPT, TRAILER[101, 0, 4096, 0, 0, 0, 32])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK MPT, TRAILER[102, 32768, 0, 0, 0, 0, 0])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK GEOM2, TRAILER[103, 2, 256, 0, 0, 0, 0])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK GEOM4S, TRAILER[105, 0, 0, 0, 96, 0, 0])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (DATA BLOCK GEOM4S IS NOT SUPPORTED)
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK GEOM1, TRAILER[101, 0, 0, 8, 0, 0, 0])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK DYNAMIC, TRAILER[102, 256, 0, 0, 0, 0, 0])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK EDT, TRAILER[103, 0, 0, 0, 0, 0, 4])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK GEOM4, TRAILER[102, 0, 0, 0, 96, 0, 0])
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE     5
+                                                                                                                                    
+0                                                                                                                                   
+ *** USER INFORMATION MESSAGE 7310 (VECPRN)
+     ORIGIN OF SUPERELEMENT OR MODULE BASIC COORDINATE SYSTEM WILL BE USED AS REFERENCE LOCATION.
+     RESULTANTS ABOUT ORIGIN OF SUPERELEMENT OR MODULE BASIC COORDINATE SYSTEM IN SUPERELEMENT OR MODULE
+     BASIC SYSTEM COORDINATES.
+0                                                  OLOAD    RESULTANT       
+  SUBCASE/    LOAD
+  DAREA ID    TYPE       T1            T2            T3            R1            R2            R3
+0        1     FX    0.000000E+00     ----          ----          ----       0.000000E+00  0.000000E+00                             
+               FY       ----       0.000000E+00     ----       0.000000E+00     ----       0.000000E+00                             
+               FZ       ----          ----       0.000000E+00  0.000000E+00  0.000000E+00     ----                                  
+               MX       ----          ----          ----       0.000000E+00     ----          ----                                  
+               MY       ----          ----          ----          ----       0.000000E+00     ----                                  
+               MZ       ----          ----          ----          ----          ----       0.000000E+00                             
+             TOTALS  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+ *** USER INFORMATION MESSAGE 5010 (LNCILS)
+     STURM SEQUENCE DATA FOR EIGENVALUE EXTRACTION.
+     TRIAL EIGENVALUE = 1.708284D+06, CYCLES = 2.080176D+02 THE STURM COUNT = 2
+ *** USER INFORMATION MESSAGE 5010 (LNCILS)
+     STURM SEQUENCE DATA FOR EIGENVALUE EXTRACTION.
+     TRIAL EIGENVALUE = 1.327950D+09, CYCLES = 5.799773D+03 THE STURM COUNT = 10
+
+ TABLE OF SHIFTS:  (LNNRIGL)
+ SHIFT #        SHIFT VALUE         FREQUENCY, CYCLES     # EIGENVALUES BELOW    # NEW EIGENVALUES FOUND
+     1.        1.7082836E+06          2.0801762E+02                 2                       10
+     2.        1.3279498E+09          5.7997725E+03                10                        0
+
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE     6
+                                                                                                                                    
+0                                                                                                            SUBCASE 1              
+0
+
+
+                          E I G E N V A L U E  A N A L Y S I S   S U M M A R Y   (READ MODULE) 
+
+
+
+                                     BLOCK SIZE USED ......................     7
+
+                                     NUMBER OF DECOMPOSITIONS .............     2
+
+                                     NUMBER OF ROOTS FOUND ................    10
+
+                                     NUMBER OF SOLVES REQUIRED ............     7
+
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE     7
+                                                                                                                                    
+0                                                                                                            SUBCASE 1              
+ 
+                                              R E A L   E I G E N V A L U E S
+   MODE    EXTRACTION      EIGENVALUE            RADIANS             CYCLES            GENERALIZED         GENERALIZED
+    NO.       ORDER                                                                       MASS              STIFFNESS
+        1         1        8.364489E+04        2.892143E+02        4.602988E+01        1.000000E+00        8.364489E+04
+        2         2        8.364489E+04        2.892143E+02        4.602988E+01        1.000000E+00        8.364489E+04
+        3         3        6.245359E+06        2.499072E+03        3.977396E+02        1.000000E+00        6.245359E+06
+        4         4        4.904781E+07        7.003414E+03        1.114628E+03        1.000000E+00        4.904781E+07
+        5         5        4.904781E+07        7.003414E+03        1.114628E+03        1.000000E+00        4.904781E+07
+        6         6        3.148459E+08        1.774390E+04        2.824029E+03        1.000000E+00        3.148459E+08
+        7         7        3.148459E+08        1.774390E+04        2.824029E+03        1.000000E+00        3.148459E+08
+        8         8        7.234070E+08        2.689623E+04        4.280667E+03        1.000000E+00        7.234070E+08
+        9         9        8.862291E+08        2.976960E+04        4.737979E+03        1.000000E+00        8.862291E+08
+       10        10        8.862291E+08        2.976960E+04        4.737979E+03        1.000000E+00        8.862291E+08
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE     8
+                                                                                                                                    
+0                                                                                                            SUBCASE 1              
+ *** USER INFORMATION MESSAGE 7310 (VECPRN)
+     ORIGIN OF SUPERELEMENT OR MODULE BASIC COORDINATE SYSTEM WILL BE USED AS REFERENCE LOCATION.
+     RESULTANTS ABOUT ORIGIN OF SUPERELEMENT OR MODULE BASIC COORDINATE SYSTEM IN SUPERELEMENT OR MODULE
+     BASIC SYSTEM COORDINATES.
+0                                                  SPCFORCE RESULTANT       
+  SUBCASE/    LOAD
+  DAREA ID    TYPE       T1            T2            T3            R1            R2            R3
+0        1     FX    1.726817E+05     ----          ----          ----       0.000000E+00  0.000000E+00                             
+               FY       ----       3.034299E-08     ----       0.000000E+00     ----       0.000000E+00                             
+               FZ       ----          ----      -3.416351E+05  0.000000E+00  0.000000E+00     ----                                  
+               MX       ----          ----          ----      -2.031258E+05     ----          ----                                  
+               MY       ----          ----          ----          ----       0.000000E+00     ----                                  
+               MZ       ----          ----          ----          ----          ----      -1.026713E+05                             
+             TOTALS  1.726817E+05  3.034299E-08 -3.416351E+05 -2.031258E+05  0.000000E+00 -1.026713E+05
+0        2     FX   -3.416351E+05     ----          ----          ----       0.000000E+00  0.000000E+00                             
+               FY       ----       4.682859E-10     ----       0.000000E+00     ----       0.000000E+00                             
+               FZ       ----          ----      -1.726817E+05  0.000000E+00  0.000000E+00     ----                                  
+               MX       ----          ----          ----      -1.026713E+05     ----          ----                                  
+               MY       ----          ----          ----          ----       0.000000E+00     ----                                  
+               MZ       ----          ----          ----          ----          ----       2.031258E+05                             
+             TOTALS -3.416351E+05  4.682859E-10 -1.726817E+05 -1.026713E+05  0.000000E+00  2.031258E+05
+0        3     FX   -1.337292E-09     ----          ----          ----       0.000000E+00  0.000000E+00                             
+               FY       ----       2.875658E+07     ----       0.000000E+00     ----       0.000000E+00                             
+               FZ       ----          ----      -1.029974E-08  0.000000E+00  0.000000E+00     ----                                  
+               MX       ----          ----          ----      -7.680476E-10     ----          ----                                  
+               MY       ----          ----          ----          ----       0.000000E+00     ----                                  
+               MZ       ----          ----          ----          ----          ----       2.216502E-10                             
+             TOTALS -1.337292E-09  2.875658E+07 -1.029974E-08 -7.680476E-10  0.000000E+00  2.216502E-10
+0        4     FX    3.150128E+07     ----          ----          ----       0.000000E+00  0.000000E+00                             
+               FY       ----      -6.493059E-07     ----       0.000000E+00     ----       0.000000E+00                             
+               FZ       ----          ----      -1.524519E+07  0.000000E+00  0.000000E+00     ----                                  
+               MX       ----          ----          ----      -2.110347E+06     ----          ----                                  
+               MY       ----          ----          ----          ----       0.000000E+00     ----                                  
+               MZ       ----          ----          ----          ----          ----      -4.360631E+06                             
+             TOTALS  3.150128E+07 -6.493059E-07 -1.524519E+07 -2.110347E+06  0.000000E+00 -4.360631E+06
+0        5     FX   -1.524519E+07     ----          ----          ----       0.000000E+00  0.000000E+00                             
+               FY       ----      -1.450376E-07     ----       0.000000E+00     ----       0.000000E+00                             
+               FZ       ----          ----      -3.150128E+07  0.000000E+00  0.000000E+00     ----                                  
+               MX       ----          ----          ----      -4.360631E+06     ----          ----                                  
+               MY       ----          ----          ----          ----       0.000000E+00     ----                                  
+               MZ       ----          ----          ----          ----          ----       2.110347E+06                             
+             TOTALS -1.524519E+07 -1.450376E-07 -3.150128E+07 -4.360631E+06  0.000000E+00  2.110347E+06
+0        6     FX   -5.856507E+07     ----          ----          ----       0.000000E+00  0.000000E+00                             
+               FY       ----       7.856205E-03     ----       0.000000E+00     ----       0.000000E+00                             
+               FZ       ----          ----      -1.070594E+08  0.000000E+00  0.000000E+00     ----                                  
+               MX       ----          ----          ----      -6.737038E+06     ----          ----                                  
+               MY       ----          ----          ----          ----       0.000000E+00     ----                                  
+               MZ       ----          ----          ----          ----          ----       3.685385E+06                             
+             TOTALS -5.856507E+07  7.856205E-03 -1.070594E+08 -6.737038E+06  0.000000E+00  3.685385E+06
+0        7     FX   -1.070594E+08     ----          ----          ----       0.000000E+00  0.000000E+00                             
+               FY       ----       4.435617E-03     ----       0.000000E+00     ----       0.000000E+00                             
+               FZ       ----          ----       5.856507E+07  0.000000E+00  0.000000E+00     ----                                  
+               MX       ----          ----          ----       3.685385E+06     ----          ----                                  
+               MY       ----          ----          ----          ----       0.000000E+00     ----                                  
+               MZ       ----          ----          ----          ----          ----       6.737038E+06                             
+             TOTALS -1.070594E+08  4.435617E-03  5.856507E+07  3.685385E+06  0.000000E+00  6.737038E+06
+0        8     FX   -1.518861E+00     ----          ----          ----       0.000000E+00  0.000000E+00                             
+               FY       ----       4.293742E+08     ----       0.000000E+00     ----       0.000000E+00                             
+               FZ       ----          ----       2.624380E+00  0.000000E+00  0.000000E+00     ----                                  
+               MX       ----          ----          ----       7.794930E-03     ----          ----                                  
+               MY       ----          ----          ----          ----       0.000000E+00     ----                                  
+               MZ       ----          ----          ----          ----          ----       5.481232E-03                             
+             TOTALS -1.518861E+00  4.293742E+08  2.624380E+00  7.794930E-03  0.000000E+00  5.481232E-03
+0        9     FX   -1.352623E+08     ----          ----          ----       0.000000E+00  0.000000E+00                             
+               FY       ----      -8.082065E+00     ----       0.000000E+00     ----       0.000000E+00                             
+               FZ       ----          ----      -1.739301E+08  0.000000E+00  0.000000E+00     ----                                  
+               MX       ----          ----          ----      -6.014227E+06     ----          ----                                  
+               MY       ----          ----          ----          ----       0.000000E+00     ----                                  
+               MZ       ----          ----          ----          ----          ----       4.677156E+06                             
+             TOTALS -1.352623E+08 -8.082065E+00 -1.739301E+08 -6.014227E+06  0.000000E+00  4.677156E+06
+0       10     FX    1.739301E+08     ----          ----          ----       0.000000E+00  0.000000E+00                             
+               FY       ----      -2.275718E+01     ----       0.000000E+00     ----       0.000000E+00                             
+               FZ       ----          ----      -1.352623E+08  0.000000E+00  0.000000E+00     ----                                  
+               MX       ----          ----          ----      -4.677156E+06     ----          ----                                  
+               MY       ----          ----          ----          ----       0.000000E+00     ----                                  
+               MZ       ----          ----          ----          ----          ----      -6.014227E+06                             
+             TOTALS  1.739301E+08 -2.275718E+01 -1.352623E+08 -4.677156E+06  0.000000E+00 -6.014227E+06
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE     9
+                                                                                                                                    
+0                                                                                                            SUBCASE 1              
+0                                                  MAXIMUM  SPCFORCES       
+  SUBCASE/
+  DAREA ID        T1             T2             T3             R1             R2             R3
+0        1   1.7268172E+05  3.0342992E-08  3.4163511E+05  2.0312584E+05  0.0000000E+00  1.0267129E+05
+0        2   3.4163511E+05  4.6828591E-10  1.7268172E+05  1.0267129E+05  0.0000000E+00  2.0312584E+05
+0        3   1.3372924E-09  2.8756584E+07  1.0299737E-08  7.6804759E-10  0.0000000E+00  2.2165019E-10
+0        4   3.1501283E+07  6.4930593E-07  1.5245191E+07  2.1103473E+06  0.0000000E+00  4.3606308E+06
+0        5   1.5245191E+07  1.4503756E-07  3.1501283E+07  4.3606308E+06  0.0000000E+00  2.1103473E+06
+0        6   5.8565074E+07  7.8562049E-03  1.0705939E+08  6.7370381E+06  0.0000000E+00  3.6853855E+06
+0        7   1.0705939E+08  4.4356166E-03  5.8565074E+07  3.6853855E+06  0.0000000E+00  6.7370381E+06
+0        8   1.5188606E+00  4.2937416E+08  2.6243799E+00  7.7949296E-03  0.0000000E+00  5.4812321E-03
+0        9   1.3526233E+08  8.0820648E+00  1.7393013E+08  6.0142269E+06  0.0000000E+00  4.6771558E+06
+0       10   1.7393013E+08  2.2757176E+01  1.3526233E+08  4.6771558E+06  0.0000000E+00  6.0142269E+06
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    10
+                                                                                                                                    
+0                                                                                                            SUBCASE 1              
+0                                                  MAXIMUM  DISPLACEMENTS   
+  SUBCASE/
+  DAREA ID        T1             T2             T3             R1             R2             R3
+0        1   9.9798543E-02  6.4117596E-17  1.9744236E-01  4.5865077E-01  0.0000000E+00  2.3182806E-01
+0        2   1.9744236E-01  6.0489122E-18  9.9798543E-02  2.3182806E-01  0.0000000E+00  4.5865077E-01
+0        3   4.3332314E-17  2.2031291E-01  1.0095534E-16  3.4823025E-16  0.0000000E+00  2.4821182E-16
+0        4   9.8443469E-01  2.7919614E-15  4.7642170E-01  2.2058061E+00  0.0000000E+00  4.5578783E+00
+0        5   4.7642170E-01  1.0943513E-14  9.8443469E-01  4.5578783E+00  0.0000000E+00  2.2058061E+00
+0        6   5.3278346E-01  3.9066336E-12  9.7395037E-01  5.1629648E+00  0.0000000E+00  2.8243146E+00
+0        7   9.7395037E-01  2.1042223E-12  5.3278346E-01  2.8243146E+00  0.0000000E+00  5.1629648E+00
+0        8   2.0110524E-09  1.0533317E+00  2.9542584E-09  7.4617273E-09  0.0000000E+00  5.4995018E-09
+0        9   6.7810615E-01  4.3908911E-09  8.7195818E-01  4.6527586E+00  0.0000000E+00  3.6183665E+00
+0       10   8.7195820E-01  1.1314435E-08  6.7810615E-01  3.6183665E+00  0.0000000E+00  4.6527586E+00
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeOutput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK OLAMA, TRAILER[101, 10, 0, 0, 0, 0, 0])
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    11
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  8.364489E+04
+          CYCLES =  4.602988E+01         R E A L   E I G E N V E C T O R   N O .          1
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+             1      G     -9.979854E-02  -1.133268E-18   1.974424E-01   4.586508E-01   0.0            2.318281E-01
+          1000      G      0.0            0.0            0.0            0.0            0.0            0.0
+          1001      G     -1.548273E-04  -3.931003E-18   3.063118E-04   1.523966E-02   0.0            7.702989E-03
+          1002      G     -3.860310E-04  -7.970104E-18   7.637272E-04   3.022084E-02   0.0            1.527532E-02
+          1003      G     -6.923040E-04  -1.135576E-17   1.369661E-03   4.494353E-02   0.0            2.271700E-02
+          1004      G     -1.072340E-03  -1.351468E-17   2.121526E-03   5.940774E-02   0.0            3.002803E-02
+          1005      G     -1.524830E-03  -1.415173E-17   3.016739E-03   7.361347E-02   0.0            3.720841E-02
+          1006      G     -2.048469E-03  -1.301611E-17   4.052710E-03   8.756071E-02   0.0            4.425814E-02
+          1007      G     -2.641948E-03  -1.366045E-17   5.226855E-03   1.012495E-01   0.0            5.117722E-02
+          1008      G     -3.303961E-03  -1.632800E-17   6.536588E-03   1.146798E-01   0.0            5.796567E-02
+          1009      G     -4.033199E-03  -1.890758E-17   7.979319E-03   1.278517E-01   0.0            6.462347E-02
+          1010      G     -4.828357E-03  -2.022411E-17   9.552466E-03   1.407651E-01   0.0            7.115066E-02
+          1011      G     -5.688124E-03  -2.345220E-17   1.125344E-02   1.534201E-01   0.0            7.754721E-02
+          1012      G     -6.611193E-03  -2.753979E-17   1.307965E-02   1.658167E-01   0.0            8.381316E-02
+          1013      G     -7.596259E-03  -3.133734E-17   1.502851E-02   1.779550E-01   0.0            8.994851E-02
+          1014      G     -8.642011E-03  -3.431958E-17   1.709744E-02   1.898348E-01   0.0            9.595327E-02
+          1015      G     -9.747146E-03  -3.776954E-17   1.928384E-02   2.014564E-01   0.0            1.018275E-01
+          1016      G     -1.091035E-02  -4.163886E-17   2.158514E-02   2.128197E-01   0.0            1.075711E-01
+          1017      G     -1.213032E-02  -4.593307E-17   2.399874E-02   2.239247E-01   0.0            1.131842E-01
+          1018      G     -1.340575E-02  -4.881856E-17   2.652207E-02   2.347715E-01   0.0            1.186668E-01
+          1019      G     -1.473534E-02  -5.060189E-17   2.915253E-02   2.453602E-01   0.0            1.240189E-01
+          1020      G     -1.611776E-02  -5.118159E-17   3.188753E-02   2.556908E-01   0.0            1.292406E-01
+          1021      G     -1.755172E-02  -5.052100E-17   3.472449E-02   2.657633E-01   0.0            1.343318E-01
+          1022      G     -1.903592E-02  -5.186139E-17   3.766084E-02   2.755778E-01   0.0            1.392926E-01
+          1023      G     -2.056903E-02  -5.314325E-17   4.069397E-02   2.851344E-01   0.0            1.441231E-01
+          1024      G     -2.214977E-02  -5.746508E-17   4.382131E-02   2.944332E-01   0.0            1.488232E-01
+          1025      G     -2.377682E-02  -6.135258E-17   4.704028E-02   3.034742E-01   0.0            1.533930E-01
+          1026      G     -2.544888E-02  -6.310992E-17   5.034830E-02   3.122575E-01   0.0            1.578326E-01
+          1027      G     -2.716463E-02  -6.411760E-17   5.374276E-02   3.207833E-01   0.0            1.621420E-01
+          1028      G     -2.892279E-02  -6.380210E-17   5.722111E-02   3.290515E-01   0.0            1.663213E-01
+          1029      G     -3.072204E-02  -6.331018E-17   6.078076E-02   3.370624E-01   0.0            1.703704E-01
+          1030      G     -3.256108E-02  -6.137899E-17   6.441914E-02   3.448160E-01   0.0            1.742895E-01
+          1031      G     -3.443860E-02  -5.927045E-17   6.813365E-02   3.523124E-01   0.0            1.780786E-01
+          1032      G     -3.635332E-02  -5.798141E-17   7.192173E-02   3.595519E-01   0.0            1.817379E-01
+          1033      G     -3.830390E-02  -5.663926E-17   7.578080E-02   3.665344E-01   0.0            1.852672E-01
+          1034      G     -4.028907E-02  -5.614875E-17   7.970828E-02   3.732601E-01   0.0            1.886668E-01
+          1035      G     -4.230752E-02  -5.293668E-17   8.370160E-02   3.797293E-01   0.0            1.919367E-01
+          1036      G     -4.435796E-02  -5.016955E-17   8.775820E-02   3.859420E-01   0.0            1.950769E-01
+          1037      G     -4.643907E-02  -4.847873E-17   9.187549E-02   3.918984E-01   0.0            1.980876E-01
+          1038      G     -4.854957E-02  -4.886657E-17   9.605092E-02   3.975987E-01   0.0            2.009689E-01
+          1039      G     -5.068815E-02  -4.780496E-17   1.002819E-01   4.030430E-01   0.0            2.037207E-01
+          1040      G     -5.285352E-02  -4.821727E-17   1.045659E-01   4.082315E-01   0.0            2.063433E-01
+          1041      G     -5.504437E-02  -4.980152E-17   1.089003E-01   4.131645E-01   0.0            2.088367E-01
+          1042      G     -5.725942E-02  -4.921804E-17   1.132826E-01   4.178421E-01   0.0            2.112011E-01
+          1043      G     -5.949737E-02  -4.648725E-17   1.177102E-01   4.222646E-01   0.0            2.134364E-01
+          1044      G     -6.175694E-02  -4.482520E-17   1.221805E-01   4.264321E-01   0.0            2.155429E-01
+          1045      G     -6.403681E-02  -4.232928E-17   1.266910E-01   4.303449E-01   0.0            2.175207E-01
+          1046      G     -6.633571E-02  -4.058066E-17   1.312392E-01   4.340032E-01   0.0            2.193698E-01
+          1047      G     -6.865237E-02  -3.779951E-17   1.358225E-01   4.374072E-01   0.0            2.210904E-01
+          1048      G     -7.098546E-02  -3.235992E-17   1.404383E-01   4.405573E-01   0.0            2.226826E-01
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    12
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  8.364489E+04
+          CYCLES =  4.602988E+01         R E A L   E I G E N V E C T O R   N O .          1
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+          1049      G     -7.333371E-02  -2.564198E-17   1.450841E-01   4.434537E-01   0.0            2.241466E-01
+          1050      G     -7.569584E-02  -1.844013E-17   1.497574E-01   4.460966E-01   0.0            2.254825E-01
+          1051      G     -7.807058E-02  -1.426799E-17   1.544556E-01   4.484863E-01   0.0            2.266904E-01
+          1052      G     -8.045661E-02  -1.091811E-17   1.591761E-01   4.506231E-01   0.0            2.277704E-01
+          1053      G     -8.285267E-02  -9.258320E-18   1.639165E-01   4.525073E-01   0.0            2.287228E-01
+          1054      G     -8.525748E-02  -7.175122E-18   1.686742E-01   4.541392E-01   0.0            2.295477E-01
+          1055      G     -8.766975E-02  -4.213286E-18   1.734467E-01   4.555192E-01   0.0            2.302452E-01
+          1056      G     -9.008822E-02  -2.228084E-18   1.782314E-01   4.566475E-01   0.0            2.308155E-01
+          1057      G     -9.251160E-02   8.982868E-19   1.830258E-01   4.575244E-01   0.0            2.312587E-01
+          1058      G     -9.493863E-02   1.188850E-18   1.878275E-01   4.581504E-01   0.0            2.315751E-01
+          1059      G     -9.736806E-02   6.719844E-20   1.926339E-01   4.585257E-01   0.0            2.317649E-01
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    13
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  8.364489E+04
+          CYCLES =  4.602988E+01         R E A L   E I G E N V E C T O R   N O .          2
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+             1      G      1.974424E-01  -1.813471E-18   9.979854E-02   2.318281E-01   0.0           -4.586508E-01
+          1000      G      0.0            0.0            0.0            0.0            0.0            0.0
+          1001      G      3.063118E-04  -6.066750E-20   1.548273E-04   7.702989E-03   0.0           -1.523966E-02
+          1002      G      7.637272E-04  -8.464544E-20   3.860310E-04   1.527532E-02   0.0           -3.022084E-02
+          1003      G      1.369661E-03  -1.847546E-19   6.923040E-04   2.271700E-02   0.0           -4.494353E-02
+          1004      G      2.121526E-03  -2.903046E-19   1.072340E-03   3.002803E-02   0.0           -5.940774E-02
+          1005      G      3.016739E-03  -3.279712E-19   1.524830E-03   3.720841E-02   0.0           -7.361347E-02
+          1006      G      4.052710E-03  -3.469657E-19   2.048469E-03   4.425814E-02   0.0           -8.756071E-02
+          1007      G      5.226855E-03  -4.054780E-19   2.641948E-03   5.117722E-02   0.0           -1.012495E-01
+          1008      G      6.536588E-03  -4.626311E-19   3.303961E-03   5.796567E-02   0.0           -1.146798E-01
+          1009      G      7.979319E-03  -7.139524E-19   4.033199E-03   6.462347E-02   0.0           -1.278517E-01
+          1010      G      9.552466E-03  -5.263213E-19   4.828357E-03   7.115066E-02   0.0           -1.407651E-01
+          1011      G      1.125344E-02  -9.959561E-19   5.688124E-03   7.754721E-02   0.0           -1.534201E-01
+          1012      G      1.307965E-02  -1.402155E-19   6.611193E-03   8.381316E-02   0.0           -1.658167E-01
+          1013      G      1.502851E-02  -7.672389E-19   7.596259E-03   8.994851E-02   0.0           -1.779550E-01
+          1014      G      1.709744E-02  -1.206058E-18   8.642011E-03   9.595327E-02   0.0           -1.898348E-01
+          1015      G      1.928384E-02  -3.004475E-19   9.747146E-03   1.018275E-01   0.0           -2.014564E-01
+          1016      G      2.158514E-02  -6.574000E-19   1.091035E-02   1.075711E-01   0.0           -2.128197E-01
+          1017      G      2.399874E-02  -6.540682E-19   1.213032E-02   1.131842E-01   0.0           -2.239247E-01
+          1018      G      2.652207E-02  -8.821240E-19   1.340575E-02   1.186668E-01   0.0           -2.347715E-01
+          1019      G      2.915253E-02  -8.839475E-19   1.473534E-02   1.240189E-01   0.0           -2.453602E-01
+          1020      G      3.188753E-02  -8.976991E-20   1.611776E-02   1.292406E-01   0.0           -2.556908E-01
+          1021      G      3.472449E-02  -1.057246E-18   1.755172E-02   1.343318E-01   0.0           -2.657633E-01
+          1022      G      3.766084E-02  -6.671307E-19   1.903592E-02   1.392926E-01   0.0           -2.755778E-01
+          1023      G      4.069397E-02  -6.208352E-19   2.056903E-02   1.441231E-01   0.0           -2.851344E-01
+          1024      G      4.382131E-02   4.138308E-19   2.214977E-02   1.488232E-01   0.0           -2.944332E-01
+          1025      G      4.704028E-02  -6.002630E-19   2.377682E-02   1.533930E-01   0.0           -3.034742E-01
+          1026      G      5.034830E-02  -1.038686E-18   2.544888E-02   1.578326E-01   0.0           -3.122575E-01
+          1027      G      5.374276E-02   1.099891E-19   2.716463E-02   1.621420E-01   0.0           -3.207833E-01
+          1028      G      5.722111E-02  -1.079405E-18   2.892279E-02   1.663213E-01   0.0           -3.290515E-01
+          1029      G      6.078076E-02  -1.178348E-18   3.072204E-02   1.703704E-01   0.0           -3.370624E-01
+          1030      G      6.441914E-02  -1.207921E-18   3.256108E-02   1.742895E-01   0.0           -3.448160E-01
+          1031      G      6.813365E-02  -1.300097E-18   3.443860E-02   1.780786E-01   0.0           -3.523124E-01
+          1032      G      7.192173E-02  -6.601893E-19   3.635332E-02   1.817379E-01   0.0           -3.595519E-01
+          1033      G      7.578080E-02  -3.822877E-19   3.830390E-02   1.852672E-01   0.0           -3.665344E-01
+          1034      G      7.970828E-02  -6.836354E-19   4.028907E-02   1.886668E-01   0.0           -3.732601E-01
+          1035      G      8.370160E-02  -1.674362E-18   4.230752E-02   1.919367E-01   0.0           -3.797293E-01
+          1036      G      8.775820E-02  -1.886052E-18   4.435796E-02   1.950769E-01   0.0           -3.859420E-01
+          1037      G      9.187549E-02  -1.211933E-18   4.643907E-02   1.980876E-01   0.0           -3.918984E-01
+          1038      G      9.605092E-02  -1.979630E-18   4.854957E-02   2.009689E-01   0.0           -3.975987E-01
+          1039      G      1.002819E-01  -2.126338E-18   5.068815E-02   2.037207E-01   0.0           -4.030430E-01
+          1040      G      1.045659E-01  -5.267489E-19   5.285352E-02   2.063433E-01   0.0           -4.082315E-01
+          1041      G      1.089003E-01  -2.949728E-18   5.504437E-02   2.088367E-01   0.0           -4.131645E-01
+          1042      G      1.132826E-01  -6.670658E-19   5.725942E-02   2.112011E-01   0.0           -4.178421E-01
+          1043      G      1.177102E-01  -2.764522E-18   5.949737E-02   2.134364E-01   0.0           -4.222646E-01
+          1044      G      1.221805E-01  -7.159574E-19   6.175694E-02   2.155429E-01   0.0           -4.264321E-01
+          1045      G      1.266910E-01  -2.298524E-18   6.403681E-02   2.175207E-01   0.0           -4.303449E-01
+          1046      G      1.312392E-01  -1.549463E-18   6.633571E-02   2.193698E-01   0.0           -4.340032E-01
+          1047      G      1.358225E-01  -5.255313E-18   6.865237E-02   2.210904E-01   0.0           -4.374072E-01
+          1048      G      1.404383E-01  -6.048912E-18   7.098546E-02   2.226826E-01   0.0           -4.405573E-01
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    14
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  8.364489E+04
+          CYCLES =  4.602988E+01         R E A L   E I G E N V E C T O R   N O .          2
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+          1049      G      1.450841E-01  -2.009839E-18   7.333371E-02   2.241466E-01   0.0           -4.434537E-01
+          1050      G      1.497574E-01  -7.636169E-19   7.569584E-02   2.254825E-01   0.0           -4.460966E-01
+          1051      G      1.544556E-01  -3.517576E-18   7.807058E-02   2.266904E-01   0.0           -4.484863E-01
+          1052      G      1.591761E-01  -1.879870E-18   8.045661E-02   2.277704E-01   0.0           -4.506231E-01
+          1053      G      1.639165E-01  -1.941211E-18   8.285267E-02   2.287228E-01   0.0           -4.525073E-01
+          1054      G      1.686742E-01  -4.013235E-18   8.525748E-02   2.295477E-01   0.0           -4.541392E-01
+          1055      G      1.734467E-01  -3.437700E-18   8.766975E-02   2.302452E-01   0.0           -4.555192E-01
+          1056      G      1.782314E-01  -4.289970E-18   9.008822E-02   2.308155E-01   0.0           -4.566475E-01
+          1057      G      1.830258E-01  -3.606942E-18   9.251160E-02   2.312587E-01   0.0           -4.575244E-01
+          1058      G      1.878275E-01  -4.351660E-18   9.493863E-02   2.315751E-01   0.0           -4.581504E-01
+          1059      G      1.926339E-01  -4.661920E-18   9.736806E-02   2.317649E-01   0.0           -4.585257E-01
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    15
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  6.245359E+06
+          CYCLES =  3.977396E+02         R E A L   E I G E N V E C T O R   N O .          3
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+             1      G     -1.152149E-18  -2.203129E-01  -6.224846E-18   5.409171E-17   0.0            2.482118E-16
+          1000      G      0.0            0.0            0.0            0.0            0.0            0.0
+          1001      G      9.820762E-19  -3.725481E-03   7.208619E-18   5.421553E-17   0.0           -1.626459E-17
+          1002      G      1.215531E-18  -7.450872E-03   1.556798E-17   9.708611E-17   0.0           -2.936185E-17
+          1003      G      2.068577E-18  -1.117608E-02   2.622740E-17   1.324071E-16   0.0           -4.410696E-17
+          1004      G      3.524900E-18  -1.490103E-02   3.527065E-17   1.616495E-16   0.0           -6.265667E-17
+          1005      G      4.948058E-18  -1.862561E-02   4.463656E-17   1.771356E-16   0.0           -7.612767E-17
+          1006      G      9.551047E-18  -2.234974E-02   5.406124E-17   1.806367E-16   0.0           -8.925277E-17
+          1007      G      1.398468E-17  -2.607334E-02   6.568618E-17   1.859784E-16   0.0           -9.584826E-17
+          1008      G      1.685967E-17  -2.979631E-02   7.523701E-17   1.702176E-16   0.0           -9.904878E-17
+          1009      G      2.088138E-17  -3.351856E-02   8.013124E-17   1.611105E-16   0.0           -1.070964E-16
+          1010      G      2.193342E-17  -3.724001E-02   8.717843E-17   1.418451E-16   0.0           -1.027958E-16
+          1011      G      2.133200E-17  -4.096055E-02   9.416756E-17   1.026424E-16   0.0           -9.713995E-17
+          1012      G      2.409638E-17  -4.468011E-02   9.497013E-17   8.012637E-17   0.0           -1.076535E-16
+          1013      G      2.710988E-17  -4.839859E-02   9.470375E-17   4.204151E-17   0.0           -1.090714E-16
+          1014      G      2.939649E-17  -5.211591E-02   9.532232E-17   1.696937E-17   0.0           -1.003227E-16
+          1015      G      3.224015E-17  -5.583197E-02   9.653219E-17  -4.097078E-18   0.0           -9.400790E-17
+          1016      G      3.263556E-17  -5.954669E-02   9.960898E-17  -4.039041E-17   0.0           -9.399962E-17
+          1017      G      3.623272E-17  -6.325997E-02   9.854967E-17  -7.690602E-17   0.0           -9.169040E-17
+          1018      G      3.776725E-17  -6.697173E-02   1.009553E-16  -1.136828E-16   0.0           -6.449012E-17
+          1019      G      4.115423E-17  -7.068188E-02   9.578641E-17  -1.620709E-16   0.0           -6.434285E-17
+          1020      G      3.917172E-17  -7.439032E-02   9.310975E-17  -1.882492E-16   0.0           -4.616047E-17
+          1021      G      4.333231E-17  -7.809697E-02   8.488979E-17  -2.075881E-16   0.0           -2.315996E-17
+          1022      G      4.154042E-17  -8.180174E-02   7.800635E-17  -2.478244E-16   0.0           -2.503177E-17
+          1023      G      4.006597E-17  -8.550453E-02   7.464509E-17  -2.606536E-16   0.0           -1.918108E-18
+          1024      G      3.496535E-17  -8.920528E-02   7.426230E-17  -2.779511E-16   0.0           -8.174766E-18
+          1025      G      3.557478E-17  -9.290386E-02   6.536193E-17  -3.101115E-16   0.0           -3.428649E-18
+          1026      G      3.403694E-17  -9.660022E-02   6.157283E-17  -3.175956E-16   0.0            1.374070E-17
+          1027      G      3.582670E-17  -1.002942E-01   4.696865E-17  -3.261957E-16   0.0            1.411671E-17
+          1028      G      3.400355E-17  -1.039858E-01   5.079661E-17  -3.373749E-16   0.0            1.396705E-17
+          1029      G      2.998992E-17  -1.076749E-01   3.801674E-17  -3.439534E-16   0.0            2.019816E-17
+          1030      G      2.975362E-17  -1.113615E-01   3.206805E-17  -3.482302E-16   0.0            1.414367E-17
+          1031      G      2.795978E-17  -1.150453E-01   2.948172E-17  -3.387739E-16   0.0            1.505281E-17
+          1032      G      2.543019E-17  -1.187264E-01   1.811462E-17  -3.326889E-16   0.0            9.622271E-18
+          1033      G      3.213800E-17  -1.224045E-01   7.789163E-18  -3.179772E-16   0.0            1.075956E-17
+          1034      G      2.488067E-17  -1.260798E-01   9.221539E-19  -3.058941E-16   0.0            5.558851E-18
+          1035      G      3.202430E-17  -1.297520E-01   9.348704E-19  -2.821633E-16   0.0            2.747219E-18
+          1036      G      3.322467E-17  -1.334211E-01  -3.841100E-18  -2.598548E-16   0.0            3.012531E-18
+          1037      G      4.142881E-17  -1.370870E-01  -7.253679E-18  -2.391656E-16   0.0            1.205698E-17
+          1038      G      3.852093E-17  -1.407495E-01  -9.210399E-18  -2.153771E-16   0.0            3.080463E-17
+          1039      G      3.714568E-17  -1.444087E-01  -1.126113E-17  -1.995601E-16   0.0            5.999147E-17
+          1040      G      3.724205E-17  -1.480644E-01  -1.411947E-17  -1.819621E-16   0.0            6.513279E-17
+          1041      G      2.930222E-17  -1.517165E-01  -1.929767E-17  -1.647444E-16   0.0            5.940056E-17
+          1042      G      3.111955E-17  -1.553650E-01  -1.896221E-17  -1.412264E-16   0.0            7.907903E-17
+          1043      G      3.134581E-17  -1.590098E-01  -2.057275E-17  -1.046634E-16   0.0            9.683850E-17
+          1044      G      2.988726E-17  -1.626507E-01  -2.125302E-17  -1.005085E-16   0.0            8.021039E-17
+          1045      G      3.394076E-17  -1.662876E-01  -2.486564E-17  -8.945568E-17   0.0            1.131454E-16
+          1046      G      3.484945E-17  -1.699206E-01  -2.306450E-17  -5.307055E-17   0.0            1.105624E-16
+          1047      G      3.081372E-17  -1.735495E-01  -2.170881E-17  -3.966665E-17   0.0            1.325861E-16
+          1048      G      2.882927E-17  -1.771742E-01  -2.099016E-17  -4.254355E-17   0.0            1.305626E-16
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    16
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  6.245359E+06
+          CYCLES =  3.977396E+02         R E A L   E I G E N V E C T O R   N O .          3
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+          1049      G      2.963313E-17  -1.807946E-01  -2.333031E-17  -7.038719E-18   0.0            1.384706E-16
+          1050      G      2.741719E-17  -1.844107E-01  -2.135038E-17  -1.290211E-17   0.0            1.379020E-16
+          1051      G      2.940169E-17  -1.880224E-01  -2.204893E-17   1.372358E-17   0.0            1.604544E-16
+          1052      G      2.954777E-17  -1.916295E-01  -1.856899E-17   3.203911E-17   0.0            1.488909E-16
+          1053      G      3.273755E-17  -1.952320E-01  -1.417859E-17   2.325072E-17   0.0            1.641890E-16
+          1054      G      3.564723E-17  -1.988298E-01  -1.086821E-17   4.765995E-17   0.0            1.879043E-16
+          1055      G      2.700658E-17  -2.024228E-01  -9.958741E-18   4.672068E-17   0.0            2.099532E-16
+          1056      G      2.171889E-17  -2.060109E-01  -1.117820E-17   4.349972E-17   0.0            2.038164E-16
+          1057      G      2.019194E-17  -2.095940E-01  -8.077975E-18   3.402785E-17   0.0            2.157896E-16
+          1058      G      2.288538E-17  -2.131722E-01  -6.984578E-18   5.511962E-17   0.0            2.405006E-16
+          1059      G      2.578071E-18  -2.167452E-01  -1.001577E-17   4.558181E-17   0.0            2.466013E-16
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    17
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  4.904781E+07
+          CYCLES =  1.114628E+03         R E A L   E I G E N V E C T O R   N O .          4
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+             1      G      2.049884E-02   5.136653E-17  -9.920506E-03  -2.205806E+00   0.0           -4.557878E+00
+          1000      G      0.0            0.0            0.0            0.0            0.0            0.0
+          1001      G     -2.280824E-02   8.411906E-17   1.103815E-02   1.539057E-01   0.0            3.180168E-01
+          1002      G     -4.865511E-02   1.015135E-16   2.354687E-02   2.962827E-01   0.0            6.122118E-01
+          1003      G     -7.727716E-02   1.394704E-16   3.739864E-02   4.271501E-01   0.0            8.826242E-01
+          1004      G     -1.084088E-01   3.817542E-17   5.246492E-02   5.465415E-01   0.0            1.129324E+00
+          1005      G     -1.417827E-01  -1.101796E-16   6.861638E-02   6.545067E-01   0.0            1.352413E+00
+          1006      G     -1.771307E-01  -1.791947E-16   8.572320E-02   7.511124E-01   0.0            1.552031E+00
+          1007      G     -2.141841E-01  -2.471128E-16   1.036554E-01   8.364439E-01   0.0            1.728352E+00
+          1008      G     -2.526747E-01  -2.944272E-16   1.222831E-01   9.106060E-01   0.0            1.881594E+00
+          1009      G     -2.923351E-01  -3.407780E-16   1.414769E-01   9.737233E-01   0.0            2.012014E+00
+          1010      G     -3.328996E-01  -5.120530E-16   1.611083E-01   1.025942E+00   0.0            2.119913E+00
+          1011      G     -3.741047E-01  -5.365252E-16   1.810497E-01   1.067428E+00   0.0            2.205637E+00
+          1012      G     -4.156901E-01  -6.286062E-16   2.011752E-01   1.098372E+00   0.0            2.269576E+00
+          1013      G     -4.573994E-01  -7.576585E-16   2.213605E-01   1.118984E+00   0.0            2.312167E+00
+          1014      G     -4.989803E-01  -1.013321E-15   2.414838E-01   1.129498E+00   0.0            2.333892E+00
+          1015      G     -5.401859E-01  -1.162958E-15   2.614255E-01   1.130169E+00   0.0            2.335279E+00
+          1016      G     -5.807754E-01  -1.327018E-15   2.810689E-01   1.121276E+00   0.0            2.316903E+00
+          1017      G     -6.205140E-01  -1.440819E-15   3.003006E-01   1.103117E+00   0.0            2.279382E+00
+          1018      G     -6.591747E-01  -1.484974E-15   3.190106E-01   1.076015E+00   0.0            2.223380E+00
+          1019      G     -6.965382E-01  -1.717035E-15   3.370929E-01   1.040311E+00   0.0            2.149604E+00
+          1020      G     -7.323937E-01  -1.943523E-15   3.544453E-01   9.963678E-01   0.0            2.058804E+00
+          1021      G     -7.665395E-01  -2.131444E-15   3.709703E-01   9.445675E-01   0.0            1.951769E+00
+          1022      G     -7.987841E-01  -2.207848E-15   3.865752E-01   8.853106E-01   0.0            1.829326E+00
+          1023      G     -8.289458E-01  -2.435555E-15   4.011721E-01   8.190159E-01   0.0            1.692340E+00
+          1024      G     -8.568540E-01  -2.354047E-15   4.146785E-01   7.461184E-01   0.0            1.541712E+00
+          1025      G     -8.823496E-01  -2.401738E-15   4.270172E-01   6.670689E-01   0.0            1.378371E+00
+          1026      G     -9.052853E-01  -2.450643E-15   4.381170E-01   5.823321E-01   0.0            1.203278E+00
+          1027      G     -9.255256E-01  -2.498849E-15   4.479124E-01   4.923865E-01   0.0            1.017423E+00
+          1028      G     -9.429483E-01  -2.721435E-15   4.563442E-01   3.977212E-01   0.0            8.218152E-01
+          1029      G     -9.574439E-01  -2.791961E-15   4.633594E-01   2.988359E-01   0.0            6.174874E-01
+          1030      G     -9.689161E-01  -2.695263E-15   4.689114E-01   1.962382E-01   0.0            4.054889E-01
+          1031      G     -9.772822E-01  -2.611278E-15   4.729602E-01   9.044393E-02   0.0            1.868852E-01
+          1032      G     -9.824735E-01  -2.380917E-15   4.754725E-01  -1.802734E-02   0.0           -3.725007E-02
+          1033      G     -9.844347E-01  -2.210648E-15   4.764217E-01  -1.286510E-01   0.0           -2.658327E-01
+          1034      G     -9.831250E-01  -1.892857E-15   4.757879E-01  -2.409014E-01   0.0           -4.977769E-01
+          1035      G     -9.785175E-01  -1.747816E-15   4.735580E-01  -3.542526E-01   0.0           -7.319956E-01
+          1036      G     -9.705994E-01  -1.648427E-15   4.697260E-01  -4.681805E-01   0.0           -9.674059E-01
+          1037      G     -9.593719E-01  -1.417418E-15   4.642924E-01  -5.821636E-01   0.0           -1.202930E+00
+          1038      G     -9.448502E-01  -1.158458E-15   4.572646E-01  -6.956859E-01   0.0           -1.437502E+00
+          1039      G     -9.270636E-01  -1.076560E-15   4.486567E-01  -8.082379E-01   0.0           -1.670070E+00
+          1040      G     -9.060545E-01  -8.725108E-16   4.384893E-01  -9.193199E-01   0.0           -1.899600E+00
+          1041      G     -8.818793E-01  -5.094646E-16   4.267896E-01  -1.028441E+00   0.0           -2.125078E+00
+          1042      G     -8.546071E-01  -3.748303E-16   4.135910E-01  -1.135124E+00   0.0           -2.345517E+00
+          1043      G     -8.243199E-01  -3.364916E-16   3.989334E-01  -1.238904E+00   0.0           -2.559959E+00
+          1044      G     -7.911120E-01  -2.471180E-16   3.828623E-01  -1.339332E+00   0.0           -2.767475E+00
+          1045      G     -7.550902E-01  -2.724365E-16   3.654294E-01  -1.435977E+00   0.0           -2.967172E+00
+          1046      G     -7.163718E-01  -9.098749E-17   3.466914E-01  -1.528425E+00   0.0           -3.158199E+00
+          1047      G     -6.750859E-01   1.450840E-16   3.267109E-01  -1.616283E+00   0.0           -3.339740E+00
+          1048      G     -6.313719E-01   3.678230E-16   3.055554E-01  -1.699178E+00   0.0           -3.511028E+00
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    18
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  4.904781E+07
+          CYCLES =  1.114628E+03         R E A L   E I G E N V E C T O R   N O .          4
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+          1049      G     -5.853790E-01   4.611376E-16   2.832968E-01  -1.776762E+00   0.0           -3.671339E+00
+          1050      G     -5.372653E-01   5.307135E-16   2.600120E-01  -1.848708E+00   0.0           -3.820004E+00
+          1051      G     -4.871976E-01   5.550710E-16   2.357815E-01  -1.914718E+00   0.0           -3.956401E+00
+          1052      G     -4.353512E-01   5.996497E-16   2.106902E-01  -1.974517E+00   0.0           -4.079964E+00
+          1053      G     -3.819077E-01   5.630704E-16   1.848260E-01  -2.027858E+00   0.0           -4.190183E+00
+          1054      G     -3.270553E-01   5.792108E-16   1.582799E-01  -2.074523E+00   0.0           -4.286607E+00
+          1055      G     -2.709880E-01   4.773425E-16   1.311459E-01  -2.114322E+00   0.0           -4.368845E+00
+          1056      G     -2.139042E-01   5.144954E-16   1.035199E-01  -2.147096E+00   0.0           -4.436565E+00
+          1057      G     -1.560068E-01   2.955810E-16   7.550023E-02  -2.172715E+00   0.0           -4.489501E+00
+          1058      G     -9.750159E-02   1.401539E-16   4.718634E-02  -2.191079E+00   0.0           -4.527448E+00
+          1059      G     -3.859591E-02   1.269968E-16   1.867867E-02  -2.202122E+00   0.0           -4.550265E+00
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    19
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  4.904781E+07
+          CYCLES =  1.114628E+03         R E A L   E I G E N V E C T O R   N O .          5
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+             1      G     -9.920506E-03  -2.104815E-16  -2.049884E-02  -4.557878E+00   0.0            2.205806E+00
+          1000      G      0.0            0.0            0.0            0.0            0.0            0.0
+          1001      G      1.103815E-02   1.878994E-17   2.280824E-02   3.180168E-01   0.0           -1.539057E-01
+          1002      G      2.354687E-02   2.820823E-16   4.865511E-02   6.122118E-01   0.0           -2.962827E-01
+          1003      G      3.739864E-02   3.129247E-16   7.727716E-02   8.826242E-01   0.0           -4.271501E-01
+          1004      G      5.246492E-02   4.704093E-16   1.084088E-01   1.129324E+00   0.0           -5.465415E-01
+          1005      G      6.861638E-02   4.973935E-16   1.417827E-01   1.352413E+00   0.0           -6.545067E-01
+          1006      G      8.572320E-02  -1.194869E-16   1.771307E-01   1.552031E+00   0.0           -7.511124E-01
+          1007      G      1.036554E-01  -1.920659E-16   2.141841E-01   1.728352E+00   0.0           -8.364439E-01
+          1008      G      1.222831E-01   3.509285E-16   2.526747E-01   1.881594E+00   0.0           -9.106060E-01
+          1009      G      1.414769E-01   4.286901E-16   2.923351E-01   2.012014E+00   0.0           -9.737233E-01
+          1010      G      1.611083E-01   5.884682E-16   3.328996E-01   2.119913E+00   0.0           -1.025942E+00
+          1011      G      1.810497E-01   7.021711E-16   3.741047E-01   2.205637E+00   0.0           -1.067428E+00
+          1012      G      2.011752E-01   1.472658E-15   4.156901E-01   2.269576E+00   0.0           -1.098372E+00
+          1013      G      2.213605E-01   1.895517E-15   4.573994E-01   2.312167E+00   0.0           -1.118984E+00
+          1014      G      2.414838E-01   2.594119E-15   4.989803E-01   2.333892E+00   0.0           -1.129498E+00
+          1015      G      2.614255E-01   3.167904E-15   5.401859E-01   2.335279E+00   0.0           -1.130169E+00
+          1016      G      2.810689E-01   3.893886E-15   5.807754E-01   2.316903E+00   0.0           -1.121276E+00
+          1017      G      3.003006E-01   4.716744E-15   6.205140E-01   2.279382E+00   0.0           -1.103117E+00
+          1018      G      3.190106E-01   5.254356E-15   6.591747E-01   2.223380E+00   0.0           -1.076015E+00
+          1019      G      3.370929E-01   5.994219E-15   6.965382E-01   2.149604E+00   0.0           -1.040311E+00
+          1020      G      3.544453E-01   6.343605E-15   7.323937E-01   2.058804E+00   0.0           -9.963678E-01
+          1021      G      3.709703E-01   6.078140E-15   7.665395E-01   1.951769E+00   0.0           -9.445675E-01
+          1022      G      3.865752E-01   6.442132E-15   7.987841E-01   1.829326E+00   0.0           -8.853106E-01
+          1023      G      4.011721E-01   7.128604E-15   8.289458E-01   1.692340E+00   0.0           -8.190159E-01
+          1024      G      4.146785E-01   7.816894E-15   8.568540E-01   1.541712E+00   0.0           -7.461184E-01
+          1025      G      4.270172E-01   8.799595E-15   8.823496E-01   1.378371E+00   0.0           -6.670689E-01
+          1026      G      4.381170E-01   9.355044E-15   9.052853E-01   1.203278E+00   0.0           -5.823321E-01
+          1027      G      4.479124E-01   9.705654E-15   9.255256E-01   1.017423E+00   0.0           -4.923865E-01
+          1028      G      4.563442E-01   1.052439E-14   9.429483E-01   8.218152E-01   0.0           -3.977212E-01
+          1029      G      4.633594E-01   1.094351E-14   9.574439E-01   6.174874E-01   0.0           -2.988359E-01
+          1030      G      4.689114E-01   1.069300E-14   9.689161E-01   4.054889E-01   0.0           -1.962382E-01
+          1031      G      4.729602E-01   1.035486E-14   9.772822E-01   1.868852E-01   0.0           -9.044393E-02
+          1032      G      4.754725E-01   9.832407E-15   9.824735E-01  -3.725007E-02   0.0            1.802734E-02
+          1033      G      4.764217E-01   9.508586E-15   9.844347E-01  -2.658327E-01   0.0            1.286510E-01
+          1034      G      4.757879E-01   8.769843E-15   9.831250E-01  -4.977769E-01   0.0            2.409014E-01
+          1035      G      4.735580E-01   7.656157E-15   9.785175E-01  -7.319956E-01   0.0            3.542526E-01
+          1036      G      4.697260E-01   6.812426E-15   9.705994E-01  -9.674059E-01   0.0            4.681805E-01
+          1037      G      4.642924E-01   6.023090E-15   9.593719E-01  -1.202930E+00   0.0            5.821636E-01
+          1038      G      4.572646E-01   5.452017E-15   9.448502E-01  -1.437502E+00   0.0            6.956859E-01
+          1039      G      4.486567E-01   4.689843E-15   9.270636E-01  -1.670070E+00   0.0            8.082379E-01
+          1040      G      4.384893E-01   4.136222E-15   9.060545E-01  -1.899600E+00   0.0            9.193199E-01
+          1041      G      4.267896E-01   3.332300E-15   8.818793E-01  -2.125078E+00   0.0            1.028441E+00
+          1042      G      4.135910E-01   2.937798E-15   8.546071E-01  -2.345517E+00   0.0            1.135124E+00
+          1043      G      3.989334E-01   2.286195E-15   8.243199E-01  -2.559959E+00   0.0            1.238904E+00
+          1044      G      3.828623E-01   2.265918E-15   7.911120E-01  -2.767475E+00   0.0            1.339332E+00
+          1045      G      3.654294E-01   2.171800E-15   7.550902E-01  -2.967172E+00   0.0            1.435977E+00
+          1046      G      3.466914E-01   1.981848E-15   7.163718E-01  -3.158199E+00   0.0            1.528425E+00
+          1047      G      3.267109E-01   1.549813E-15   6.750859E-01  -3.339740E+00   0.0            1.616283E+00
+          1048      G      3.055554E-01   7.979891E-16   6.313719E-01  -3.511028E+00   0.0            1.699178E+00
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    20
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  4.904781E+07
+          CYCLES =  1.114628E+03         R E A L   E I G E N V E C T O R   N O .          5
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+          1049      G      2.832968E-01  -1.473315E-17   5.853790E-01  -3.671339E+00   0.0            1.776762E+00
+          1050      G      2.600120E-01  -1.099065E-15   5.372653E-01  -3.820004E+00   0.0            1.848708E+00
+          1051      G      2.357815E-01  -1.433235E-15   4.871976E-01  -3.956401E+00   0.0            1.914718E+00
+          1052      G      2.106902E-01  -1.436433E-15   4.353512E-01  -4.079964E+00   0.0            1.974517E+00
+          1053      G      1.848260E-01  -7.970154E-16   3.819077E-01  -4.190183E+00   0.0            2.027858E+00
+          1054      G      1.582799E-01  -5.920183E-16   3.270553E-01  -4.286607E+00   0.0            2.074523E+00
+          1055      G      1.311459E-01  -6.612728E-16   2.709880E-01  -4.368845E+00   0.0            2.114322E+00
+          1056      G      1.035199E-01  -9.028961E-16   2.139042E-01  -4.436565E+00   0.0            2.147096E+00
+          1057      G      7.550023E-02  -9.753457E-16   1.560068E-01  -4.489501E+00   0.0            2.172715E+00
+          1058      G      4.718634E-02  -6.842869E-16   9.750159E-02  -4.527448E+00   0.0            2.191079E+00
+          1059      G      1.867867E-02  -5.084567E-16   3.859591E-02  -4.550265E+00   0.0            2.202122E+00
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    21
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  3.148459E+08
+          CYCLES =  2.824029E+03         R E A L   E I G E N V E C T O R   N O .          6
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+             1      G      6.637296E-03  -8.641450E-15   1.213325E-02   4.718799E+00   0.0           -2.581341E+00
+          1000      G      0.0            0.0            0.0            0.0            0.0            0.0
+          1001      G      4.073082E-02  -1.017789E-12   7.445763E-02   4.692362E-01   0.0           -2.566879E-01
+          1002      G      8.355051E-02  -1.919510E-12   1.527338E-01   8.577331E-01   0.0           -4.692087E-01
+          1003      G      1.277492E-01  -2.690739E-12   2.335309E-01   1.166296E+00   0.0           -6.380032E-01
+          1004      G      1.726145E-01  -3.264992E-12   3.155464E-01   1.396296E+00   0.0           -7.638207E-01
+          1005      G      2.174384E-01  -3.671457E-12   3.974865E-01   1.549679E+00   0.0           -8.477263E-01
+          1006      G      2.615259E-01  -3.906634E-12   4.780802E-01   1.628974E+00   0.0           -8.911032E-01
+          1007      G      3.042017E-01  -3.905787E-12   5.560934E-01   1.637286E+00   0.0           -8.956500E-01
+          1008      G      3.448182E-01  -3.623192E-12   6.303421E-01   1.578282E+00   0.0           -8.633729E-01
+          1009      G      3.827622E-01  -3.187574E-12   6.997052E-01   1.456169E+00   0.0           -7.965734E-01
+          1010      G      4.174617E-01  -2.669612E-12   7.631374E-01   1.275665E+00   0.0           -6.978316E-01
+          1011      G      4.483925E-01  -2.010279E-12   8.196801E-01   1.041957E+00   0.0           -5.699855E-01
+          1012      G      4.750835E-01  -1.217966E-12   8.684724E-01   7.606582E-01   0.0           -4.161055E-01
+          1013      G      4.971223E-01  -3.731136E-13   9.087603E-01   4.377545E-01   0.0           -2.394663E-01
+          1014      G      5.141593E-01   4.433162E-13   9.399047E-01   7.954926E-02   0.0           -4.351611E-02
+          1015      G      5.259119E-01   1.236181E-12   9.613889E-01  -3.074027E-01   0.0            1.681596E-01
+          1016      G      5.321670E-01   1.979327E-12   9.728234E-01  -7.163584E-01   0.0            3.918721E-01
+          1017      G      5.327835E-01   2.640963E-12   9.739504E-01  -1.140458E+00   0.0            6.238688E-01
+          1018      G      5.276935E-01   3.147805E-12   9.646457E-01  -1.572800E+00   0.0            8.603740E-01
+          1019      G      5.169029E-01   3.515517E-12   9.449200E-01  -2.006508E+00   0.0            1.097627E+00
+          1020      G      5.004909E-01   3.692269E-12   9.149181E-01  -2.434810E+00   0.0            1.331922E+00
+          1021      G      4.786087E-01   3.642548E-12   8.749166E-01  -2.851110E+00   0.0            1.559653E+00
+          1022      G      4.514775E-01   3.409844E-12   8.253196E-01  -3.249063E+00   0.0            1.777346E+00
+          1023      G      4.193855E-01   3.025150E-12   7.666541E-01  -3.622638E+00   0.0            1.981704E+00
+          1024      G      3.826840E-01   2.519434E-12   6.995623E-01  -3.966190E+00   0.0            2.169639E+00
+          1025      G      3.417833E-01   1.863600E-12   6.247941E-01  -4.274519E+00   0.0            2.338305E+00
+          1026      G      2.971471E-01   1.020797E-12   5.431972E-01  -4.542930E+00   0.0            2.485135E+00
+          1027      G      2.492870E-01   9.110368E-14   4.557070E-01  -4.767279E+00   0.0            2.607861E+00
+          1028      G      1.987559E-01  -7.674324E-13   3.633340E-01  -4.944025E+00   0.0            2.704547E+00
+          1029      G      1.461411E-01  -1.515147E-12   2.671521E-01  -5.070263E+00   0.0            2.773604E+00
+          1030      G      9.205722E-02  -2.197940E-12   1.682844E-01  -5.143758E+00   0.0            2.813808E+00
+          1031      G      3.713867E-02  -2.726566E-12   6.789103E-02  -5.162965E+00   0.0            2.824315E+00
+          1032      G     -1.796883E-02  -3.021692E-12  -3.284777E-02  -5.127046E+00   0.0            2.804666E+00
+          1033      G     -7.261511E-02  -3.104537E-12  -1.327434E-01  -5.035877E+00   0.0            2.754794E+00
+          1034      G     -1.261547E-01  -3.017435E-12  -2.306160E-01  -4.890047E+00   0.0            2.675019E+00
+          1035      G     -1.779540E-01  -2.835599E-12  -3.253073E-01  -4.690842E+00   0.0            2.566048E+00
+          1036      G     -2.273995E-01  -2.552036E-12  -4.156958E-01  -4.440234E+00   0.0            2.428957E+00
+          1037      G     -2.739050E-01  -2.181393E-12  -5.007097E-01  -4.140852E+00   0.0            2.265185E+00
+          1038      G     -3.169188E-01  -1.701762E-12  -5.793407E-01  -3.795944E+00   0.0            2.076508E+00
+          1039      G     -3.559306E-01  -1.153256E-12  -6.506560E-01  -3.409343E+00   0.0            1.865025E+00
+          1040      G     -3.904783E-01  -5.486609E-13  -7.138107E-01  -2.985407E+00   0.0            1.633117E+00
+          1041      G     -4.201526E-01   1.181148E-14  -7.680564E-01  -2.528978E+00   0.0            1.383436E+00
+          1042      G     -4.446027E-01   4.930626E-13  -8.127522E-01  -2.045310E+00   0.0            1.118853E+00
+          1043      G     -4.635406E-01   8.579711E-13  -8.473715E-01  -1.540009E+00   0.0            8.424367E-01
+          1044      G     -4.767446E-01   1.239696E-12  -8.715089E-01  -1.018961E+00   0.0            5.574056E-01
+          1045      G     -4.840617E-01   1.580388E-12  -8.848849E-01  -4.882661E-01   0.0            2.670979E-01
+          1046      G     -4.854101E-01   1.853201E-12  -8.873498E-01   4.585359E-02   0.0           -2.508345E-02
+          1047      G     -4.807796E-01   1.977221E-12  -8.788852E-01   5.771122E-01   0.0           -3.156997E-01
+          1048      G     -4.702324E-01   1.934090E-12  -8.596044E-01   1.099243E+00   0.0           -6.013227E-01
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    22
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  3.148459E+08
+          CYCLES =  2.824029E+03         R E A L   E I G E N V E C T O R   N O .          6
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+          1049      G     -4.539018E-01   1.764009E-12  -8.297514E-01   1.606083E+00   0.0           -8.785809E-01
+          1050      G     -4.319909E-01   1.506284E-12  -7.896974E-01   2.091640E+00   0.0           -1.144197E+00
+          1051      G     -4.047701E-01   1.273562E-12  -7.399365E-01   2.550175E+00   0.0           -1.395031E+00
+          1052      G     -3.725741E-01   1.013525E-12  -6.810810E-01   2.976258E+00   0.0           -1.628113E+00
+          1053      G     -3.357975E-01   7.861957E-13  -6.138518E-01   3.364852E+00   0.0           -1.840687E+00
+          1054      G     -2.948901E-01   5.549081E-13  -5.390713E-01   3.711366E+00   0.0           -2.030241E+00
+          1055      G     -2.503515E-01   3.378509E-13  -4.576529E-01   4.011710E+00   0.0           -2.194540E+00
+          1056      G     -2.027251E-01   1.560946E-13  -3.705900E-01   4.262350E+00   0.0           -2.331648E+00
+          1057      G     -1.525917E-01   1.110349E-14  -2.789440E-01   4.460350E+00   0.0           -2.439961E+00
+          1058      G     -1.005620E-01  -2.674294E-14  -1.838315E-01   4.603405E+00   0.0           -2.518216E+00
+          1059      G     -4.726890E-02  -1.970040E-14  -8.640952E-02   4.689875E+00   0.0           -2.565518E+00
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    23
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  3.148459E+08
+          CYCLES =  2.824029E+03         R E A L   E I G E N V E C T O R   N O .          7
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+             1      G      1.213325E-02   2.614663E-15  -6.637296E-03  -2.581341E+00   0.0           -4.718799E+00
+          1000      G      0.0            0.0            0.0            0.0            0.0            0.0
+          1001      G      7.445763E-02  -5.746442E-13  -4.073082E-02  -2.566879E-01   0.0           -4.692362E-01
+          1002      G      1.527338E-01  -1.085783E-12  -8.355051E-02  -4.692087E-01   0.0           -8.577331E-01
+          1003      G      2.335309E-01  -1.524811E-12  -1.277492E-01  -6.380032E-01   0.0           -1.166296E+00
+          1004      G      3.155464E-01  -1.851845E-12  -1.726145E-01  -7.638207E-01   0.0           -1.396296E+00
+          1005      G      3.974865E-01  -2.043700E-12  -2.174384E-01  -8.477263E-01   0.0           -1.549679E+00
+          1006      G      4.780802E-01  -2.104222E-12  -2.615259E-01  -8.911032E-01   0.0           -1.628974E+00
+          1007      G      5.560934E-01  -2.060659E-12  -3.042017E-01  -8.956500E-01   0.0           -1.637286E+00
+          1008      G      6.303421E-01  -1.879479E-12  -3.448182E-01  -8.633729E-01   0.0           -1.578282E+00
+          1009      G      6.997052E-01  -1.612984E-12  -3.827622E-01  -7.965734E-01   0.0           -1.456169E+00
+          1010      G      7.631374E-01  -1.299377E-12  -4.174617E-01  -6.978316E-01   0.0           -1.275665E+00
+          1011      G      8.196801E-01  -9.175865E-13  -4.483925E-01  -5.699855E-01   0.0           -1.041957E+00
+          1012      G      8.684724E-01  -4.813146E-13  -4.750835E-01  -4.161055E-01   0.0           -7.606582E-01
+          1013      G      9.087603E-01  -5.596219E-14  -4.971223E-01  -2.394663E-01   0.0           -4.377545E-01
+          1014      G      9.399047E-01   3.289191E-13  -5.141593E-01  -4.351611E-02   0.0           -7.954926E-02
+          1015      G      9.613889E-01   7.067558E-13  -5.259119E-01   1.681596E-01   0.0            3.074027E-01
+          1016      G      9.728234E-01   1.001075E-12  -5.321670E-01   3.918721E-01   0.0            7.163584E-01
+          1017      G      9.739504E-01   1.234646E-12  -5.327835E-01   6.238688E-01   0.0            1.140458E+00
+          1018      G      9.646457E-01   1.415921E-12  -5.276935E-01   8.603740E-01   0.0            1.572800E+00
+          1019      G      9.449200E-01   1.552400E-12  -5.169029E-01   1.097627E+00   0.0            2.006508E+00
+          1020      G      9.149181E-01   1.626947E-12  -5.004909E-01   1.331922E+00   0.0            2.434810E+00
+          1021      G      8.749166E-01   1.633912E-12  -4.786087E-01   1.559653E+00   0.0            2.851110E+00
+          1022      G      8.253196E-01   1.552248E-12  -4.514775E-01   1.777346E+00   0.0            3.249063E+00
+          1023      G      7.666541E-01   1.361643E-12  -4.193855E-01   1.981704E+00   0.0            3.622638E+00
+          1024      G      6.995623E-01   1.072860E-12  -3.826840E-01   2.169639E+00   0.0            3.966190E+00
+          1025      G      6.247941E-01   7.244521E-13  -3.417833E-01   2.338305E+00   0.0            4.274519E+00
+          1026      G      5.431972E-01   3.416003E-13  -2.971471E-01   2.485135E+00   0.0            4.542930E+00
+          1027      G      4.557070E-01  -6.743117E-14  -2.492870E-01   2.607861E+00   0.0            4.767279E+00
+          1028      G      3.633340E-01  -4.428446E-13  -1.987559E-01   2.704547E+00   0.0            4.944025E+00
+          1029      G      2.671521E-01  -7.728231E-13  -1.461411E-01   2.773604E+00   0.0            5.070263E+00
+          1030      G      1.682844E-01  -1.081806E-12  -9.205722E-02   2.813808E+00   0.0            5.143758E+00
+          1031      G      6.789103E-02  -1.348825E-12  -3.713867E-02   2.824315E+00   0.0            5.162965E+00
+          1032      G     -3.284777E-02  -1.536325E-12   1.796883E-02   2.804666E+00   0.0            5.127046E+00
+          1033      G     -1.327434E-01  -1.606172E-12   7.261511E-02   2.754794E+00   0.0            5.035877E+00
+          1034      G     -2.306160E-01  -1.566446E-12   1.261547E-01   2.675019E+00   0.0            4.890047E+00
+          1035      G     -3.253073E-01  -1.415270E-12   1.779540E-01   2.566048E+00   0.0            4.690842E+00
+          1036      G     -4.156958E-01  -1.166852E-12   2.273995E-01   2.428957E+00   0.0            4.440234E+00
+          1037      G     -5.007097E-01  -8.184217E-13   2.739050E-01   2.265185E+00   0.0            4.140852E+00
+          1038      G     -5.793407E-01  -4.125322E-13   3.169188E-01   2.076508E+00   0.0            3.795944E+00
+          1039      G     -6.506560E-01   1.314994E-14   3.559306E-01   1.865025E+00   0.0            3.409343E+00
+          1040      G     -7.138107E-01   3.800693E-13   3.904783E-01   1.633117E+00   0.0            2.985407E+00
+          1041      G     -7.680564E-01   6.652559E-13   4.201526E-01   1.383436E+00   0.0            2.528978E+00
+          1042      G     -8.127522E-01   8.703045E-13   4.446027E-01   1.118853E+00   0.0            2.045310E+00
+          1043      G     -8.473715E-01   1.000778E-12   4.635406E-01   8.424367E-01   0.0            1.540009E+00
+          1044      G     -8.715089E-01   1.062463E-12   4.767446E-01   5.574056E-01   0.0            1.018961E+00
+          1045      G     -8.848849E-01   1.009229E-12   4.840617E-01   2.670979E-01   0.0            4.882661E-01
+          1046      G     -8.873498E-01   8.714797E-13   4.854101E-01  -2.508345E-02   0.0           -4.585359E-02
+          1047      G     -8.788852E-01   6.825694E-13   4.807796E-01  -3.156997E-01   0.0           -5.771122E-01
+          1048      G     -8.596044E-01   4.693709E-13   4.702324E-01  -6.013227E-01   0.0           -1.099243E+00
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    24
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  3.148459E+08
+          CYCLES =  2.824029E+03         R E A L   E I G E N V E C T O R   N O .          7
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+          1049      G     -8.297514E-01   2.058764E-13   4.539018E-01  -8.785809E-01   0.0           -1.606083E+00
+          1050      G     -7.896974E-01  -7.464339E-14   4.319909E-01  -1.144197E+00   0.0           -2.091640E+00
+          1051      G     -7.399365E-01  -3.053766E-13   4.047701E-01  -1.395031E+00   0.0           -2.550175E+00
+          1052      G     -6.810810E-01  -4.689411E-13   3.725741E-01  -1.628113E+00   0.0           -2.976258E+00
+          1053      G     -6.138518E-01  -5.411085E-13   3.357975E-01  -1.840687E+00   0.0           -3.364852E+00
+          1054      G     -5.390713E-01  -5.412572E-13   2.948901E-01  -2.030241E+00   0.0           -3.711366E+00
+          1055      G     -4.576529E-01  -5.086093E-13   2.503515E-01  -2.194540E+00   0.0           -4.011710E+00
+          1056      G     -3.705900E-01  -4.608674E-13   2.027251E-01  -2.331648E+00   0.0           -4.262350E+00
+          1057      G     -2.789440E-01  -3.890776E-13   1.525917E-01  -2.439961E+00   0.0           -4.460350E+00
+          1058      G     -1.838315E-01  -2.687879E-13   1.005620E-01  -2.518216E+00   0.0           -4.603405E+00
+          1059      G     -8.640952E-02  -1.319564E-13   4.726890E-02  -2.565518E+00   0.0           -4.689875E+00
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    25
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  7.234070E+08
+          CYCLES =  4.280667E+03         R E A L   E I G E N V E C T O R   N O .          8
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+             1      G     -2.251117E-12   2.966545E-02  -1.070662E-12  -8.002396E-10   0.0            1.665412E-09
+          1000      G      0.0            0.0            0.0            0.0            0.0            0.0
+          1001      G      1.022252E-09  -5.562640E-02  -1.765675E-09   4.030493E-10   0.0            1.598792E-10
+          1002      G      1.830467E-09  -1.110976E-01  -2.954258E-09   2.474581E-09   0.0            1.352543E-09
+          1003      G      2.011052E-09  -1.662588E-01  -2.729803E-09   5.117018E-09   0.0            3.117370E-09
+          1004      G      1.363181E-09  -2.209560E-01  -1.513151E-09   7.005416E-09   0.0            4.654122E-09
+          1005      G      6.411666E-10  -2.750368E-01  -4.708684E-11   7.461727E-09   0.0            5.471733E-09
+          1006      G     -1.485836E-10  -3.283501E-01   1.162507E-09   6.495068E-09   0.0            5.499502E-09
+          1007      G     -8.707571E-10  -3.807473E-01   1.450513E-09   4.758073E-09   0.0            4.737653E-09
+          1008      G     -1.581573E-09  -4.320820E-01   1.311378E-09   2.990826E-09   0.0            3.222061E-09
+          1009      G     -1.799679E-09  -4.822111E-01   9.822490E-10   1.521013E-09   0.0            1.219565E-09
+          1010      G     -1.225893E-09  -5.309948E-01   7.354320E-10   3.927257E-10   0.0           -5.688644E-10
+          1011      G     -5.971013E-10  -5.782967E-01   3.586428E-10  -3.798991E-10   0.0           -1.686366E-09
+          1012      G      9.684731E-11  -6.239851E-01   1.664986E-10  -8.363604E-10   0.0           -2.077849E-09
+          1013      G      1.041726E-09  -6.679323E-01  -6.154456E-10  -7.536021E-10   0.0           -1.569694E-09
+          1014      G      1.513568E-09  -7.100158E-01  -9.314922E-10  -6.090626E-11   0.0           -2.812766E-10
+          1015      G      1.224105E-09  -7.501182E-01  -1.153298E-09   9.340415E-10   0.0            1.106697E-09
+          1016      G      9.841397E-10  -7.881276E-01  -9.922124E-10   1.973711E-09   0.0            2.208945E-09
+          1017      G      2.994232E-10  -8.239378E-01  -4.528369E-10   2.641088E-09   0.0            2.815263E-09
+          1018      G     -3.831902E-10  -8.574491E-01   1.197717E-10   2.711909E-09   0.0            2.683165E-09
+          1019      G     -6.964556E-10  -8.885678E-01   2.848676E-10   2.397776E-09   0.0            2.020376E-09
+          1020      G     -6.128939E-10  -9.172072E-01   5.539170E-10   1.866128E-09   0.0            1.250970E-09
+          1021      G     -5.071780E-10  -9.432872E-01   6.111941E-10   1.171705E-09   0.0            6.022653E-10
+          1022      G     -1.416231E-10  -9.667353E-01   5.695387E-10   4.816807E-10   0.0            2.257793E-10
+          1023      G      1.765757E-11  -9.874858E-01   7.899452E-10  -3.035960E-10   0.0            1.474442E-10
+          1024      G      9.670245E-12  -1.005481E+00   2.786867E-10  -9.284754E-10   0.0            1.559828E-10
+          1025      G     -4.565001E-10  -1.020671E+00  -1.375533E-11  -1.111141E-09   0.0           -1.007828E-10
+          1026      G     -7.288723E-10  -1.033012E+00  -2.776632E-10  -9.929670E-10   0.0           -7.746596E-10
+          1027      G     -7.334697E-10  -1.042472E+00  -5.663309E-10  -5.747497E-10   0.0           -1.613259E-09
+          1028      G     -5.179299E-11  -1.049022E+00  -2.648017E-10  -1.702501E-10   0.0           -2.088677E-09
+          1029      G      9.341321E-10  -1.052645E+00  -5.829134E-10   2.416707E-10   0.0           -1.648372E-09
+          1030      G      1.502152E-09  -1.053332E+00  -5.065866E-10   7.924975E-10   0.0           -3.513956E-10
+          1031      G      1.560493E-09  -1.051079E+00  -7.699516E-10   1.457596E-09   0.0            1.294407E-09
+          1032      G      7.597356E-10  -1.045893E+00  -5.317382E-10   2.153282E-09   0.0            2.536639E-09
+          1033      G      9.033702E-13  -1.037789E+00   1.448525E-10   2.357972E-09   0.0            2.929026E-09
+          1034      G     -9.079122E-10  -1.026789E+00   1.066162E-09   1.689232E-09   0.0            2.415132E-09
+          1035      G     -1.182333E-09  -1.012925E+00   1.574984E-09   2.340216E-10   0.0            1.262005E-09
+          1036      G     -7.716206E-10  -9.962335E-01   1.116241E-09  -1.246764E-09   0.0            1.998536E-10
+          1037      G     -5.704549E-10  -9.767625E-01   2.967400E-10  -2.021640E-09   0.0           -5.154140E-10
+          1038      G     -4.560003E-10  -9.545661E-01  -3.831601E-10  -1.974772E-09   0.0           -1.058719E-09
+          1039      G     -3.152297E-10  -9.297063E-01  -1.014681E-09  -1.211513E-09   0.0           -1.470197E-09
+          1040      G     -1.507454E-10  -9.022522E-01  -9.000387E-10  -1.707733E-10   0.0           -1.726307E-09
+          1041      G      2.543223E-10  -8.722807E-01  -2.146683E-10   4.174454E-10   0.0           -1.681070E-09
+          1042      G      5.311877E-10  -8.398753E-01   2.150329E-10   3.823179E-10   0.0           -1.270683E-09
+          1043      G      8.844923E-10  -8.051263E-01  -1.166132E-10   2.962695E-10   0.0           -5.196744E-10
+          1044      G      1.250187E-09  -7.681308E-01  -4.876581E-10   6.093406E-10   0.0            6.304486E-10
+          1045      G      6.213076E-10  -7.289923E-01  -5.893921E-10   1.195555E-09   0.0            1.639428E-09
+          1046      G     -1.336375E-11  -6.878194E-01  -1.759833E-10   1.619697E-09   0.0            1.955207E-09
+          1047      G     -3.942232E-10  -6.447273E-01   3.547311E-10   1.530319E-09   0.0            1.721026E-09
+          1048      G     -5.322523E-10  -5.998363E-01   1.086072E-09   7.473483E-10   0.0            1.213979E-09
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    26
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  7.234070E+08
+          CYCLES =  4.280667E+03         R E A L   E I G E N V E C T O R   N O .          8
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+          1049      G     -5.421120E-10  -5.532715E-01   1.113737E-09  -4.547027E-10   0.0            6.373092E-10
+          1050      G     -5.991612E-10  -5.051630E-01   1.024803E-09  -1.627367E-09   0.0            3.013298E-11
+          1051      G     -6.748808E-10  -4.556447E-01  -1.360032E-10  -2.114469E-09   0.0           -6.514858E-10
+          1052      G     -2.882463E-10  -4.048553E-01  -9.284774E-10  -1.525233E-09   0.0           -1.165323E-09
+          1053      G     -6.594081E-11  -3.529362E-01  -9.794308E-10  -4.781302E-10   0.0           -1.349310E-09
+          1054      G     -6.851850E-11  -3.000323E-01  -8.093816E-10   4.965076E-10   0.0           -1.424740E-09
+          1055      G      4.587490E-10  -2.462912E-01  -4.106475E-10   1.156383E-09   0.0           -1.220694E-09
+          1056      G      6.908548E-10  -1.918630E-01   1.127713E-10   1.309894E-09   0.0           -6.026960E-10
+          1057      G      8.342696E-10  -1.368993E-01   7.334112E-10   8.337858E-10   0.0            2.200224E-10
+          1058      G      5.186397E-10  -8.155372E-02   7.396986E-10   1.396322E-11   0.0            9.482195E-10
+          1059      G      4.050810E-10  -2.597988E-02   3.653188E-10  -5.983850E-10   0.0            1.445372E-09
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    27
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  8.862291E+08
+          CYCLES =  4.737979E+03         R E A L   E I G E N V E C T O R   N O .          9
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+             1      G     -5.884244E-03   1.952387E-11  -7.566389E-03  -4.091364E+00   0.0            3.181780E+00
+          1000      G      0.0            0.0            0.0            0.0            0.0            0.0
+          1001      G      9.262152E-02   1.047050E-09   1.190995E-01   3.892490E-01   0.0           -3.027119E-01
+          1002      G      1.861170E-01   1.958738E-09   2.393227E-01   6.480877E-01   0.0           -5.040061E-01
+          1003      G      2.778244E-01   2.720767E-09   3.572468E-01   7.800940E-01   0.0           -6.066651E-01
+          1004      G      3.651508E-01   3.275294E-09   4.695375E-01   7.912228E-01   0.0           -6.153197E-01
+          1005      G      4.456363E-01   3.701743E-09   5.730316E-01   6.897269E-01   0.0           -5.363882E-01
+          1006      G      5.170149E-01   3.992844E-09   6.648153E-01   4.860133E-01   0.0           -3.779638E-01
+          1007      G      5.772713E-01   3.994780E-09   7.422974E-01   1.924380E-01   0.0           -1.496556E-01
+          1008      G      6.246903E-01   3.636763E-09   8.032721E-01  -1.769535E-01   0.0            1.376135E-01
+          1009      G      6.578995E-01   3.108240E-09   8.459749E-01  -6.067328E-01   0.0            4.718452E-01
+          1010      G      6.759031E-01   2.532496E-09   8.691253E-01  -1.080438E+00   0.0            8.402374E-01
+          1011      G      6.781062E-01   1.786444E-09   8.719582E-01  -1.580949E+00   0.0            1.229475E+00
+          1012      G      6.643286E-01   8.929244E-10   8.542420E-01  -2.090885E+00   0.0            1.626044E+00
+          1013      G      6.348090E-01  -7.138860E-11   8.162835E-01  -2.593017E+00   0.0            2.016543E+00
+          1014      G      5.901975E-01  -9.795439E-10   7.589189E-01  -3.070669E+00   0.0            2.388004E+00
+          1015      G      5.315385E-01  -1.848196E-09   6.834908E-01  -3.508118E+00   0.0            2.728200E+00
+          1016      G      4.602431E-01  -2.702775E-09   5.918140E-01  -3.890965E+00   0.0            3.025934E+00
+          1017      G      3.780527E-01  -3.477737E-09   4.861276E-01  -4.206481E+00   0.0            3.271304E+00
+          1018      G      2.869931E-01  -4.021139E-09   3.690366E-01  -4.443906E+00   0.0            3.455945E+00
+          1019      G      1.893233E-01  -4.331702E-09   2.434457E-01  -4.594703E+00   0.0            3.573218E+00
+          1020      G      8.747680E-02  -4.390891E-09   1.124840E-01  -4.652759E+00   0.0            3.618366E+00
+          1021      G     -1.600128E-02  -4.149463E-09  -2.057561E-02  -4.614520E+00   0.0            3.588629E+00
+          1022      G     -1.185198E-01  -3.690985E-09  -1.524013E-01  -4.479070E+00   0.0            3.483292E+00
+          1023      G     -2.175071E-01  -3.066174E-09  -2.796864E-01  -4.248135E+00   0.0            3.303698E+00
+          1024      G     -3.104784E-01  -2.382851E-09  -3.992357E-01  -3.926028E+00   0.0            3.053201E+00
+          1025      G     -3.950986E-01  -1.540678E-09  -5.080465E-01  -3.519527E+00   0.0            2.737073E+00
+          1026      G     -4.692429E-01  -4.328073E-10  -6.033866E-01  -3.037686E+00   0.0            2.362353E+00
+          1027      G     -5.310504E-01   7.485764E-10  -6.828632E-01  -2.491602E+00   0.0            1.937674E+00
+          1028      G     -5.789732E-01   1.786144E-09  -7.444858E-01  -1.894113E+00   0.0            1.473017E+00
+          1029      G     -6.118153E-01   2.602181E-09  -7.867165E-01  -1.259467E+00   0.0            9.794646E-01
+          1030      G     -6.287634E-01   3.290458E-09  -8.085096E-01  -6.029458E-01   0.0            4.689001E-01
+          1031      G     -6.294080E-01   3.749077E-09  -8.093386E-01   5.952270E-02   0.0           -4.628973E-02
+          1032      G     -6.137543E-01   3.837487E-09  -7.892099E-01   7.117933E-01   0.0           -5.535489E-01
+          1033      G     -5.822218E-01   3.670065E-09  -7.486632E-01   1.337906E+00   0.0           -1.040465E+00
+          1034      G     -5.356342E-01   3.322918E-09  -6.887574E-01   1.922511E+00   0.0           -1.495102E+00
+          1035      G     -4.751978E-01   3.018394E-09  -6.110439E-01   2.451260E+00   0.0           -1.906301E+00
+          1036      G     -4.024715E-01   2.726011E-09  -5.175272E-01   2.911181E+00   0.0           -2.263973E+00
+          1037      G     -3.193270E-01   2.434815E-09  -4.106139E-01   3.291007E+00   0.0           -2.559357E+00
+          1038      G     -2.279009E-01   2.027172E-09  -2.930516E-01   3.581472E+00   0.0           -2.785246E+00
+          1039      G     -1.305407E-01   1.555257E-09  -1.678587E-01   3.775552E+00   0.0           -2.936178E+00
+          1040      G     -2.974341E-02   9.397563E-10  -3.824624E-02   3.868647E+00   0.0           -3.008577E+00
+          1041      G      7.190547E-02   3.383022E-10   9.246128E-02   3.858700E+00   0.0           -3.000842E+00
+          1042      G      1.718005E-01  -1.482334E-10   2.209136E-01   3.746253E+00   0.0           -2.913393E+00
+          1043      G      2.673813E-01  -4.690836E-10   3.438184E-01   3.534433E+00   0.0           -2.748664E+00
+          1044      G      3.561987E-01  -9.380351E-10   4.580262E-01   3.228876E+00   0.0           -2.511038E+00
+          1045      G      4.359752E-01  -1.510494E-09   5.606086E-01   2.837591E+00   0.0           -2.206743E+00
+          1046      G      5.046671E-01  -2.139549E-09   6.489376E-01   2.370740E+00   0.0           -1.843681E+00
+          1047      G      5.605125E-01  -2.594227E-09   7.207477E-01   1.840397E+00   0.0           -1.431243E+00
+          1048      G      6.020781E-01  -2.765460E-09   7.741957E-01   1.260238E+00   0.0           -9.800640E-01
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    28
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  8.862291E+08
+          CYCLES =  4.737979E+03         R E A L   E I G E N V E C T O R   N O .          9
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+          1049      G      6.282958E-01  -2.759214E-09   8.079084E-01   6.451824E-01   0.0           -5.017467E-01
+          1050      G      6.384897E-01  -2.644183E-09   8.210165E-01   1.102406E-02   0.0           -8.573202E-03
+          1051      G      6.323933E-01  -2.577143E-09   8.131773E-01  -6.259816E-01   0.0            4.868146E-01
+          1052      G      6.101563E-01  -2.432595E-09   7.845833E-01  -1.249515E+00   0.0            9.717249E-01
+          1053      G      5.723407E-01  -2.242427E-09   7.359572E-01  -1.843630E+00   0.0            1.433758E+00
+          1054      G      5.199063E-01  -1.930235E-09   6.685333E-01  -2.393150E+00   0.0            1.861109E+00
+          1055      G      4.541863E-01  -1.545032E-09   5.840257E-01  -2.884054E+00   0.0            2.242877E+00
+          1056      G      3.768532E-01  -1.151598E-09   4.845853E-01  -3.303841E+00   0.0            2.569338E+00
+          1057      G      2.898760E-01  -7.247565E-10   3.727436E-01  -3.641843E+00   0.0            2.832196E+00
+          1058      G      1.954697E-01  -4.240825E-10   2.513491E-01  -3.889503E+00   0.0            3.024796E+00
+          1059      G      9.603768E-02  -1.893943E-10   1.234922E-01  -4.040592E+00   0.0            3.142295E+00
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    29
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  8.862291E+08
+          CYCLES =  4.737979E+03         R E A L   E I G E N V E C T O R   N O .         10
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+             1      G      7.566389E-03   1.938811E-11  -5.884244E-03  -3.181780E+00   0.0           -4.091364E+00
+          1000      G      0.0            0.0            0.0            0.0            0.0            0.0
+          1001      G     -1.190995E-01   2.948244E-09   9.262152E-02   3.027119E-01   0.0            3.892490E-01
+          1002      G     -2.393227E-01   5.581807E-09   1.861170E-01   5.040061E-01   0.0            6.480877E-01
+          1003      G     -3.572468E-01   7.850706E-09   2.778244E-01   6.066651E-01   0.0            7.800940E-01
+          1004      G     -4.695375E-01   9.546644E-09   3.651508E-01   6.153197E-01   0.0            7.912228E-01
+          1005      G     -5.730316E-01   1.070393E-08   4.456363E-01   5.363882E-01   0.0            6.897269E-01
+          1006      G     -6.648153E-01   1.131444E-08   5.170149E-01   3.779638E-01   0.0            4.860133E-01
+          1007      G     -7.422974E-01   1.128669E-08   5.772713E-01   1.496556E-01   0.0            1.924380E-01
+          1008      G     -8.032721E-01   1.045388E-08   6.246903E-01  -1.376135E-01   0.0           -1.769534E-01
+          1009      G     -8.459749E-01   9.178751E-09   6.578995E-01  -4.718452E-01   0.0           -6.067328E-01
+          1010      G     -8.691254E-01   7.659244E-09   6.759031E-01  -8.402374E-01   0.0           -1.080438E+00
+          1011      G     -8.719582E-01   5.712670E-09   6.781062E-01  -1.229475E+00   0.0           -1.580949E+00
+          1012      G     -8.542420E-01   3.385868E-09   6.643286E-01  -1.626044E+00   0.0           -2.090885E+00
+          1013      G     -8.162835E-01   9.495901E-10   6.348090E-01  -2.016543E+00   0.0           -2.593017E+00
+          1014      G     -7.589189E-01  -1.369819E-09   5.901975E-01  -2.388004E+00   0.0           -3.070669E+00
+          1015      G     -6.834908E-01  -3.634488E-09   5.315385E-01  -2.728200E+00   0.0           -3.508118E+00
+          1016      G     -5.918140E-01  -5.697902E-09   4.602431E-01  -3.025934E+00   0.0           -3.890965E+00
+          1017      G     -4.861276E-01  -7.545894E-09   3.780526E-01  -3.271304E+00   0.0           -4.206481E+00
+          1018      G     -3.690366E-01  -8.990322E-09   2.869931E-01  -3.455945E+00   0.0           -4.443906E+00
+          1019      G     -2.434457E-01  -1.001335E-08   1.893233E-01  -3.573218E+00   0.0           -4.594703E+00
+          1020      G     -1.124840E-01  -1.052439E-08   8.747680E-02  -3.618366E+00   0.0           -4.652759E+00
+          1021      G      2.057559E-02  -1.044589E-08  -1.600128E-02  -3.588629E+00   0.0           -4.614520E+00
+          1022      G      1.524013E-01  -9.845250E-09  -1.185198E-01  -3.483292E+00   0.0           -4.479070E+00
+          1023      G      2.796864E-01  -8.731604E-09  -2.175071E-01  -3.303698E+00   0.0           -4.248135E+00
+          1024      G      3.992357E-01  -7.228379E-09  -3.104784E-01  -3.053201E+00   0.0           -3.926028E+00
+          1025      G      5.080465E-01  -5.287657E-09  -3.950986E-01  -2.737073E+00   0.0           -3.519527E+00
+          1026      G      6.033866E-01  -2.843941E-09  -4.692429E-01  -2.362353E+00   0.0           -3.037686E+00
+          1027      G      6.828632E-01  -1.657250E-10  -5.310504E-01  -1.937674E+00   0.0           -2.491602E+00
+          1028      G      7.444859E-01   2.310279E-09  -5.789732E-01  -1.473017E+00   0.0           -1.894113E+00
+          1029      G      7.867165E-01   4.437283E-09  -6.118153E-01  -9.794645E-01   0.0           -1.259467E+00
+          1030      G      8.085096E-01   6.384104E-09  -6.287634E-01  -4.689001E-01   0.0           -6.029457E-01
+          1031      G      8.093386E-01   7.948803E-09  -6.294080E-01   4.628973E-02   0.0            5.952273E-02
+          1032      G      7.892098E-01   8.860895E-09  -6.137543E-01   5.535488E-01   0.0            7.117934E-01
+          1033      G      7.486631E-01   9.142255E-09  -5.822218E-01   1.040465E+00   0.0            1.337906E+00
+          1034      G      6.887574E-01   8.905996E-09  -5.356342E-01   1.495102E+00   0.0            1.922511E+00
+          1035      G      6.110439E-01   8.369563E-09  -4.751979E-01   1.906301E+00   0.0            2.451260E+00
+          1036      G      5.175272E-01   7.508033E-09  -4.024716E-01   2.263973E+00   0.0            2.911181E+00
+          1037      G      4.106139E-01   6.305245E-09  -3.193271E-01   2.559357E+00   0.0            3.291007E+00
+          1038      G      2.930516E-01   4.733128E-09  -2.279010E-01   2.785246E+00   0.0            3.581472E+00
+          1039      G      1.678587E-01   2.943896E-09  -1.305407E-01   2.936178E+00   0.0            3.775552E+00
+          1040      G      3.824625E-02   1.047357E-09  -2.974341E-02   3.008577E+00   0.0            3.868647E+00
+          1041      G     -9.246128E-02  -6.775034E-10   7.190547E-02   3.000842E+00   0.0            3.858700E+00
+          1042      G     -2.209136E-01  -2.099193E-09   1.718005E-01   2.913393E+00   0.0            3.746253E+00
+          1043      G     -3.438184E-01  -3.145712E-09   2.673814E-01   2.748664E+00   0.0            3.534433E+00
+          1044      G     -4.580262E-01  -4.182998E-09   3.561987E-01   2.511038E+00   0.0            3.228876E+00
+          1045      G     -5.606086E-01  -4.987636E-09   4.359752E-01   2.206743E+00   0.0            2.837591E+00
+          1046      G     -6.489376E-01  -5.541628E-09   5.046671E-01   1.843681E+00   0.0            2.370740E+00
+          1047      G     -7.207477E-01  -5.689007E-09   5.605125E-01   1.431243E+00   0.0            1.840397E+00
+          1048      G     -7.741957E-01  -5.376624E-09   6.020781E-01   9.800640E-01   0.0            1.260238E+00
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    30
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  8.862291E+08
+          CYCLES =  4.737979E+03         R E A L   E I G E N V E C T O R   N O .         10
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+          1049      G     -8.079084E-01  -4.671104E-09   6.282958E-01   5.017467E-01   0.0            6.451824E-01
+          1050      G     -8.210165E-01  -3.717058E-09   6.384897E-01   8.573220E-03   0.0            1.102405E-02
+          1051      G     -8.131773E-01  -2.874461E-09   6.323933E-01  -4.868146E-01   0.0           -6.259816E-01
+          1052      G     -7.845833E-01  -2.049416E-09   6.101563E-01  -9.717249E-01   0.0           -1.249515E+00
+          1053      G     -7.359572E-01  -1.401063E-09   5.723407E-01  -1.433758E+00   0.0           -1.843630E+00
+          1054      G     -6.685333E-01  -8.210304E-10   5.199063E-01  -1.861109E+00   0.0           -2.393150E+00
+          1055      G     -5.840257E-01  -3.275124E-10   4.541863E-01  -2.242877E+00   0.0           -2.884054E+00
+          1056      G     -4.845853E-01   5.269667E-11   3.768532E-01  -2.569338E+00   0.0           -3.303841E+00
+          1057      G     -3.727436E-01   3.441533E-10   2.898760E-01  -2.832196E+00   0.0           -3.641843E+00
+          1058      G     -2.513491E-01   3.352842E-10   1.954696E-01  -3.024796E+00   0.0           -3.889503E+00
+          1059      G     -1.234922E-01   1.801774E-10   9.603767E-02  -3.142295E+00   0.0           -4.040592E+00
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    31
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  8.364489E+04
+                               F O R C E S   O F   S I N G L E - P O I N T   C O N S T R A I N T
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+          1000      G      1.726817E+05   3.034299E-08  -3.416351E+05  -2.031258E+05   0.0           -1.026713E+05
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    32
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  8.364489E+04
+                               F O R C E S   O F   S I N G L E - P O I N T   C O N S T R A I N T
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+          1000      G     -3.416351E+05   4.682859E-10  -1.726817E+05  -1.026713E+05   0.0            2.031258E+05
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    33
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  6.245359E+06
+                               F O R C E S   O F   S I N G L E - P O I N T   C O N S T R A I N T
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+          1000      G     -1.337292E-09   2.875658E+07  -1.029974E-08  -7.680476E-10   0.0            2.216502E-10
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    34
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  4.904781E+07
+                               F O R C E S   O F   S I N G L E - P O I N T   C O N S T R A I N T
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+          1000      G      3.150128E+07  -6.493059E-07  -1.524519E+07  -2.110347E+06   0.0           -4.360631E+06
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    35
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  4.904781E+07
+                               F O R C E S   O F   S I N G L E - P O I N T   C O N S T R A I N T
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+          1000      G     -1.524519E+07  -1.450376E-07  -3.150128E+07  -4.360631E+06   0.0            2.110347E+06
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    36
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  3.148459E+08
+                               F O R C E S   O F   S I N G L E - P O I N T   C O N S T R A I N T
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+          1000      G     -5.856507E+07   7.856205E-03  -1.070594E+08  -6.737038E+06   0.0            3.685385E+06
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    37
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  3.148459E+08
+                               F O R C E S   O F   S I N G L E - P O I N T   C O N S T R A I N T
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+          1000      G     -1.070594E+08   4.435617E-03   5.856507E+07   3.685385E+06   0.0            6.737038E+06
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    38
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  7.234070E+08
+                               F O R C E S   O F   S I N G L E - P O I N T   C O N S T R A I N T
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+          1000      G     -1.518861E+00   4.293742E+08   2.624380E+00   7.794930E-03   0.0            5.481232E-03
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    39
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  8.862291E+08
+                               F O R C E S   O F   S I N G L E - P O I N T   C O N S T R A I N T
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+          1000      G     -1.352623E+08  -8.082065E+00  -1.739301E+08  -6.014227E+06   0.0            4.677156E+06
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    40
+     FLEXION                                                                                                                        
+0                                                                                                            SUBCASE 1              
+      EIGENVALUE =  8.862291E+08
+                               F O R C E S   O F   S I N G L E - P O I N T   C O N S T R A I N T
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+          1000      G      1.739301E+08  -2.275718E+01  -1.352623E+08  -4.677156E+06   0.0           -6.014227E+06
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeOutput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK OUG1, TRAILER[101, 0, 4880, 0, 0, 0, 1])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeOutput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK OQG1, TRAILER[102, 0, 4880, 0, 0, 0, 1])
+1    MSC.NASTRAN JOB CREATED ON 04-APR-23 AT 12:28:07   **STUDENT EDITION*    APRIL   4, 2023  MSC Nastran  3/15/22   PAGE    41
+                                                                                                                                    
+0                                                                                                            SUBCASE 1              
+ * * * *  D B D I C T   P R I N T  * * * *      SUBDMAP = PRTSUM  ,  DMAP STATEMENT NO.     74
+
+
+
+0                                   * * * *  A N A L Y S I S  S U M M A R Y  T A B L E  * * * *
+0 SEID  PEID PROJ VERS APRCH      SEMG SEMR SEKR SELG SELR MODES DYNRED SOLLIN SOLNL LOOPID DESIGN CYCLE SENSITIVITY
+ -------------------------------------------------------------------------------------------------------------------
+     0     0    1    1 '        '    T    T    T    T    T     T      F      T     F     -1            0           F
+0SEID = SUPERELEMENT ID.
+ PEID = PRIMARY SUPERELEMENT ID OF IMAGE SUPERELEMENT.
+ PROJ = PROJECT ID NUMBER.
+ VERS = VERSION ID.
+ APRCH = BLANK FOR STRUCTURAL ANALYSIS.  HEAT FOR HEAT TRANSFER ANALYSIS.
+ SEMG = STIFFNESS AND MASS MATRIX GENERATION STEP.
+ SEMR = MASS MATRIX REDUCTION STEP (INCLUDES EIGENVALUE SOLUTION FOR MODES).
+ SEKR = STIFFNESS MATRIX REDUCTION STEP.
+ SELG = LOAD MATRIX GENERATION STEP.
+ SELR = LOAD MATRIX REDUCTION STEP. 
+ MODES = T (TRUE) IF NORMAL MODES OR BUCKLING MODES CALCULATED.
+ DYNRED = T (TRUE) MEANS GENERALIZED DYNAMIC AND/OR COMPONENT MODE REDUCTION PERFORMED.
+ SOLLIN = T (TRUE) IF LINEAR SOLUTION EXISTS IN DATABASE.
+ LOOPID = THE LAST LOOPID VALUE USED IN THE NONLINEAR ANALYSIS.  USEFUL FOR RESTARTS.
+ SOLNL = T (TRUE) IF NONLINEAR SOLUTION EXISTS IN DATABASE.
+ DESIGN CYCLE = THE LAST DESIGN CYCLE (ONLY VALID IN OPTIMIZATION).
+ SENSITIVITY = SENSITIVITY MATRIX GENERATION FLAG.
+ 
+ No PARAM values were set in the Control File.
+ 
+1                                        * * * END OF JOB * * *
+ 
+ 
+ No Symbolic Replacement variables or values were specified.
+

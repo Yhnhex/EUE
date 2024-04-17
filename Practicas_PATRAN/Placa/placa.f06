@@ -1,0 +1,477 @@
+1
+ 
+ 
+ 
+ 
+                      Warning: This computer program is protected by copyright law and international treaties.       
+                  Unauthorized use, reproduction or distribution of this computer program, or any portion of it, may 
+                                          result in severe civil and criminal penalties.                             
+                         Copyright (C) 2022 Hexagon AB and/or its subsidiaries. All rights reserved.                 
+ 
+ 
+                                              * * * * * * * * * * * * * * * * * * * *
+                                              * * * * * * * * * * * * * * * * * * * *
+                                              * *                                 * *
+                                              * *           Hexagon AB            * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *      M S C   N a s t r a n      * *
+                                              * *                                 * *
+                                              * *  S T U D E N T   E D I T I O N  * *
+                                              * *                                 * *
+                                              * *     Version 2022.1-CL872368     * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *          MAR 15, 2022           * *
+                                              * *                                 * *
+                                              * *              Intel              * *
+                                              * *MODEL Intel(R) Core(TM) i7-8750H * *
+                                              * *    Windows 10 Home 6.2 9200     * *
+                                              * * Compiled for 8664 (SINGLE Mode) * *
+                                              * *                                 * *
+                                              * * * * * * * * * * * * * * * * * * * *
+                                              * * * * * * * * * * * * * * * * * * * *
+
+ 
+ 
+                                                 This Student Edition version is  
+                                                    valid until MAR 15, 2024.     
+ 
+ 
+                  This program is being distributed as part of the Hexagon AB Student Edition. Use of this program   
+                     or its results at a commercial installation, for commercial purposes, or for production work    
+                                             I S   S T R I C T L Y  P R O H I B I T E D.                             
+                  ==================================== FOR EDUCATIONAL USE ONLY =====================================
+ 
+ 
+1News file - (Feb 15, 2022)
+  
+               Welcome to MSC Nastran 2022.1
+  
+  
+   MSC Nastran brings powerful new features and enhancements for engineering
+   solutions in several releases through the year. The focus in this release
+   is on error fixes to improve the stability and robustness of the program.
+  
+     MSC Nastran 2022.1 Features and Enhancements
+  
+     Nonlinear
+      - Contact enhancements
+        - Smooth surface output control
+        - Node-to-surface penetration control in transient analysis
+      - Support for MSC CoSim 2022
+        - scFlow temperature load input
+        - ITER method support
+        - Local coordinate system at coupling region
+        - Initial displacement specification in scFlow based on Nastran
+          analysis results
+  
+     High Performance Computing
+      - Support running DMP across multiple compute nodes on Windows
+  
+     Documentation
+     - The complete documentation set is provided in a separate installer and
+       when installed is available at: MSC_DOC_DIR/doc/pdf_nastran directory,
+       where MSC_DOC_DIR is the directory where documentation was installed.
+       This help set includes cross references between documents, and links to
+       how-to videos, and example files
+  
+     Individual MSC Nastran documents are available for download from the
+       Simcompanion Website at:
+       http://simcompanion.hexagon.com/
+  
+     These documents were updated for the MSC Nastran 2022.1 Release
+  
+         1.  MSC Nastran 2022.1 Installation and Operations Guide
+         2.  MSC Nastran 2022.1 Quick Reference Guide
+         3.  MSC Nastran 2022.1 Release Guide
+         4.  MSC Nastran 2022.1 Linear Statics Analysis User's Guide
+         5.  MSC Nastran 2022.1 Dynamic Analysis User's Guide
+         6.  MSC Nastran 2022.1 Superelements User's Guide
+         7.  MSC Nastran 2022.1 Rotordynamics User's Guide
+         8.  MSC Nastran 2022.1 Demonstration Problems Manual
+         9.  MSC Nastran 2022.1 Nastran Embedded Fatigue User's Guide
+        10.  MSC Nastran 2022.1 Design Sensitivity and Optimization
+        11.  MSC Nastran 2022.1 Nonlinear User's Guide SOL 400
+        12.  MSC Nastran 2022.1 DMAP Programmer's Guide
+1       13.  MSC Nastran 2022.1 High Performance Computing User's Guide
+        14.  MSC Nastran 2022.1 New Verification Manual
+        15.  MSC Nastran 2022.1 DEMATD Guide
+        16.  MSC Nastran 2022.1 Explicit Nonlinear (SOL 700) User's Guide
+  
+   Please refer to  MSC_DOC_DIR/doc/pdf_nastran/nastran_library.pdf
+   for the complete document set:
+  
+  
+     Feature Deprecation List
+     To streamline the MSC Nastran program and simplify ongoing maintenance
+     activity, some obsolete capabilities have been identified and tagged for
+     removal. This activity started in 2021 and continues through 2022.
+     Please review the list of features marked for deprecation below to
+     ensure that there will be no disruption to your use of MSC Nastran.
+     If you see a feature that you currently use and do not wish to lose,
+     contact MSC Technical Support to report it.
+  
+     Features tagged for removal:
+     - SOL 600 nonlinear solution sequence
+     - TAUCS solver
+     - Obsolete DMAP modules
+     - SSSALTERS
+  
+     Refer to the MSC Nastran Release Guide for more details.
+  
+  
+   Additional information about the release can be found at the MSC Nastran
+   Product Support page: http://simcompanion.hexagon.com
+  
+   The support page provides links to these valuable information:
+      * A searchable Knowledge Base containing examples and answers to thousands
+        of frequently asked questions written by MSC Software subject-matter
+        experts.
+      * Peer-to-peer Discussion Forums enabling you to post questions for your
+        MSC Software products and receive answers from other users worldwide.
+      * A list of known issues with the product and any workarounds.
+      * Instructions on how to contact technical support
+      * A mechanism for sending us product feedback or enhancement requests.
+      * Hardware and software requirements.
+      * Examples and Tutorials
+      * and much more.
+  
+   For information on training, please visit our Training web site
+  
+      https://www.mscsoftware.com/msc-training
+  
+ *** USER WARNING MESSAGE 333 (GETLIN)
+     THE BEGIN BULK STATEMENT IS MISSING. A BEGIN BULK STATEMENT WILL BE INSERTED BY THE PROGRAM
+1                                                       **STUDENT EDITION* FEBRUARY  16, 2023  MSC Nastran  3/15/22   PAGE     1
+                                                                                                                                    
+0        N A S T R A N    F I L E    A N D    S Y S T E M    P A R A M E T E R    E C H O                                           
+0                                                                                                                                   
+                                                                                                                                    
+                                                                                                                                    
+     NASTRAN BUFFSIZE=8193 $(C:/PROGRAM FILES/MSC.SOFTWARE/NAPA_SE/20221/NASTRAN/CONF
+1                                                       **STUDENT EDITION* FEBRUARY  16, 2023  MSC Nastran  3/15/22   PAGE     2
+                                                                                                                                    
+0        N A S T R A N    E X E C U T I V E    C O N T R O L    E C H O                                                             
+0                                                                                                                                   
+                                                                                                                                    
+                                                                                                                                    
+                                                                                             
+ *** USER FATAL MESSAGE 505 (XCSA)
+     CONTROL CARD  IS ILLEGAL
+     |<MSC/PDF>     |  |   |    |   |   |       |PDB.1.0.C15    |PATRAN_3_26            |2022
+     MSC.PATRAN                                                                              
+           ]                                                                                 
+        |   |   |   |   |   |                                                                
+     :CONNECTION || ||? J | ? |A|@  ;| W                                                     
+      ||?|OR || ||? K |@? P |@ !?| 7|||EXTENSIBL|5||? L |@?@|@ ||?|||SIMBASEA        W| ||| M
+     | 7@'A| 7 | || ||OC|!O|W|IES|   ||W@|@? @ |@O K| W | |||?|AR@M||?@/AH@?         | |@ |||
+     W@? W 5@?@|@ !|| | K|? N||||@7 X |@7@|@ ||7C'@W|LEMEN||@ ||?@|@? |@|  ||        ?| | ?|F
+0*** INVALID CHARACTER FOLLOWING INTEGER IN COLUMN   7
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     #|| ||| I||||7 | -@7||||7|||REAE|| 7D| | |@7D|C| +AJ| |W|VARSTRING[@ ||W         | |@?D|
+0*** INVALID CHARACTER FOLLOWING INTEGER IN COLUMN  18
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     |@| | < | |||!|| |C|    DEGREESOFF ||DO||@ ||@GL|@GF|@ ||GE||DOF|||7A| |         ,@7 | |
+     | 7 /| | | | ||||B||||OPOLOGG||W@| ||?A|@ #|| WB?|MESH$||TROF[@ |?@| | |        @|B|@O |
+     F||G | | G |@|                                                                          
+     I|| 2| ||EC'I||I||| | + <||| |   | OIZ| F?O| R0||                                       
+     |||GB|@G@|@ |||PO|MPC | |7B| | |@7F|B|||| ||7|TERAM|7@' | | 7 | || ||G|O        |7|||||?
+     | 7B| | |@7|| ?| OAW|7R_||| ? 7| | | | |K|@O K| ?|||SO%| $  ||@' | |@7||        ||WD||7S
+0*** INVALID CHARACTER FOLLOWING INTEGER IN COLUMN  31
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     ||7 | | W |@#||7|||7|PD||||W@/ ||?A|@ #|| W[||:ARBITR+/! |PP3||||||G | <        @|@|  ||
+     PDBGRAPHICSLE|SCALA||||G | | G |A|@|!|| OEG|GLOB||||@|#/|7||||||K;-|| ||        |G ||G#|
+     | 7@' | |@7A|@ %|| |F| O/%|:| ||W | | ? %+O|O K| |G||?||2|?@|AO@?|K!#| ?        AW ?|MAR
+     @| T|A| ||G | |@G|;'/ ||S@||G|*||7 | | 7 &"7|  3| ||||BC;| I||H|?A| | 5@        ?B|A|||G
+     "O |B|@ C|"| E#|||.||? ;|?|| |D||| |||? F5X|URC9|| |||| # C *@|@| || |M|         ||;||, 
+     |&] K %| |G@|C| G 2B/||G||||EQU||||? 7||! R | 2D|||?@|||||REL|  GC| "|G"        |||G | G
+0*** INVALID CHARACTER FOLLOWING INTEGER IN COLUMN  38
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     | 7||+|?@| O|||A| ?|PLOD\| D||B|I| G 5@|||?A?||?|RO|||? 7||- S | 5|||||?         C|C|? O
+0*** INVALID CHARACTER FOLLOWING INTEGER IN COLUMN   3
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     ' /||L 3 ?C|| #|| |CG|ASSOCI1| D| |||@| M 5@?||| K| :||| N |@7B| |@+| WB        ||UG||9|
+ *** USER FATAL MESSAGE 723 (XTRAC2)
+     THE ABOVE COMMAND CONTAINS AN UNBALANCED NUMBER OF SINGLE QUOTES.
+     GROUP_DEFIN| D  || 7||V | | ?<W| |||| ||PR|||#|?AO W |@?|||$|A| || |7@W,        /@7 @@|@
+0*** INVALID CHARACTER FOLLOWING INTEGER IN COLUMN  20
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     |||  #||||||| || 1@| K 20|||||||||@ \| [ D@7A|@W@| | |C||  # |||||| || 2        A; | 3@+
+     |6||||| |[ RB||W %C| W||||W                                                             
+     |?|| B|B_ R6R@3||W|| |[ SB3|WAO@W@|||W@7|# |||VARSTR;||<@G|||| |C SC|||         &D| ||||
+     B||| ||Q| ||||O|PROPER||I@W||E| [ T@|L|@WB| | )A||  # |||||| ||CW@|@| |         $| | E&T
+     || |@  | | C D ||| M@| | QGK || |B||#  | ,(| C.I|||||@  | | K DL|D| | RA        | | VF| 
+     BC|  | |A||| || |||||P|                                                                 
+1                                                       **STUDENT EDITION* FEBRUARY  16, 2023  MSC Nastran  3/15/22   PAGE     3
+                                                                                                                                    
+0        N A S T R A N    E X E C U T I V E    C O N T R O L    E C H O                                                             
+0                                                                                                                                   
+                                                                                                                                    
+                                                                                                                                    
+     PDBGRAPHICSX||SCALA||||||& |C |B| K||J| | |BK|  | |@||| @| |!|A;|||||VC;        T| C||  
+     A+ |||@| |||@| ||| | | | | ; |A+ |||A[ |||A[ |||A[ ||| |@_ |||A| |||@| |        || | |@|
+     || , |||||| |||||| ||||||!C |E| | -#W||||| -@|A|@|@| |||@| ||| .!7|||||!        7|||||!|
+     @GGC ;                                                                                  
+     @|GC | |@WB|@|@| R|/ |@G|T   |  ||                                                      
+      AK||  |AK@| | # | ||||  D|||W|G |W@|$K@O ,A| W /||G@W | ||| |W |A_ W |A        |@O|:SPE
+     @| 6||| # |||  K|W |||||| | | ||:VIEW  S@K|W!|||R |WB| | | [ 7@| | ?@;|          ||#H|||
+      |W||| | |      A;||@W|PORT K | | G||||T || |@/@|@W | | | AA |  7 #@|||         ||      
+0*** INVALID CHARACTER FOLLOWING INTEGER IN COLUMN  65
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     B? | ,| ||TITLE |/ |@|C|"|||Y ||@| C|W@| | BB;|  | #B||| !K|W&O| |B||APP        LICATION
+       |WC|#S|(| ||  ; %||||  ||W |||E2AG|||R|'||  ||B |@|@| |@||XX||@||  _ %        ||||| @;
+0*** DATA ERROR-UNANTICIPATED CHARACTER IN COLUMN  42
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     A|#|@| YDG!| [EC| @|||| |@|@|@||||SEL%|A||TYPE 9 [||> X|| WB|@|B||| ||F3         + E||W@
+     ||REL||||| | P!|M|D|@|A| | B||| 2@|||  ||||||| W!||RESP2|||#|||| | | #@|        || BI| W
+     G |||| P C 8@| ||W|W||| @|||@'|| CK|:ASSOCI?| DIP@ ||||| ||@||| O@| | Q|        |B| | =@
+     GROUP_DEFIN||||L |||||, ||C| K@; ZG| C |C||  | ?A||# | ||PR|||||||- P"|C        |CO@WJC 
+     B'F||G | ||| AA||G |@| G |||AW|PDB]B|SCALAR W|@'|| |@|@|A||GA| G| W|G|NO        DEDEG8  
+     BG|7"| 63U&8<F 6||K|A|A|@7||H? ||KG||FA_&|9:|R_4A8  ||||O JD| W UL| |||         |CG&B|A|
+0*** INVALID CHARACTER FOLLOWING INTEGER IN COLUMN   9
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     |||B| /||W|G|| |F||||CADM1MC|@ ||A|O7@|@| |T| O|||||| : |A|C|| R| QC|||A        ?B|A| G 
+     |K@||G|G|10|CBW@/@| | #@?BO ? P@|@|AW|PLAN#||||K|@7E|@7J|DWA||HQ|@ @S|O         | |@7GG 
+      ||  |  ||O|| |G M|W|||O||?|||||[@PD_A||G ||O NB+||?|1||W| | |@/||||]|M|        TOPOLOG|
+     WES 6||G|| |? Q@| G|'|GT|A| R%|||'| H| ||||| |G Q@| O |F|!||O||||||||QHO        B|||O|| 
+0*** INVALID CHARACTER FOLLOWING INTEGER IN COLUMN   5
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     REFERENCEEN1|0||3| W@? |@7 ||| =@|||||||| | |>C@7 |@/ | =A||||UG|9| @#@|         7||| | 
+     |IT6||||  || |/|||_G|@_|| =|| @C|||W| K||Y L|||  ||| | | W |A;B?||||||||        |4 ||W||
+     |U #@ |||Z| G ||| |A|| G|||FEATURE LOR                                                  
+     || 3@| |||!|||||| 4"||||||@| ||| 5@| |||@G ||||6P /"|@| 6 |||||| 7@| |||        @| ||| 8
+      ||| QA| |||B||| QC|"S@_ RC;|| R#|||||| | ||| SBO ||| SC; |||!|||||| TA[         |||A|!|
+       |(                                                                                    
+       Z|  |||   || ||||%  ||  || | ,||X  || "|| || |  $B| |"| 0 |||  || |"?|        || |||  
+0*** DATA ERROR-UNANTICIPATED CHARACTER IN COLUMN  51
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     @K |    B| ?B| | ||||@G Q | '                                                           
+     ||@/@  3||G /   B|| @|B||||||| |@|B|@G#Z@'                                              
+0*** INVALID CHARACTER FOLLOWING INTEGER IN COLUMN   8
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     G| [||? D@'|| |                                                                         
+     |A2|?BW ?|| | EA'@?|G S | | |AG ||||||G /                                               
+     B| | |||                                                                                
+     @||||@K| GB[ T |@/ | |@G@?@  |||G|| |A|@?@||                                            
+     | I@|@|@|@OC|@/AG C||||O@#| |?@/|| |G|@|F||                                             
+     |||| <||O V | / |@?@O||||O|| ||O@|@7A|@|D|@||||@#!3||O W |@/@|||O||||| |        A|@? | G
+     G/|@' |J| [||7|| |EW@G@| |"||NT@FC||||CO ' |C||"G|| |C|@?A|I||NROWE|  ||        G | |@'|
+     | |EW@?A| |!||D |  "EW||G | | ' |@| | GCG@  3||G / |D+ |||X , | |@|C||||         @S|| | 
+     ? $@|@?@+A||:X NMAX C/||G | H ' $AG||G / #F| | $E| | #I||G6|2O AA'||G ||        GAG|"G||
+1                                                       **STUDENT EDITION* FEBRUARY  16, 2023  MSC Nastran  3/15/22   PAGE     4
+                                                                                                                                    
+0        N A S T R A N    E X E C U T I V E    C O N T R O L    E C H O                                                             
+0                                                                                                                                   
+                                                                                                                                    
+                                                                                                                                    
+     ||||@O | | / (@[ O| | |||O / 'D| | (|/ (B|||O|E (HW||OI|@7@?!W J@|@ ||O|        | )H|@?D
+     |V|@?H| ?"/|/@[|G@|Q| ' *@C@||C 3||G / )G| | *A| | )B||||@ ||G | | ' *A7        |#GB|@7A
+     | /I| ? .C| ?| |@||GH| | | ' /EG '||G@/A+@|A|@|AWD/|SEQUE<||NUMBE<|  |OB        | | | /@
+     | 3CW@?@| ?| |@|@|A|@| | | ' 3F| | AC|@  |||G / 2|O 3N| | 3@3||7||W | |@        'E? |||7
+     | 5H|@?A||G||| ||GD| ' 5|G|||||G / 4@7|  | 5@||G||A|| G || | |@'CG ||||         Y ||| | 
+     | 6EW@?A| ?|| |||WB|V| ' 6@||||||G / 5||@ @|@|||||CEH/@SC?@G | ( '|| |||        | Y||| 6
+     |||7|| :|O 9A|BW|FIELD|| =@|@ ||O | | O :AG|#|@K@7CO@|A;I||MATERIAL|R| |        |O | |@/
+     W ;A| ? :||#W|D _2O I ||G W| | | ' ;CO|||||G@/B|@|A|@|C|||W| |GCW@| ' <F        | || | |
+     | |@||OB| ||O B@|!O LC|@  |||O|| BAG@OA| | 8||||S DBV'J||| | + 7 BMG|"W|        | BAO@?A
+0*** INVALID CHARACTER FOLLOWING INTEGER IN COLUMN  44
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     |B? G||WC| 7 HRG"||||||W|| HAO@?A|||||_||OI|@/BG | ^C|@  |||O|| I@|@?A|A        ||ELEM-|
+0*** INVALID CHARACTER FOLLOWING INTEGER IN COLUMN  12
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     | K|| JB| ?  O| ||||PC K KAG ||||||G / JB||  | K@||||| / ||||A|@' | | ||        || ]||| 
+     O ]D| ? \@||    O|TIL @||O 6 | / ]A| |||O / \D| | ]G|@|@|||O|| _||O#||/@        ?@OD|@  
+     O _DW@?E|E7 W@|!| 8||G < | ' ||                                                         
+0*** INVALID CHARACTER FOLLOWING INTEGER IN COLUMN  19
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     |||G /C| | |A| | _D|#|!G|SHCYC M|||G = | ' |||||| /|| |G| | |@||G|RELAXM         @G||G|>
+     |||7|| A@|@GA||G|DGA|B||||@_ ' ADG@||||||G||| @?A||G|ITRNGL G'|GH| A , '         BC|||G@
+     ? H@K@?D| ?||||@|C|@GA_ ' H@| ||||||G / GD| | HC| | GI||||| |GCOV| ' HAG         G G|| |
+     ||G|2 @|||G@| ' O@| G||?|| OG| ? NJ| ||||AXI%#0| _L7@[||K| ' O||@|@  |||        ?|| OA|@
+     | G 4 / R@? O||| DL||| |O| @7E/ | QE||O|FILEN/W $$| |L|||||| R@| O|||||O         _ R|| R
+     |||G|| TA|@?B|||G|2 K|||GV| ' TAG|"?|| TDW@?!&@|||E'|ESUL8=||O[|@/||||'|        |||| UA|
+     | |LW@?@| 3B| O |IW|| | |LO@'AG ||||@||| @K|O |D| 7 ||/ |@G| ||_PCUG||G         | H@/AG 
+0*** INVALID CHARACTER FOLLOWING INTEGER IN COLUMN  11
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     W |C7||O|| |/ |@||"O|| |C| O |F|B||CID||||G | |@'|G|||||%O |D|@?E||||||F        LAG   : 
+       |H | E |@| | | F | |||8 | G |@| | |@' |||| | I |@| | | J |@| | | K | |        ||P | L 
+     | | S | ||                                                                              
+     | | T | |||0 | U |@| | | V | |||| | W |@| | | X |@| | | Y | |||X | Z |@|        @S ||| |
+       L|                                                                                    
+       || |7 ||| @ | | ||:CONSTANTLABEL  | |@G|O | | O |B| C|B| |@  |||O /||X         $ |||X|
+     |                                                                                       
+     B|@?B|C||ANALYSISC$| <||OG/ /                                                           
+     BG C C||O /     ||                                                                      
+     A'@|C|||O|TYP O         @|||| | | /                                                     
+     @? O| | ||||@/||                                                                        
+     EW@|C|@|AG|J||GHG | | 'F|  (G PA+@ ||G@||  ?                                            
+     BCEO|DEGREEOFF ||DOMIDS #|                                                              
+     |||@W | < 7 |@G K||| GCS|| @|A||| @?A| |H||NECTORID || : |||O@S ' ||                    
+0*** INVALID CHARACTER FOLLOWING INTEGER IN COLUMN  11
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     | H@C|| ||O 7 |@K | |||| |@W@|B|B| | H ' |B|!O|||||G / |A| | |A| | |B|D|        |:NAM"| 
+0*** INVALID CHARACTER FOLLOWING INTEGER IN COLUMN  13
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     |||G / ||| ||| |@|HW|FN1_SIZ$|A| |EG||O | | ? |||||||||@/|| |D|@|@+|O 2|        O!'|O||O
+     ||| | | ' |B||#G|| |A| ? |B||GG|||G ||GGG|"G|||  G |U||G 3 | GCG|7B| | |         ' |AG!+
+     | |A|@?@' | ||'|  | ||GB| | |@'||A|@  S||G@/A| | |@/ | |B| |     :LINEAR        _D+| | |
+1                                                       **STUDENT EDITION* FEBRUARY  16, 2023  MSC Nastran  3/15/22   PAGE     5
+                                                                                                                                    
+0        N A S T R A N    E X E C U T I V E    C O N T R O L    E C H O                                                             
+0                                                                                                                                   
+                                                                                                                                    
+                                                                                                                                    
+     CATEGORY  PA|@ ||| | | / "@?@O|# |||O|| "CO@? F|O$||AULT3| UK|@ ||O | |@        /A| C||O
+     | P@G|| @|C|| @7D7 | -@| |B|@|||| | | ' .A| '|||||G@/A|@||/ .A|C||G||GC|         ||G /@|
+     | 1AO||O |||||!G|||||? _|| 1E|@|D| ?| |||| | | 'Y|@'| G@|!| $@| ? 1B|!|+        ||IR=||I
+     |Z|||O | | / 3|| AB|@  |||?@/||A|||C||W|VOLATILITYFLA|||@| ||/ 4@?"G||||        |O|| 4A|
+     | TA||| |G| @7G/@|@| |D|@|B|||@G * |@' | | '|||||G@/B| | F@| | E@|I||HAN        DLED| _ 
+     YSISLBCSYNC||@ @||G B | 7 PMG|#W|| PJ|@?@SD|(||PARAMSETH|C|@||O C|OMG|"O        ||| @OA|
+0*** INVALID CHARACTER FOLLOWING INTEGER IN COLUMN  25
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     FIELDRESELE V Q1$| QA||W)|||D < 7 Q%|||WC||| ||| @7AW@|@| |K|%W Q@|||G E         |@'@|"W
+     G|B|  @?B| ?-? D@| ||||V|@'GG '||W||G@/"F@| CA|@|F|B|U'||!7 |Q||| | |E|         / CB|@O@
+     _|7|OC_^| / IK?B|F'@  |||||| JA|@?D|B|||_ OM|||O | \ / JA| || O|| JA| ?         ID||O||_
+     _ LA|@?A|B|%||ITYE||?||AG | P / LA|!| ]@?@  |||O / KB| | LFW | KB|AG|COM        O|@C|G$7
+     | OCS@?BO ?$||D RD2 C|||"|||| | ' O@| |||W||G / N@G | O|7 NC|R/|||AXN?@S        || ||GAG
+     SILHOUETTE 7Z+|||| | | / XA| C||W@/@|@||/ XE||| S*|  |||@_ / Y||A|@  S||        ||| YG| 
+     DIFFUSEREFL*| A<|A| |DG||W ||WBG@WB|@  ||||||R|@| |D|H|&|<|3| CH|B|||O |        |/ |EG C
+       M| | ||| | | ||||NP | ||| | | ||||O( | ||| | | ||| | | ||||P| | ||| |         | ||||Q0
+     @K |||D| ||| |@| C@_ |@S |||@S ||| |@S |||@S ||| |@S |||@| ||| |@S ||| |         | O  ![
+       M|   |  ||   |  ||   |  |H   |  ||   |  |(   |  ,X   |  ||   |  V@   |          ||   |
+     @| 4 X||||| | |@| | 5 |||| |@| ||||||!7||||| 6 S|||||@S ||||78 |!#@; 7 |        ||      
+     || |||||| | | G@/|9| | |||"3||||| :"3|||||!| |#|@/ ;"||||||@| ||| < ||||        ||!|||||
+      ||:EDGE|| K 6@|||O | #@O@?|"O|| |A|@? | G|||DISPLAYE V S | |||O | | | |        A|||  ]|
+     ||      B| ?| :IDA||                                                                    
+     ( ||GG| | |@/A|%| ^@K@  3||G /  D| |                                                    
+     B| |    A| | 8|:NAM#|||| |||G | | '                                                     
+0*** DATA ERROR-UNANTICIPATED CHARACTER IN COLUMN  35
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     E7@GC|@ ||G||| @?B||G|DATA G | ||GA7AW ' | |@[||7 | ||| @|||7 |F| ;                     
+     @| |A7'|                                                                                
+     @W|GA7 | | ' |!|||@K@  3||G /                                                           
+     @| | ||G |A|||A7(| D||G | |@/I_A7B'@ ||G||| @?A||G|7| : ||GA7 | | ' |A|         [||7 |@|
+     7 |@| ? |@| | -|:LPU|| |@| ||?@| | | / ||G||O@/E|@||| |K||OG/|FORMAT||O         ||O |@?|
+0*** INVALID CHARACTER FOLLOWING INTEGER IN COLUMN   1
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     | +@/ #CG||WA||| A|||| #B| C #A||||ROUNDVN|||D||||BS 7 $@|@||| ||W||_ #A        /|  ? #B
+0*** INVALID CHARACTER FOLLOWING INTEGER IN COLUMN   3
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     |AG|| ||||| >A|@GD|!|| :ORIGIN||||G ] | ' >B' 'RS@  ||G||||| >A|@?@3L|||        |RAN||  
+     G|@  |||G / A|| BCW@|D|@S|:LBC|||GB| O T ' BAG [|||||G||| @?C|CWX||BOXV|        |  T@||O
+     W CA|@OC||||ADCASB| C||O!W||Q P / C@W |||@  +||O / BD' | CCW@|@| | 8AG |         CA|||AG
+0*** INVALID CHARACTER FOLLOWING INTEGER IN COLUMN  45
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     O | '@/@? O||/|| NB|@?C?K7;||EGERV#||E ||||| ||O NA|"|H|@  |||/|| N||D|D        W|CHA|L|
+     | |B||| A|@?|  7 Q |@| PB|| || ||G | | + Q@| | |I|@ @||G _ (F| ||G / PB|         | QA| |
+0*** INVALID CHARACTER FOLLOWING INTEGER IN COLUMN  16
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     | | C@/|||||||?@/|| VDG@|A|Z/| O|SET|B|  |OD| | | 7 VB?|"O|| VAG@? ||W|         7||W#|||
+0*** INVALID CHARACTER FOLLOWING INTEGER IN COLUMN  51
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     | YD|@? ||||@G | | # YD| G|||||G@/|| Z|| Y@||O|LGEO||||| ||O ZAG!O|||||O        || ZD|@|
+     | SD|@?B| 3CO||'@G | | ' SAG |||7||G / R|| S|| R@|K|8S8HD|||?@OD| ? S|G|        |O|| S@S
+1                                                       **STUDENT EDITION* FEBRUARY  16, 2023  MSC Nastran  3/15/22   PAGE     6
+                                                                                                                                    
+0        N A S T R A N    E X E C U T I V E    C O N T R O L    E C H O                                                             
+0                                                                                                                                   
+                                                                                                                                    
+                                                                                                                                    
+0*** INVALID CHARACTER FOLLOWING INTEGER IN COLUMN  11
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     O ||' |B||7||| S| |AW|/ |@K | |@|@  |||O@|B' | |B| | |@|C||MATERIAL|||          ||W | | 
+     |||O | P@/EO O C@|@  |||O@/J' | |IO | |GW||O|D|||@||| |/ |@? C||G||O|| |        F| O |A|
+     C| | | C |C# ||| |A|!|@_                                                                
+      |||||| |@| |||A[ | | ; | |||||| |CS | | | |@S ||| |@S |||@/"|@# |@| |||        @| ||| |
+     @K ||| |@| |||@S |||$|| || | K |A| |||@S | | | |@K |||B| |@| |A| |||B| |        || |A+ |
+     @| | ||||||!||||||!? |@$!| |"| |C|@|"|||||# |$[||||| K||||| | K | W@/ |@        K       
+      | G  @K|| ||!K |BD | !!|||||| ! |||||| " ||||||@| +@/ #@|B| | #!S|||||         $ L||| |
+0*** INVALID CHARACTER FOLLOWING INTEGER IN COLUMN  52
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     |||||@S ||| | |!|@_ S@S |||@| ||| TB? |||B? |||@| ||| UAG||   |  U|                     
+      | 7 |BG | HA|@  |||W|| |A| ? |A| |"7|LLOWABLEDATATYPES | |||W | | / |B|        |"|||A||
+0*** INVALID CHARACTER FOLLOWING INTEGER IN COLUMN   4
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     @K@?B|A+|O CAO| |B|@#||CC /                                                             
+     A| O F@|@  |||/||                                                                       
+     ||      C|@||:INTVALIDATIONFN@K@S|O | |@OA| C||O|| |AG@?| ||REAL||P  !||        |W 3@7 |
+     A|A3|:CHAR|                                                                             
+     W@ ||E| | | 7 |||@|@  | |C||| @|IO| @7AW@|@+@||:ID||| GE| | | ' |@C [||7        ||G / |C
+0*** INVALID CHARACTER FOLLOWING INTEGER IN COLUMN  13
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     O#'||, P / |B|!||||||O / |B' | |AO | |A|E|(_|VEN||| ||@O - | / |@?@O@?@          |||O|| 
+     | |@|@?A| ?*O DB| |AG|||@W ' |@||||||G / |P| | |CW | |@|||||||#| |@| ' |        L| G IB3
+     |  @|@| 3| 7@O@|A7#|||E |@'A| |||W |AS|| |G|  7 !BW |  @| ?E|!' |I||G@|         F | ' !C
+0*** INVALID CHARACTER FOLLOWING INTEGER IN COLUMN   9
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     | $CO ? #A|||||/||O N P / $AGB|B|@  |||O@/K|| @|D|P|!?|||| ||W O | 7 %@|        @WH|@  W
+     ASSTR ABELS[|| OAG W | / (E| |||G |C||| @||||I|@?B||    G CO|@||||| )@|         O|||||O@
+     | *@O@?@||      || *@K@||? \ P@/D| O|||||O@/B| | +@K | *D|||OA|| *@C@#|O         ]|O +@?
+     | .A|@?D|A||| 8#| .A||||#||/MG |||?||O@_N| | /@O | .G|U||OC||ID A||OB| F        |O /@? O
+0*** INVALID CHARACTER FOLLOWING INTEGER IN COLUMN  15
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     |C|| ||| | | / 8CG!_|||BK|| |                                                           
+     | 9DO@?B|||_|W@ ||O | | / 9BG O|||||O / 8J| | 9BO@|B|||O||||| | |@/@?!K         JA|   ||
+     W :B| ? 9A|||O 9B||GB7PO ' :A| G|||||G@/O| |E|@| :B|I|||| ||/ ;BG O JA|@          || O |
+     | F|7 FA||_|_||G | H@GD|||G@/AC | G@| | FD||||GLOBALY|@|||G ||O G@| |||O        |||@_@||
+     O | ' | MA| O|||@/|| NB|@|D|B/| O|SIZE S |||O | | / N@? O||||| NJ| ? MD|        PW|SYMC|
+     | U|| UA|||W UAG||G | H G VA|AOG|@  S||G / UC| | VGW | UB| ?||'A||| VHG         '|||||G|
+     ||V| |||@O | | | VAW|"O|| WA|@?B| | K|:M)||IP!|Z||N  ||| | | 7 WD|!C||||        |||| WH|
+0*** INVALID CHARACTER FOLLOWING INTEGER IN COLUMN  62
+ *** USER FATAL MESSAGE 300 (CRCARD)
+     THE MESSAGES ABOVE ARE FROM CRCARD.
+     |||||| ]D'!|| | |||?|| ]A| O ]C||||B| |O|@|A|B| | |@/@W C O|||||O|| ^@K@        ?A;|||A|
+     | _AW@?B|B7 N4U  |||C| | H ' _D| W|||||G / ^E| | _AO | ^A|CW||||                O ||OBG|
+     | |DG||OGG@/@? ||Q |  |||O|| A@K@?D|P||||S @| AH#@#|||| |/ AA| C Q@|@  |        ||O|| A|
+     W |O'||O ||OA||"O|| DA|@O||DW|_||F|A| ' DAG@GC?@ !K||||| DA|@?@3 | |7O|         ||TOBET;
+     @|||O | \ / F@G C RC|@  |||||| FB| ? EB'E||PEAKC|#| E#| G||O | | / FA' |         RE|@  |
+     | I|7 I||B||_||@G | | G J@C [ ,|[ |||G / ID| | J@/ | IB|A||:SUBCA|F||G |         | ' JB|
+     | ZCW C YD||| | ]A|||?X| ' ZAG '||G@/|| ZJ|@|C|||C|  ||G | | ' |AG || +@        |@|!||  
+     ||![||||| |@K |||@K ||| |@K |||@K |||   @K!?@_  @K |||@K |||                            
+     @K |@#                                                                                  
+1                                                       **STUDENT EDITION* FEBRUARY  16, 2023  MSC Nastran  3/15/22   PAGE     7
+                                                                                                                                    
+0        N A S T R A N    E X E C U T I V E    C O N T R O L    E C H O                                                             
+0                                                                                                                                   
+                                                                                                                                    
+                                                                                                                                    
+     @K ||| |@K |||![||||| |!C||||| | | C@; | G|||||!C|||||@K ||| |@K |||!|||        |||||H |
+      ||:RANGENAME | K||. |||O ' | / |@?|"||| | >|? X | | ||O|METHO@|@|||OA|         O |A||#O
+     CEND       $ GENERATED BY GETLIN                                                        
+1                                        * * * END OF JOB * * *
+ 
+ 
+No Symbolic Replacement variables or values were specified.
+

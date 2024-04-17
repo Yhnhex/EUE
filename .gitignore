@@ -9,3 +9,9 @@
 *.gz
 *.ini
 *.dat
+*.1
+*.run.xml
+*.rar
+nul
+*.7z
+*.zip
