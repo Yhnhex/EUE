@@ -1,0 +1,10 @@
+*.db.jou
+*.ses.*
+*.pch
+*.aux
+*.lof
+*.log
+*.out
+*.toc
+*.gz
+*.ini
